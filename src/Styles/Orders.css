@@ -1,0 +1,108 @@
+/* Main container */
+.orders-container {
+  padding: 20px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* Title */
+.orders-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Order card */
+.order-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  padding: 15px;
+  margin: 15px 0;
+
+  background-color: #fff;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect */
+.order-card:hover {
+  transform: scale(1.02);
+}
+
+/* Image */
+.order-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+
+  border-radius: 8px;
+}
+
+/* Details section */
+.order-details {
+  flex: 1;
+}
+
+/* Product name */
+.order-product {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+
+  margin-bottom: 8px;
+}
+
+/* Text */
+.order-text {
+  margin: 4px 0;
+  color: #555;
+}
+
+/* Total price */
+.order-total {
+  font-weight: bold;
+  color: green;
+}
+
+/* Empty message */
+.no-orders {
+  text-align: center;
+  color: red;
+  margin-top: 40px;
+}
+
+.order-delete button{
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #d21919;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.order-delete button:hover{
+  background-color: rgb(246, 170, 149);
+}
+
+.no-orders {
+  font-family: cursive;
+  font-weight: bold;
+  color: rgb(185, 53, 53);
+}
+.img-noorder {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
