@@ -89,10 +89,7 @@ function AddProduct() {
     <br /><br />
   </div>
 
-  {image && (
-      <img src={image} alt="preview" width="100" className="preview-image"/>
-   
-  )}
+  {image && (<img src={image} width="100" className="preview-image"/>)}
 
   <br />
 

@@ -17,7 +17,7 @@ function Home() {
   }, []);
 
   function handleAddToCart(product) {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const isLoggedIn = localStorage.getItem("login");
     const targetPath = isLoggedIn ? "/cart" : "/login";
 
     navigate(targetPath, {state: { ...product }});
@@ -49,12 +49,9 @@ function Home() {
             
             <div className="product-card" key={product.id}>
 
-              <div className="image-wrapper">
+              <div className="image-card">
 
-                <img 
-                  src={product.image} 
-                  className="product-img"
-                />
+                <img src={product.image}  className="product-img"/>
               </div>
               
               <div className="product-info">

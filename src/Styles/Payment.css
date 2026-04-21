@@ -1,0 +1,112 @@
+/* Page background */
+
+body {
+  background-color: #eef2f7;
+}
+
+/* Container */
+
+.payment-container {
+  width: 360px;
+  margin: 60px auto;
+  padding: 28px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e0e6ed;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title */
+
+.payment-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+/* Amount */
+
+.payment-amount {
+  font-size: 17px;
+  color: #6b7280;
+  margin-bottom: 22px;
+}
+
+/* Payment options box */
+
+.payment-options {
+  text-align: left;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  margin-bottom: 20px;
+}
+
+.payment-options label {
+  font-size: 15px;
+  color: #374151;
+}
+
+.payment-options input {
+  margin-right: 10px;
+  transform: scale(1.1);
+}
+
+/* Main button */
+
+.place-order-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.place-order-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* QR section */
+
+.qr-section {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 10px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+/* Confirm button */
+
+.confirm-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px;
+  background-color: #16a34a;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.confirm-btn:hover {
+  background-color: #15803d;
+}
+
+/* Success message */
+
+.success-message {
+  margin-top: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #16a34a;
+}

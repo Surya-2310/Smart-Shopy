@@ -60,17 +60,20 @@ function Signup() {
       setsame(true);
 
    const user = JSON.parse(localStorage.getItem("users")) ||[]
-
-      if(user && email === user.email && password === user.password){
-        alert("account alredy exists")
+  const checkemail = user.some((user) =>user.email === email)
+      if(checkemail)
+         {
+        alert("account alredy exists");
+        return;
       }
       
 
       const userdata ={
         email:email,
-        password:password,
+        password:password, 
         role:"user"
       };
+
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
   users.push(userdata)

@@ -6,6 +6,8 @@ import Cart from "./Cart";
 import Orders from './Orders';
 import Dashboard from'./Dashboard'
 import AddProduct from './Product'
+import QRgenerator from "./Payment";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -70,6 +72,14 @@ function Routes() {
     <>
       <Navbar />
       <AddProduct/>
+    </>
+  )
+},{
+  path:"/Payment",
+  element:(
+    <>
+    <Navbar/>
+    <QRgenerator/>
     </>
   )
 }

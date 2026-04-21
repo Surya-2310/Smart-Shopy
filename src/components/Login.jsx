@@ -47,7 +47,7 @@ function Login() {
     if (validUser) 
       {
 
-      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("login", "true");
 
       localStorage.setItem("role",validUser.role);
 
@@ -85,10 +85,7 @@ function Login() {
 
   return (
     <>
-      <form
-        className="login"
-        onSubmit={handleLogin}
-      >
+      <form className="login" onSubmit={handleLogin} >
 
         <h2>Login</h2>
 

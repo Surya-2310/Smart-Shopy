@@ -9,6 +9,7 @@ import'./Styles/Orders.css'
 import './Styles/Dasboard.css'
 import './Styles/Product.css'
 import './styles/Home.css'
+import './Styles/Payment.css'
 
 
 createRoot(document.getElementById('root')).render(

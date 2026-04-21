@@ -26,7 +26,6 @@ const [Totalsalesamount,setTotalsalesamount] = useState(0);
 
         setTotalOrders(data.length);
 
-        
 
         let total =0;
 
@@ -101,12 +100,9 @@ const [Totalsalesamount,setTotalsalesamount] = useState(0);
   </>
 
 </div>
- <button className="Dash-btn" onClick={() => navigate("/AddProduct")}>
-  Add Product
-</button>
+
+ <button className="Dash-btn" onClick={() => navigate("/AddProduct")}>Add Product</button>
   
-
-
 </div>
   );
 }
