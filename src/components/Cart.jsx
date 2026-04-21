@@ -79,7 +79,7 @@ function Cart() {
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
         <label>Address</label>
-        <textarea value={address} onChange={(e) => setAddress(e.target.value)} required/>
+        <input value={address} onChange={(e) => setAddress(e.target.value)} required/>
 
         <label>Product</label>
         <input type="text" value={productname} disabled />

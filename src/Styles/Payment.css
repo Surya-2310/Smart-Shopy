@@ -1,10 +1,10 @@
-/* Page background */
+
 
 body {
   background-color: #eef2f7;
 }
 
-/* Container */
+
 
 .payment-container {
   width: 360px;
@@ -17,7 +17,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Title */
+
 
 .payment-title {
   font-size: 24px;
@@ -26,7 +26,7 @@ body {
   margin-bottom: 12px;
 }
 
-/* Amount */
+
 
 .payment-amount {
   font-size: 17px;
@@ -34,7 +34,7 @@ body {
   margin-bottom: 22px;
 }
 
-/* Payment options box */
+
 
 .payment-options {
   text-align: left;
@@ -55,7 +55,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Main button */
 
 .place-order-btn {
   width: 100%;
@@ -73,7 +72,7 @@ body {
   background-color: #1d4ed8;
 }
 
-/* QR section */
+
 
 .qr-section {
   margin-top: 24px;
@@ -83,7 +82,7 @@ body {
   border: 1px solid #e5e7eb;
 }
 
-/* Confirm button */
+
 
 .confirm-btn {
   margin-top: 14px;
@@ -102,7 +101,7 @@ body {
   background-color: #15803d;
 }
 
-/* Success message */
+
 
 .success-message {
   margin-top: 16px;

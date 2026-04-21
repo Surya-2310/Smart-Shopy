@@ -1,4 +1,4 @@
-/* Navbar container */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -13,12 +13,12 @@
   border-radius: 10px;
 }
 
-/* Title */
+
 .navbar h2 {
   margin: 0;
 }
 
-/* Menu list */
+
 .navbar ul {
   display: flex;
   list-style: none;
@@ -28,7 +28,7 @@
   padding-left: 40%;
 }
 
-/* Links */
+
 .navbar a {
   color: white;
   text-decoration: none;
@@ -39,19 +39,19 @@
   color: #f39c12;
 }
 
-/* Dropdown container */
+
 .dropdown {
   position: relative;
 }
 
-/* Profile image */
+
 .dropdown img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-/* Dropdown content */
+
 .dropdown-content {
   position: absolute;
   right: 0;
@@ -68,13 +68,13 @@
   padding: 10px 0;
 }
 
-/* Dropdown items */
+
 .dropdown-content li {
   list-style: none;
   padding: 10px 15px;
 }
 
-/* Dropdown links */
+
 .dropdown-content a {
   color: black;
   text-decoration: none;

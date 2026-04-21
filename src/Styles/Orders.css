@@ -1,18 +1,18 @@
-/* Main container */
+
 .orders-container {
   padding: 20px;
   background-color: #f5f7fa;
   min-height: 100vh;
 }
 
-/* Title */
+
 .orders-title {
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 }
 
-/* Order card */
+
 .order-card {
   display: flex;
   align-items: center;
@@ -31,12 +31,12 @@
   transition: transform 0.2s ease;
 }
 
-/* Hover effect */
+
 .order-card:hover {
   transform: scale(1.02);
 }
 
-/* Image */
+
 .order-image {
   width: 120px;
   height: 120px;
@@ -45,12 +45,12 @@
   border-radius: 8px;
 }
 
-/* Details section */
+
 .order-details {
   flex: 1;
 }
 
-/* Product name */
+
 .order-product {
   font-size: 20px;
   font-weight: bold;
@@ -59,19 +59,19 @@
   margin-bottom: 8px;
 }
 
-/* Text */
+
 .order-text {
   margin: 4px 0;
   color: #555;
 }
 
-/* Total price */
+
 .order-total {
   font-weight: bold;
   color: green;
 }
 
-/* Empty message */
+
 .no-orders {
   text-align: center;
   color: red;
