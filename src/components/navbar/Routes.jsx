@@ -1,12 +1,15 @@
-import Login from "./Authentication/Login";
-import Signup from "./Authentication/Signup";
-import Home from "./navpage/Home";
-import Navbar from "./navbar/Navbar";
-import Cart from "./navpage/Cart";
-import Orders from './navpage/Orders';
-import Dashboard from'./navpage/Dashboard'
-import AddProduct from './navpage/Product'
-import QRgenerator from "./navpage/Payment";
+import Login from '../Authentication/Login.jsx';
+import Signup from "../Authentication/Signup.jsx";
+
+
+import Navbar from "../navbar/Navbar.jsx";
+
+import Home from "../pagess/Home.jsx";
+import Cart from "../pagess/Cart.jsx";
+import Orders from '../pagess/Orders.jsx';
+import Dashboard from'../pagess/Dashboard.jsx'
+import AddProduct from '../pagess/Product.jsx'
+import QRgenerator from "../pagess/Payment.jsx";
 
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

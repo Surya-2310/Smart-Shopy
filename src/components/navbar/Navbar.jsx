@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Profile from "../assets/profile.png";
+import Profile from '../../assets/profile.png';
 
 function Navbar() {
 
