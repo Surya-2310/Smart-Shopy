@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -46,7 +47,10 @@ function AddProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !price || !image) {
-      alert("Please fill all fields");
+     toast.error("Please fill all fields", {
+  position: "top-right",
+  autoClose: 1000,
+});
       return;
     }
 
@@ -59,7 +63,7 @@ function AddProduct() {
 
     axios.post("http://localhost:3000/product", newProduct)
       .then(() => {
-        alert("Product added successfully!");
+       toast.success("Product added successfully!");
 
         setName(""); 
         setPrice(""); 
@@ -67,11 +71,12 @@ function AddProduct() {
       })
       .catch(err => {
         console.error(err);
-        alert("Upload failed.");
+        toast.error("Upload failed.");
       });
   };
 
   return (
+    
     <form onSubmit={handleSubmit} className="product-form">
   <h2 className="form-title">Add Product</h2>
 
@@ -93,8 +98,11 @@ function AddProduct() {
 
   <br />
 
+ 
   <button type="submit" className="submit-btn"> Upload Product</button>
+ <ToastContainer/>
 </form>
+
   );
 }
 

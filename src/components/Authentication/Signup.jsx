@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 function Signup() {
 
@@ -63,7 +64,12 @@ function Signup() {
   const checkemail = user.some((user) =>user.email === email)
       if(checkemail)
          {
-        alert("account alredy exists");
+      toast.error('Account already exists', {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+        transition: Bounce,
+        });
         return;
       }
       
@@ -81,9 +87,17 @@ function Signup() {
   localStorage.setItem("users",JSON.stringify(users));
 
 
-      alert("Account created successfully");
+      toast.success('Account created successfully', {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+        transition: Bounce,
+        });
 
+          setTimeout(()=>{
       navigate('/Login')
+          },2500);
+      
 
     setemail("");
     setPassword("");
@@ -152,6 +166,7 @@ function Signup() {
             <p className="sign1">Switch account?<Link to="/login"> Login</Link></p>
 </div>
       </form>
+      <ToastContainer />
     </>
   );
 }

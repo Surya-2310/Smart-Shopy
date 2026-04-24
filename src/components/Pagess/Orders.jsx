@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import computing from '../../assets/computing.png';
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 
 function Orders() {
@@ -14,15 +15,22 @@ function Orders() {
   }, []);
 
   function handleDelete(id) {
-    axios
-      .delete(`http://localhost:3000/orders/${id}`)
-      .then(() => {setOrder(order.filter((item) => item.id !== id));
-      
-      })
-      .catch((err) => console.log(err));
-  }
+
+  axios.delete(`http://localhost:3000/orders/${id}`)
+    .then(() => {setOrder(order.filter((item) => item.id !== id));
+
+      toast.success("Order successfully deleted");
+
+    })
+    .catch((err) => {console.log(err);
+      toast.error("Failed to delete order");
+
+    });
+
+}
   return (
     <div className="orders-container">
+      <ToastContainer/>
 
       <h1 className="orders-title">
         Orders List

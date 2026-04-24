@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 function Login() {
 
@@ -51,10 +52,20 @@ function Login() {
 
       localStorage.setItem("role",validUser.role);
 
+      
+
       if (validUser.role === "Admin") 
         {
+         toast.success("Admin login sucessfully",{
+          position:"top-center",
+          autoClose:1000,
+          transition:Bounce
 
-        navigate("/");
+         })
+
+         setTimeout(()=>{
+           navigate("/");
+         },1500)
 
       } 
       else 
@@ -66,7 +77,15 @@ function Login() {
         }
          else
            {
-          navigate("/");
+           toast.success("User login successfully",{
+                      position:"top-center",
+                      autoClose:1000,
+                      transition:Bounce
+                    })
+
+                    setTimeout(()=>{
+              navigate("/")
+                    },2000)
         }
 
       }
@@ -77,8 +96,14 @@ function Login() {
     } 
     else {
 
-      alert("Invalid Email or Password");
-
+    
+         toast.error("Invalid Email or Password",{
+          position:"top-center",
+          transition:Bounce,
+          autoClose:1000
+         })
+         setEmail("");
+      setPassword("");
     }
 
   }
@@ -109,7 +134,9 @@ function Login() {
 
         <p className="log1"> Switch account?<Link to="/signup">Signup</Link> </p>
 
+ <ToastContainer />
       </form>
+     
     </>
   );
 

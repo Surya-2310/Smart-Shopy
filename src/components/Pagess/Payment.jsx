@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 
 function Payment() {
@@ -36,7 +37,12 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
     axios.post("http://localhost:3000/orders", orderData)
       .then(() => {
 
-        alert("Order Placed Successfully");
+        // alert("Order Placed Successfully");
+        toast.success("Order Placed Successfully",{
+          position:"top-right",
+          autoClose:1000,
+          transition:Bounce
+        })
 
         setOrderPlaced(true);
 
@@ -53,7 +59,13 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
   const handlePlaceOrder = () => {
 
     if (!paymentMethod) {
-      alert("Please select payment method");
+      // alert("Please select payment method");
+      toast.error("Please select payment method",{
+        position:"top-right",
+        transition:Bounce,
+        autoClose:1000
+      })
+      
       return;
     }
 
@@ -72,6 +84,7 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
 
   return (
     <div className="payment-container">
+      <ToastContainer/>
 
       <h2 className="payment-title"> Payment </h2>
 
@@ -98,7 +111,7 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
 
           <h3>  Scan to Pay ₹{amount}</h3>
 
-          <QRCodeCanvas  value={amount} size={150}  />
+          <QRCodeCanvas  value={qrValue} size={150}  />
 
           <br /><br />
 
