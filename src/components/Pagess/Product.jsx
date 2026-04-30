@@ -38,7 +38,7 @@ function AddProduct() {
 
           const compressedBase64 = canvas.toDataURL("image/jpeg", 0.6);
           setImage(compressedBase64);
-          console.log(compressedBase64)
+          
         };
       };
     }
@@ -55,7 +55,6 @@ function AddProduct() {
     }
 
     const newProduct = {
-      id: Date.now().toString(),
       name,
       price: Number(price),
       image
@@ -63,7 +62,9 @@ function AddProduct() {
 
     axios.post("http://localhost:3000/product", newProduct)
       .then(() => {
-       toast.success("Product added successfully!");
+       toast.success("Product added successfully!",{
+        autoClose:1000
+       });
 
         setName(""); 
         setPrice(""); 

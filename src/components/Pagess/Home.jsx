@@ -27,8 +27,6 @@ function Home() {
     product.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log(searchProducts);
-
   return (
     <div className="home-container">
 

@@ -3,7 +3,8 @@ import { QRCodeCanvas } from "qrcode.react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-
+// import Confetti from "react-confetti";
+import confetti from "canvas-confetti";
 
 function Payment() {
 
@@ -17,6 +18,7 @@ function Payment() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [showQR, setShowQR] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
 const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${amount}&cu=INR`;
 
@@ -25,6 +27,14 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
     setShowQR(false);
     setOrderPlaced(false);
   };
+
+  const celebrate = () => {
+  confetti({
+    particleCount: 2000,
+    spread: 100,
+    origin: { y: 0 }
+  });
+};
 
   const createOrder = () => {
 
@@ -37,7 +47,8 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
     axios.post("http://localhost:3000/orders", orderData)
       .then(() => {
 
-        // alert("Order Placed Successfully");
+       celebrate();
+
         toast.success("Order Placed Successfully",{
           position:"top-right",
           autoClose:1000,
@@ -47,8 +58,8 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
         setOrderPlaced(true);
 
         setTimeout(() => {
-          navigate("/orders");
-        }, 1000);
+          navigate("/");
+        }, 4000);
 
       })
       .catch((error) => {
@@ -86,6 +97,8 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
     <div className="payment-container">
       <ToastContainer/>
 
+       {showConfetti && <Confetti />}
+
       <h2 className="payment-title"> Payment </h2>
 
       <h4 className="payment-amount"> Total Amount: ₹{amount} </h4>
@@ -101,7 +114,7 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
       </div>
 
       <br />
-
+      
       <button className="place-order-btn" onClick={handlePlaceOrder} > Place Order </button>
 
       <br /><br />

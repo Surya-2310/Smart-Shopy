@@ -19,11 +19,11 @@ function Orders() {
   axios.delete(`http://localhost:3000/orders/${id}`)
     .then(() => {setOrder(order.filter((item) => item.id !== id));
 
-      toast.success("Order successfully deleted");
+      toast.success("Order successfully cancelled");
 
     })
     .catch((err) => {console.log(err);
-      toast.error("Failed to delete order");
+      toast.error("Failed to cancelled order");
 
     });
 
@@ -50,7 +50,7 @@ function Orders() {
 
           <div key={item.id} className="order-card" >
 
-            <img src={item.image}  className="order-image" alt="product" />
+            <img src={item.image}  className="order-image" />
 
                 <div className="order-details">
 

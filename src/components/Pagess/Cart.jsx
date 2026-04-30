@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast,ToastContainer } from "react-toastify";
+
 
 function Cart() {
 
@@ -38,7 +40,10 @@ function Cart() {
   const handleBuyNow = () => {
 
     if (!name || !email || !address) {
-      alert("Please fill all fields");
+toast.warning("Please fill all fields",{
+  autoClose:1000,
+  position:"top-center"
+});
       return;
     }
 
@@ -54,7 +59,7 @@ function Cart() {
       image
     };
 
-    navigate("/Payment", { state: orderData});
+    navigate("/Payment", { state:orderData});
   };
 
   return (
@@ -67,6 +72,8 @@ function Cart() {
       <img src={image} width="150" />
 
       <form className="cart-form">
+
+        
 
         <label>Date</label>
         <input type="text" value={currentDate} disabled />
@@ -88,19 +95,13 @@ function Cart() {
         <input type="number" value={price} disabled />
 
         <label>Quantity</label>
-        <input type="number" value={quantity}  onChange={(e) =>  setQuantity(Number(e.target.value))
-          }
-        />
+        <input type="number" value={quantity}  onChange={(e) =>  setQuantity(Number(e.target.value))}/>
 
         <label>Total Price</label>
         <input type="number" value={total} disabled />
 
-        <button
-          type="button"
-          onClick={handleBuyNow}
-        >
-         Pay now
-        </button>
+        <button type="button" onClick={handleBuyNow}>  Pay now </button>
+         <ToastContainer />
 
       </form>
 

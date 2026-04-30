@@ -27,7 +27,7 @@ const [Totalsalesamount,setTotalsalesamount] = useState(0);
         setTotalOrders(data.length);
 
 
-        let total =0;
+        let totalamont =0;
 
         
         const chart = [["Customer", "Amount"]];
@@ -39,13 +39,13 @@ const [Totalsalesamount,setTotalsalesamount] = useState(0);
 
     setChartData(chart);
 
-           total += order.price;
+           totalamont += order.price;
 
         });
 
 
-        setTotalsalesamount(total);
-        console.log(total)
+        setTotalsalesamount(totalamont);
+        console.log(totalamont)
         setChartData(chart);
 
       })

@@ -97,7 +97,7 @@ function Login() {
     else {
 
     
-         toast.error("Invalid Email or Password",{
+         toast.warning("Invalid Email or Password",{
           position:"top-center",
           transition:Bounce,
           autoClose:1000

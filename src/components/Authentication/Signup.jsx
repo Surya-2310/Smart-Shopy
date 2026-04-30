@@ -64,7 +64,7 @@ function Signup() {
   const checkemail = user.some((user) =>user.email === email)
       if(checkemail)
          {
-      toast.error('Account already exists', {
+      toast.warning('Account already exists', {
         position: "top-center",
         autoClose: 2000,
         theme: "dark",
@@ -91,7 +91,6 @@ function Signup() {
         position: "top-center",
         autoClose: 2000,
         theme: "dark",
-        transition: Bounce,
         });
 
           setTimeout(()=>{

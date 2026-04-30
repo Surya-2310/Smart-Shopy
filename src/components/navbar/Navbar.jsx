@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Profile from '../../assets/profile.png';
+import Webname from'../../assets/webname.png';
 
 function Navbar() {
 
@@ -27,15 +28,17 @@ function Navbar() {
     <div>
       <div className="navbar">
 
-        <div><h2>Smart Shopy</h2></div>
+         <div className="web-name">
+          <img src={Webname} alt="logo" />
+        </div>
 
         <ul>
-          <li> <Link to="/">Home</Link> </li>
-          <li> <Link to="/Orders">Orders</Link> </li>
+          <li> <Link to="/"><i class="bi bi-house-door"></i>  Home</Link> </li>
+          <li> <Link to="/Orders"> <i class="bi bi-cart-check"></i>  Orders</Link> </li>
 
           {role === "Admin" && (
             <>
-             <li> <Link to="/Dashboard">Dashboard</Link> </li>
+             <li> <Link to="/Dashboard"><i class="bi bi-speedometer"></i>  Dashboard</Link> </li>
 
              </>
               )}
@@ -52,11 +55,11 @@ function Navbar() {
 
             <div className="dropdown-content">
 
-              <li> <Link to="/Signup"  onClick={() => setShow(false)}>👏 Signup </Link> </li>
+              <li> <Link to="/Signup"  onClick={() => setShow(false)}><i class="bi bi-check-circle"></i>  Signup </Link> </li>
 
-              <li> <Link to="/login"  onClick={() => setShow(false)}>👍 Login  </Link> </li>
+              <li> <Link to="/login"  onClick={() => setShow(false)}><i class="bi bi-box-arrow-in-right"></i>  Login  </Link> </li>
 
-              <li> <Link to="/" onClick={()=>{{handleLogout()}{setShow(false)}}}>👎 Logout  </Link> </li>
+              <li> <Link to="/" onClick={()=>{{handleLogout()}{setShow(false)}}}><i class="bi bi-box-arrow-right"></i>  Logout  </Link> </li>
  </div>
 
           )}

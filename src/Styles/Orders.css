@@ -1,8 +1,10 @@
 
 .orders-container {
   padding: 20px;
-  background-color: #f5f7fa;
+  background-color: #adadad;
   min-height: 100vh;
+
+
 }
 
 
@@ -24,7 +26,7 @@
   padding: 15px;
   margin: 15px 0;
 
-  background-color: #fff;
+  background-color: #f9f2f7;
 
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
