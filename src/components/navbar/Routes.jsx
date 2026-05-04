@@ -1,103 +1,60 @@
-import Login from '../Authentication/Login.jsx';
-import Signup from "../Authentication/Signup.jsx";
-
-
-import Navbar from "../navbar/Navbar.jsx";
-
-import Home from "../pagess/Home.jsx";
-import Cart from "../pagess/Cart.jsx";
-import Orders from '../pagess/Orders.jsx';
-import Dashboard from'../pagess/Dashboard.jsx'
-import AddProduct from '../pagess/Product.jsx'
-import QRgenerator from "../pagess/Payment.jsx";
-
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import MainLayout from "./MainLayout.jsx";
+
+import Home from "../Pagess/Home.jsx";
+import Login from "../Authentication/Login.jsx";
+import Signup from "../Authentication/Signup.jsx";
+import Buynow from "../Pagess/Buynow.jsx";
+import Orders from "../Pagess/Orders.jsx";
+import Dashboard from "../Pagess/Dashboard.jsx";
+import AddProduct from "../Pagess/Product.jsx";
+import QRgenerator from "../Pagess/Payment.jsx";
+import Cart from "../Pagess/Cart.jsx";
+import About from '../Pagess/About.jsx';
 
 function Routes() {
 
   const router = createBrowserRouter([
-    
+
     {
       path: "/",
-      element:(
-        <>
-          <Navbar />
-          <Home />
-        </>
-      )
+      element: <MainLayout />,
+
+      children: [
+
+        { path: "/", element: <Home /> },
+
+        { path: "/Buynow", element: <Buynow /> },
+
+        { path: "/Orders", element: <Orders /> },
+
+        { path: "/Dashboard", element: <Dashboard /> },
+
+        { path: "/AddProduct", element: <AddProduct /> },
+
+        { path: "/Payment", element: <QRgenerator /> },
+
+        { path: "/Cart", element: <Cart /> },
+
+          { path: "/About", element: <About /> }
+
+
+      ]
     },
+
     {
       path: "/login",
-      element:(
-        <>
-          <Navbar />
-          <Login />
-          </>
-      )
+      element: <Login />
     },
     {
       path: "/signup",
-      element: (
-        <>
-        <Navbar />
-        <Signup />
-        </>
-      )
-    },
-    {
-  path: "/cart",
-  element: (
-    <>
-      <Navbar />
-      <Cart />
-    </>
-  )
-},{
-  path: "/Orders",
-  element: (
-    <>
-      <Navbar />
-      <Orders/>
-    </>
-  )
-},{
-  path: "/Dashboard",
-  element: (
-    <>
-      <Navbar />
-      <Dashboard/>
-    </>
-  )
-},{
-  path: "/AddProduct",
-  element: (
-    <>
-      <Navbar />
-      <AddProduct/>
-    </>
-  )
-},{
-  path:"/Payment",
-  element:(
-    <>
-    <Navbar/>
-    <QRgenerator/>
-    </>
-  )
-}
+      element: <Signup />
+    }
 
   ]);
 
-  return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default Routes;
-
-
-
-

@@ -1,109 +1,182 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { toast,ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 function Cart() {
 
-  const location = useLocation();
+  const [cartItems, setCartItems] = useState([]);
+
   const navigate = useNavigate();
 
-  const productData = location.state;
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [quantity, setQuantity] = useState(1);
-
-  const [currentDate, setCurrentDate] = useState("");
-
-  const [productname, setproductname] = useState(productData?.name || "");
-  const [price, setprice] = useState(productData?.price || 0);
-  const [image, setimage] = useState(productData?.image || "");
-
-  const total = price * quantity;
-
   useEffect(() => {
-
-    const today = new Date();
-
-    const date =
-      today.getDate() + "/" +
-      (today.getMonth() + 1) + "/" +
-      today.getFullYear();
-
-    setCurrentDate(date);
-
+    fetchCart();
   }, []);
 
-  const handleBuyNow = () => {
+  function fetchCart() {
 
-    if (!name || !email || !address) {
-toast.warning("Please fill all fields",{
-  autoClose:1000,
-  position:"top-center"
-});
+    axios
+      .get("http://localhost:3000/cart")
+      .then((res) => {
+
+        const data = res.data.map((item) => ({
+          ...item,
+          quantity: item.quantity || 1
+        }));
+
+        setCartItems(data);
+
+      })
+      .catch((err) => console.log(err));
+  }
+
+
+
+  function increaseQty(item) {
+
+    axios.patch(
+      `http://localhost:3000/cart/${item.id}`,
+      {
+        quantity: item.quantity + 1
+      }
+    ).then(fetchCart);
+
+  }
+
+
+
+  function decreaseQty(item) {
+
+    if (item.quantity === 1) return;
+
+    axios.patch(
+      `http://localhost:3000/cart/${item.id}`,
+      {
+        quantity: item.quantity - 1
+      }
+    ).then(fetchCart);
+
+  }
+
+
+
+  function removeItem(id) {
+
+    axios
+      .delete(`http://localhost:3000/cart/${id}`)
+      .then(fetchCart);
+
+  }
+
+  
+
+  const totalProducts = cartItems.reduce(
+    (count, item) =>
+      count + item.quantity,
+    0
+  );
+
+
+
+  const totalPrice = cartItems.reduce(
+    (total, item) =>
+      total + item.price * item.quantity,
+    0
+  );
+
+
+
+  function handleBuyNow() {
+
+    if (cartItems.length === 0) {
+      alert("Cart is empty");
       return;
     }
 
-    const orderData = {
-      date: currentDate,
-      name,
-      email,
-      address,
-      productname,
-      price,
-      quantity,
-      total,
-      image
-    };
+    navigate("/Buynow", {
+      state: {
+        items: cartItems,
+        total: totalPrice
+      }
+    });
 
-    navigate("/Payment", { state:orderData});
-  };
+  }
 
   return (
-    <div className="cart-container">
+    <div className="cart-page">
 
-      <div className="head">
-        <h2>Buy Product</h2>
+      <h2>My Cart</h2>
+
+      {cartItems.length === 0 ? (
+
+        <p>Your cart is empty</p>
+
+      ) : (
+
+        <table className="cart-table">
+
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            {cartItems.map((item) => (
+
+              <tr key={item.id}>
+
+                <td className="product-cell">
+
+                  <img src={item.image}className="table-image" /> {item.name}
+                </td>
+
+                <td>₹ {item.price}</td>
+
+                <td>
+
+                  <div className="qty-box">
+
+                    <button onClick={() => decreaseQty(item) }>-</button>
+
+                    <span> {item.quantity} </span>
+
+                    <button  onClick={() => increaseQty(item)} >+</button>
+
+                  </div>
+
+                </td>
+
+                <td> ₹ {item.price * item.quantity} </td>
+
+                <td> <button className="remove-btn" onClick={() => removeItem(item.id)} > Remove</button></td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      )}
+
+      {/* Summary */}
+
+      <div className="cart-summary">
+
+        <h3> Total Products: {totalProducts}</h3>
+
+        <h2>Total Price: ₹ {totalPrice}</h2>
+
+        <button className="buy-btn" onClick={handleBuyNow} > Buy Now</button>
+
       </div>
-
-      <img src={image} width="150" />
-
-      <form className="cart-form">
-
-        
-
-        <label>Date</label>
-        <input type="text" value={currentDate} disabled />
-
-        <label>Customer Name</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required
-        />
-
-        <label>Email</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-
-        <label>Address</label>
-        <input value={address} onChange={(e) => setAddress(e.target.value)} required/>
-
-        <label>Product</label>
-        <input type="text" value={productname} disabled />
-
-        <label>Price</label>
-        <input type="number" value={price} disabled />
-
-        <label>Quantity</label>
-        <input type="number" value={quantity}  onChange={(e) =>  setQuantity(Number(e.target.value))}/>
-
-        <label>Total Price</label>
-        <input type="number" value={total} disabled />
-
-        <button type="button" onClick={handleBuyNow}>  Pay now </button>
-         <ToastContainer />
-
-      </form>
 
     </div>
   );

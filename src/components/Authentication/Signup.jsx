@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import imagecart from '../../assets/Side Image.png'
+
 
 function Signup() {
 
@@ -119,9 +121,16 @@ function Signup() {
 
   return (
     <>
+  <div className=" Signup-containerss">
+        <div className=" sing-img">
+          <img src={imagecart} alt="" />
+        </div>
+
       <form className="signpage" onSubmit={check}>
 
-        <h2>Signup</h2>
+
+        <h1>Create An Account</h1>
+        <p>Enter your details below</p>
 
         <div className="email">
 
@@ -166,6 +175,7 @@ function Signup() {
 </div>
       </form>
       <ToastContainer />
+      </div>
     </>
   );
 }

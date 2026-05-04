@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import imagecart from '../../assets/Side Image.png'
+import Home from './../Pagess/Home';
 
 function Login() {
 
@@ -15,7 +17,7 @@ function Login() {
   useEffect(() => {
 
     const users = JSON.parse(localStorage.getItem("users"));
-
+ 
     if (!users || users.length === 0) 
       {
 
@@ -73,14 +75,15 @@ function Login() {
 
         if (product)
            {
-          navigate("/cart", { state: product });
+          navigate("/Buynow", { state: product });
         }
          else
            {
            toast.success("User login successfully",{
                       position:"top-center",
                       autoClose:1000,
-                      transition:Bounce
+                      transition:Bounce,
+                      theme:"dark"
                     })
 
                     setTimeout(()=>{
@@ -108,38 +111,65 @@ function Login() {
 
   }
 
-  return (
-    <>
-      <form className="login" onSubmit={handleLogin} >
-
-        <h2>Login</h2>
-
-        <div>
-
-          <label>Email address</label>
-
-          <input type="email" value={email} autoComplete="off" onChange={(e) => setEmail(e.target.value)} className="form-input" />
-
-        </div>
-
-        <div>
-
-          <label>Password</label>
-          <input type="password" value={password} autoComplete="new-password"onChange={(e) =>setPassword(e.target.value)} className="form-input"
-          />
-
-        </div>
-
-        <button type="submit" className="btn-submit" >Login</button>
-
-        <p className="log1"> Switch account?<Link to="/signup">Signup</Link> </p>
-
- <ToastContainer />
-      </form>
+return (
+    <div className="login-container">
+        <div className="Login">
+      <Link to="/">Home</Link>
+</div>
      
-    </>
-  );
+      <div className="login-left">
+        <img src={imagecart} alt="shopping" />
+      </div>
 
+    
+      <div className="login-right">
+
+        <form onSubmit={handleLogin}>
+
+          <h1 className="login-h1">Log in to Exclusive</h1> 
+          <p className="login-h1">Enter your details below</p><br />
+
+          <div className="form-group">
+            <label>Email address</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-input"
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="form-input"
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="btn-row">
+            <button type="submit" className="btn-submit">
+              Log In
+            </button> 
+ </div> <br />
+         
+
+          <p className="log-1">
+            Switch account? <Link to="/signup">Signup</Link>
+          </p> 
+
+          <ToastContainer />
+
+        </form>
+
+      </div>
+
+    </div>
+  );
 }
 
 export default Login;
