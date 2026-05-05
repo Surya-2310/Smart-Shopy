@@ -14,7 +14,6 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     axios.get("http://localhost:3000/product")

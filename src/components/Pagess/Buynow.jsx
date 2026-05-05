@@ -1,3 +1,4 @@
+import { use } from "react";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -11,7 +12,7 @@ function Buynow() {
   const data = location.state;
 
   useEffect(() => {
-    if (!data) navigate("/");
+    if (!data) ;
   }, [data, navigate]);
 
   const products = data?.items || [data];
@@ -27,14 +28,17 @@ function Buynow() {
   const [mobile, setMobile] = useState("");
   const [door, setDoor] = useState("");
   const [address, setAddress] = useState("");
-  const [date] = useState(() => {
-    const d = new Date();
-    return (
-      d.getDate() + "/" +
-      (d.getMonth() + 1) + "/" +
-      d.getFullYear()
-    );
-  });
+  const [date,setDate] = useState();
+
+  useEffect(() => {
+    const dates = new Date();
+      const d =
+      dates.getDate() + "/" +
+      (dates.getMonth() + 1) + "/" +
+      dates.getFullYear()
+  
+    setDate(d)
+  },[]);
 
   function handleOrder() {
 
@@ -75,6 +79,7 @@ function Buynow() {
       <div className="billing-section">
 
         <h2>Billing Details</h2>
+         <input value={date} disabled />
 
         <input
           placeholder="Full Name"
@@ -82,8 +87,7 @@ function Buynow() {
           onChange={(e) => setName(e.target.value)}
         />
 
-        <input
-          placeholder="Email Address"
+        <input placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -106,7 +110,7 @@ function Buynow() {
           onChange={(e) => setAddress(e.target.value)}
         />
 
-        <input value={date} disabled />
+       
 
       </div>
 

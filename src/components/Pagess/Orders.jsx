@@ -10,7 +10,7 @@ function Orders() {
 
   useEffect(() => {
     axios.get("http://localhost:3000/orders")
-      .then((res) => console.log(res.data))
+      .then((res) => setOrder(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -56,7 +56,7 @@ function Orders() {
 
           <div key={item.id} className="order-card" >
 
-            <img src={item.image}  className="order-image" />
+            <img src={item.items[0]?.image ||computing}   className="order-image" />
 
                 <div className="order-details">
 
@@ -70,7 +70,7 @@ function Orders() {
 
         <p className="order-text"> Address: {item.address} </p>
 
-        <p className="order-text"> Quantity: {item.quantity} </p>
+        <p className="order-text">Quantity: {item.items[0]?.quantity}</p>
 
       <p className="order-total"> Total: ₹{item.total} </p>
  </div>

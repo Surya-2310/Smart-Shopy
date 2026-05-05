@@ -16,45 +16,31 @@ import Contact from '../Pagess/Contact.jsx'
 
 function Routes() {
 
-  const router = createBrowserRouter([
+  const move = createBrowserRouter([
 
     {
       path: "/",
       element: <MainLayout />,
 
       children: [
+  { index: true, element: <Home/> },
 
-        { path: "/", element: <Home /> },
-
-        { path: "/Buynow", element: <Buynow /> },
-
-        { path: "/Orders", element: <Orders /> },
-
-        { path: "/Dashboard", element: <Dashboard /> },
-
-        { path: "/AddProduct", element: <AddProduct /> },
-
-        { path: "/Payment", element: <QRgenerator /> },
-
-        { path: "/Cart", element: <Cart /> },
-
-          { path: "/About", element: <About /> },
-
-           { path: "/login",element: <Login /> },
-
-        {  path: "/signup",  element: <Signup /> },
-
-      {path:"/Contact", element:<Contact/>}
-
-
-
-      ]
-    },
+  { path: "Buynow", element: <Buynow /> },
+  { path: "Orders", element: <Orders /> },
+  { path: "Dashboard", element: <Dashboard /> },
+  { path: "AddProduct", element: <AddProduct /> },
+  { path: "Payment", element: <QRgenerator /> },
+  { path: "Cart", element: <Cart /> },
+  { path: "About", element: <About /> },
+  { path: "login", element: <Login /> },
+  { path: "signup", element: <Signup /> },
+  { path: "Contact", element: <Contact /> }
+] },
 
    
   ]);
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={move} />;
 }
 
 export default Routes;

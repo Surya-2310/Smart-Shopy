@@ -55,17 +55,14 @@ function Cart() {
 
   }
 
-
-
   function removeItem(id) {
 
-    axios
-      .delete(`http://localhost:3000/cart/${id}`)
+    axios.delete(`http://localhost:3000/cart/${id}`)
       .then(fetchCart);
 
   }
 
-  const totalProducts = cartItems.reduce((count, item) =>count + item.quantity, 0 );
+  const totalProducts = cartItems.reduce((count, item) =>count + item.quantity,0);
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity,0);
 
