@@ -60,7 +60,7 @@ label {
   margin-bottom: 6px;
 }
 
-/* Input Style */
+
 .form-control {
   width: 100%;
   padding: 12px;
@@ -72,13 +72,13 @@ label {
   transition: 0.2s;
 }
 
-/* Focus Style (Working Fix) */
+
 .form-control:focus {
   border: 2px solid #ffffff;
   background-color: #ffffff;
 }
 
-/* Buttons */
+
 .btn-group {
   display: flex;
   gap: 15px;

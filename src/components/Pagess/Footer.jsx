@@ -9,18 +9,16 @@ function Footer() {
 
       <div className="footer-container">
 
-
         <div className="footer-col">
  
        <img src={footerimg} alt="" className="footer-logo"/>
 
           <p>
             Your one-stop shop for all
-            products at best prices.
+            products at best prices
           </p>
 
         </div>
-
 
         <div className="footer-col">
 
@@ -36,9 +34,7 @@ function Footer() {
             <li> <Link to="/About">About</Link></li>
  </ul>
 
-        </div>
-
-    
+    </div>
 
         <div className="footer-col">
 
@@ -48,11 +44,9 @@ function Footer() {
 
           <p>Phone: +91 6374793309</p>
 
-          <p>Anaikkarai, India</p>
+          <p>Kumbakonam, India</p>
 
         </div>
-
-
 
         <div className="footer-col">
 
@@ -60,13 +54,13 @@ function Footer() {
 
           <div className="social-icons">
 
-            <i className="bi bi-facebook"></i>
+            <i class="bi bi-facebook"></i>
 
-            <i className="bi bi-instagram"></i>
+            <i class="bi bi-instagram"></i>
 
             <i class="bi bi-twitter-x"></i>
 
-            <i className="bi bi-youtube"></i>
+            <i class="bi bi-youtube"></i>
 
           </div>
 
@@ -74,11 +68,9 @@ function Footer() {
 
       </div>
 
-   
-
       <div className="footer-bottom">
 
-        © 2026 Smart Shopy. All Rights Reserved.
+        @ 2026 Smart Shopy. All Rights Reserved.
 
       </div>
 

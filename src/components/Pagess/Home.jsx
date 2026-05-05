@@ -58,8 +58,7 @@ function Home() {
 
   const isLoggedIn = localStorage.getItem("login");
 
-  const targetPath =
-    isLoggedIn ? "/Buynow" : "/login";
+  const targetPath = isLoggedIn ? "/Buynow" : "/login";
 
   navigate(targetPath, { state: product });
 
@@ -71,7 +70,7 @@ function Home() {
 
     <div className="hero-section">
 
-  {/* LEFT SIDE */}
+ 
   <div className="hero-left">
     <ul>
       <li>Woman's Fashion </li>
@@ -86,7 +85,6 @@ function Home() {
     </ul>
   </div>
 
-  {/* RIGHT SIDE */}
   <div className="hero-right">
     <img src={frame} alt="banner" />
   </div>
