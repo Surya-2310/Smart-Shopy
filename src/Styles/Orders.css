@@ -3,14 +3,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* 🔹 Title */
 .orders-title {
   font-size: 32px;
   margin-bottom: 30px;
   text-align: center;
 }
 
-/* 🔹 No Orders */
 .no-orders {
   text-align: center;
   color: #777;
@@ -24,7 +22,6 @@
   opacity: 0.8;
 }
 
-/* 🔹 Order Card */
 .order-card {
   display: flex;
   align-items: center;
@@ -42,7 +39,6 @@
   transform: translateY(-5px);
 }
 
-/* 🔹 Image */
 .order-image {
   width: 120px;
   height: 120px;
@@ -50,7 +46,6 @@
   border-radius: 10px;
 }
 
-/* 🔹 Details */
 .order-details {
   flex: 1;
 }
@@ -73,7 +68,6 @@
   margin-top: 10px;
 }
 
-/* 🔹 Delete Button */
 .order-delete {
   display: flex;
   align-items: center;

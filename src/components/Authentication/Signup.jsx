@@ -122,6 +122,7 @@ function Signup() {
   return (
     <>
   <div className=" Signup-containerss">
+    
         <div className=" sing-img">
           <img src={imagecart} alt="" />
         </div>

@@ -12,6 +12,7 @@ import AddProduct from "../Pagess/Product.jsx";
 import QRgenerator from "../Pagess/Payment.jsx";
 import Cart from "../Pagess/Cart.jsx";
 import About from '../Pagess/About.jsx';
+import Contact from '../Pagess/Contact.jsx'
 
 function Routes() {
 
@@ -37,21 +38,20 @@ function Routes() {
 
         { path: "/Cart", element: <Cart /> },
 
-          { path: "/About", element: <About /> }
+          { path: "/About", element: <About /> },
+
+           { path: "/login",element: <Login /> },
+
+        {  path: "/signup",  element: <Signup /> },
+
+      {path:"/Contact", element:<Contact/>}
+
 
 
       ]
     },
 
-    {
-      path: "/login",
-      element: <Login />
-    },
-    {
-      path: "/signup",
-      element: <Signup />
-    }
-
+   
   ]);
 
   return <RouterProvider router={router} />;

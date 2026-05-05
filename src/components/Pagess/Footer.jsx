@@ -31,6 +31,8 @@ function Footer() {
             <li> <Link to="/Cart">Cart</Link> </li>
 
             <li> <Link to="/login">Login</Link> </li>
+
+            <li> <Link to="/About">About</Link></li>
  </ul>
 
         </div>
@@ -61,7 +63,7 @@ function Footer() {
 
             <i className="bi bi-instagram"></i>
 
-            <i className="bi bi-twitter"></i>
+            <i class="bi bi-twitter-x"></i>
 
             <i className="bi bi-youtube"></i>
 
@@ -71,7 +73,7 @@ function Footer() {
 
       </div>
 
-      {/* Bottom */}
+   
 
       <div className="footer-bottom">
 

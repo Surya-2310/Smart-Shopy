@@ -39,12 +39,16 @@ function Buynow() {
   function handleOrder() {
 
     if (!name || !email || !mobile || !door || !address) {
-      toast.warning("Please fill all fields");
+      toast.warning("Please fill all fields",{
+        autoClose:1000,
+      });
       return;
     }
 
     if (mobile.length !== 10) {
-      toast.error("Enter valid mobile number");
+      toast.error("Enter valid mobile number",{
+        autoClose:1000,
+      });
       return;
     }
 
@@ -106,7 +110,7 @@ function Buynow() {
 
       </div>
 
-      {/* RIGHT ORDER */}
+      
 
       <div className="order-section">
 

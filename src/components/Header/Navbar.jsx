@@ -31,17 +31,15 @@ function Navbar() {
         <ul>
           <li> <Link to="/">Home</Link> </li>
           <li><Link to="/Orders">Orders</Link></li>
-           <li> <Link to="/Signup"  onClick={() => setShow(false)}> Signup </Link> </li>
-           <li><Link to="/About">About</Link></li>
+          <li> <Link to="/Signup"  onClick={() => setShow(false)}> Signup </Link> </li>
+          <li><Link to="/About">About</Link></li>
+          <li><Link to="/Contact">Contact </Link></li>
          
           {role === "Admin" && (
             <>
              <li> <Link to="/Dashboard"> Dashboard</Link> </li>
-
              </>
-              )}
-         
-
+              )}         
         </ul>
 
    

@@ -19,11 +19,15 @@ function Orders() {
   axios.delete(`http://localhost:3000/orders/${id}`)
     .then(() => {setOrder(order.filter((item) => item.id !== id));
 
-      toast.success("Order successfully cancelled");
+      toast.success("Order successfully cancelled",{
+        autoClose:500,
+      });
 
     })
     .catch((err) => {console.log(err);
-      toast.error("Failed to cancelled order");
+      toast.error("Failed to cancelled order",{
+        autoClose:500,
+      });
 
     });
 

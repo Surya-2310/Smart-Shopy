@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 function Cart() {
@@ -89,7 +90,9 @@ function Cart() {
   function handleBuyNow() {
 
     if (cartItems.length === 0) {
-      alert("Cart is empty");
+      toast.warning("Cart is empty",{
+        autoClose:1000,
+      });
       return;
     }
 

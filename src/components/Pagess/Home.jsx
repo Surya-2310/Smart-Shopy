@@ -5,6 +5,9 @@ import frame from '../../assets/Frame 560.png'
 import Buynow from './Buynow';
 import Cart from './Cart';
 import { toast, ToastContainer } from "react-toastify";
+import Frame740 from '../../assets/Frame740.png'
+import Star from '../../assets/Star.png'
+import service from '../../assets/Fullservices.png'
 
 
 function Home() {
@@ -66,7 +69,29 @@ function Home() {
     <div className="home-container">
       <ToastContainer/>
 
-      <img src={frame} alt="" className="home-frame" />
+    <div className="hero-section">
+
+  {/* LEFT SIDE */}
+  <div className="hero-left">
+    <ul>
+      <li>Woman's Fashion </li>
+      <li>Men's Fashion</li>
+      <li>Electronics</li>
+      <li>Home & Lifestyle</li>
+      <li>Medicine</li>
+      <li>Sports & Outdoor</li>
+      <li>Baby's & Toys</li>
+      <li>Groceries & Pets</li>
+      <li>Health & Beauty</li>
+    </ul>
+  </div>
+
+  {/* RIGHT SIDE */}
+  <div className="hero-right">
+    <img src={frame} alt="banner" />
+  </div>
+
+</div>
 
       <h1 className="main-title">Our Products</h1>
       
@@ -96,17 +121,29 @@ function Home() {
 
                 <p className="product-price">₹ {product.price}</p>
 
+                 <img src={Star} alt="" />
+
                 <button className="addtocart" onClick={() => handleAddToCart(product)}> <i className="bi bi-cart-check"></i>Add to Cart</button>
                 {/* <button className="Buynow" onClick={()=> Buynow(product)}>Buynow</button> */}
 
               </div>
               
             </div>
+            
           ))
+
+           
         ) : (
           <p className="loading-text">Loading products...</p>
         )}
       </div>
+       <div className="bottom-frame">
+                <img src={Frame740} alt="frame" />
+              </div>
+
+              <div className="bottom-service">
+                <img src={service} alt="" />
+              </div>
     </div>
   );
 }

@@ -113,9 +113,7 @@ function Login() {
 
 return (
     <div className="login-container">
-        <div className="Login">
-      <Link to="/">Home</Link>
-</div>
+
      
       <div className="login-left">
         <img src={imagecart} alt="shopping" />
@@ -126,7 +124,7 @@ return (
 
         <form onSubmit={handleLogin}>
 
-          <h1 className="login-h1">Log in to Exclusive</h1> 
+          <h1 className="login-h1">Log in to Smart Shopy</h1> 
           <p className="login-h1">Enter your details below</p><br />
 
           <div className="form-group">

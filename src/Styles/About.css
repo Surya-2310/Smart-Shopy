@@ -1,67 +1,60 @@
 .about-container {
-  padding: 60px 80px;
-  font-family: 'Poppins', sans-serif;
+  padding: 40px;
 }
 
-/* 🔹 Main layout */
+
 .about-top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 50px;
+  align-items: center;
+  gap: 40px;
 }
 
-/* 🔹 Left text */
+
 .about-text {
-  flex: 1;
+  width: 50%;
 }
 
 .about-text h2 {
-  font-size: 40px;
+  font-size: 32px;
   margin-bottom: 20px;
+  font-weight: bold;
+   padding-left: 30%;
+   color: rgb(245, 91, 91);
 }
 
 .about-text p {
-  font-size: 15px;
   color: #555;
-  line-height: 1.8;
-  margin-bottom: 15px;
+  line-height: 1.6;
+  font-weight:600;
+  padding-left: 30%;
 }
 
-.small-text {
-  color: #777;
-}
-
-/* 🔹 Right image (small) */
-.about-image {
-  flex: 0.6;
-  display: flex;
-  justify-content: flex-end;
-}
 
 .about-image img {
   width: 100%;
-  max-width: 320px; /* 👈 controls size */
-  border-radius: 10px;
-  object-fit: cover;
+  max-width: 400px;
+  padding-right: 10%;
 }
 
-/* 🔹 Responsive */
-@media (max-width: 768px) {
-  .about-container {
-    padding: 30px 20px;
-  }
 
-  .about-top {
-    flex-direction: column;
-    text-align: center;
-  }
+.about-services {
+  margin-top: 60px;
+  text-align: center;
+}
 
-  .about-image {
-    justify-content: center;
-  }
+.about-services img {
+  width: 100%;
+  max-width: 1000px;
+}
 
-  .about-image img {
-    max-width: 250px;
-  }
+.about-employee {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.about-employee img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 10px;
 }

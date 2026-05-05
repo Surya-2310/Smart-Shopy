@@ -25,7 +25,7 @@ body {
   color: #000;
 }
 
-/* Menu */
+
 
 .navbar ul {
   display: flex;
@@ -45,14 +45,13 @@ body {
   color: #db4444;
 }
 
-/* Cart Icon */
+
 
 .navbar ul li i {
   font-size: 20px;
   cursor: pointer;
 }
 
-/* Profile Icon */
 
 .dropdown i {
   font-size: 22px;
@@ -60,13 +59,13 @@ body {
   color: #333;
 }
 
-/* Dropdown Box */
+
 
 .dropdown {
   position: relative;
 }
 
-/* Dropdown Content */
+
 
 .dropdown-content {
   position: absolute;
@@ -84,7 +83,7 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Dropdown Items */
+
 
 .dropdown-content li {
   list-style: none;
