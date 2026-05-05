@@ -10,9 +10,11 @@ function Orders() {
 
   useEffect(() => {
     axios.get("http://localhost:3000/orders")
-      .then((res) => setOrder(res.data))
+      .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+ 
 
   function handleDelete(id) {
 

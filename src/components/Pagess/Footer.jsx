@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import footerimg from '../../assets/webname.png'
 
 
 function Footer() {
@@ -10,8 +11,8 @@ function Footer() {
 
 
         <div className="footer-col">
-
-          <h2 className="footer-logo"> Smart Shopy </h2>
+ 
+       <img src={footerimg} alt="" className="footer-logo"/>
 
           <p>
             Your one-stop shop for all

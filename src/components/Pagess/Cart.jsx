@@ -16,14 +16,10 @@ function Cart() {
 
   function fetchCart() {
 
-    axios
-      .get("http://localhost:3000/cart")
+    axios .get("http://localhost:3000/cart")
       .then((res) => {
 
-        const data = res.data.map((item) => ({
-          ...item,
-          quantity: item.quantity || 1
-        }));
+        const data = res.data.map((item) => ({...item, quantity: item.quantity || 1 }));
 
         setCartItems(data);
 
@@ -69,23 +65,9 @@ function Cart() {
 
   }
 
-  
+  const totalProducts = cartItems.reduce((count, item) =>count + item.quantity, 0 );
 
-  const totalProducts = cartItems.reduce(
-    (count, item) =>
-      count + item.quantity,
-    0
-  );
-
-
-
-  const totalPrice = cartItems.reduce(
-    (total, item) =>
-      total + item.price * item.quantity,
-    0
-  );
-
-
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity,0);
 
   function handleBuyNow() {
 

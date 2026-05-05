@@ -70,7 +70,7 @@ function Buynow() {
 
     <div className="checkout-page">
 
-      {/* LEFT FORM */}
+    
 
       <div className="billing-section">
 

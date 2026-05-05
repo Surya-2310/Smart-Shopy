@@ -1,7 +1,7 @@
 import React from 'react'
 import Aboutpic from '../../assets/aboutpic.png'
 import Fullservices from '../../assets/Fullservices.png'
-import employee from '../../assets/profile.png'
+import employee from '../../assets/founder.png'
 
 function About() {
   return (

@@ -4,7 +4,8 @@
   background-color: #111;
   color: white;
   padding: 40px 60px 20px;
-  margin-top: 20px;
+  margin-top: 70px;
+  font-size: small;
 }
 
 
@@ -16,14 +17,17 @@
 }
 
 .footer-logo{
-    font-weight: bold;
-    color: rgb(236, 75, 129);
+    width: 350px;
+    padding-right: 74px;
+
 }
 
 
 
 .footer-col h3 {
   margin-bottom: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: gold;
 }
 
 
