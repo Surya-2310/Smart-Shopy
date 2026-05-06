@@ -13,7 +13,7 @@ import service from '../../assets/Fullservices.png'
 function Home() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
-    const [timeLeft, setTimeLeft] = useState(10800);
+    const [timeLeft, setTimeLeft] = useState(3*24*60*60);
   const navigate = useNavigate();
 
  useEffect(() => {
@@ -26,13 +26,14 @@ function Home() {
 
   
   const formatTime = (sec) => {
-    const h = String(Math.floor(sec / 3600)).padStart(2, "0");
-    const m = String(Math.floor((sec %3600) / 60)).padStart(2, "0");
+    const d = String(Math.floor(sec / (24 * 3600))).padStart(2,"0");
+  const h = String(Math.floor((sec % (24 * 3600)) / 3600)).padStart(2, "0");   
+     const m = String(Math.floor((sec %3600) / 60)).padStart(2, "0");
     const s = String(sec % 60).padStart(2, "0");
-    return { h, m, s };
+    return { h, m, s,d };
   };
 
-  const time = formatTime(timeLeft);           
+  const time = formatTime(timeLeft);
 
 
 
@@ -111,12 +112,17 @@ function Home() {
 
 </div>
    <div className="flash-sale">
-        <h2> Flash Sale</h2>
+        <h2>🎉 Flash Sales</h2>
 
         {timeLeft === 0 ? (
           <h3 className="ended">Sale Ended</h3>
         ) : (
           <div className="timer">
+            
+            <div>
+              <p>day</p>
+              <h3>{time.d}</h3>
+            </div>
             <div>
               <p>Hours</p>
               <h3>{time.h}</h3>
