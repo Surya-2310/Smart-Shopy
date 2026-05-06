@@ -222,16 +222,18 @@
   margin: 20px 0;
   border-radius: 10px;
   border-left: 14px solid rgb(251, 105, 105);
-  width: 50%;
+  width: 55%;
   border-right: 14px solid rgb(248, 100, 100);
+  height: 70px;
 
 }
 
 
-.flash-sale h2 {
-  font-size: 32px;
+.flash-sale h4 {
+  font-size: 22px;
   font-weight: bold;
-  color: #e60023;
+  color: #040404;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
@@ -245,13 +247,14 @@
 
 
 .timer div {
-  background: #e6e0e0;
+ 
   color: #060606;
   padding: 10px 15px;
   border-radius: 8px;
   text-align: center;
-  min-width: 80px;
-  /* padding-left: 20%; */
+  min-width: 60px;
+ 
+  
 
 }
 
@@ -259,6 +262,7 @@
   font-size: 12px;
  color: black;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 

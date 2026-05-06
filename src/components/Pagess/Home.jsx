@@ -112,7 +112,7 @@ function Home() {
 
 </div>
    <div className="flash-sale">
-        <h2>🎉 Flash Sales</h2>
+        <h4>🎉 Flash Sales</h4>
 
         {timeLeft === 0 ? (
           <h3 className="ended">Sale Ended</h3>
@@ -137,7 +137,7 @@ function Home() {
             </div>
           </div>
         )}
-      </div>
+      </div><br />
       <h1 className="main-title">Our Products</h1>
       
       <div className="search-section">
