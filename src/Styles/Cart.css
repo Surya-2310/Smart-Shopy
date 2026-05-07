@@ -152,3 +152,30 @@
   font-size: 18px;
   margin-top: 40px;
 }
+
+.cart-notife{
+    position: relative;
+    display: inline-block;
+}
+
+.cart-notife a{
+    position: relative;
+    display: inline-block;
+}
+
+
+.cart-notife span{
+    position: absolute;
+    top: -11px;
+    right: -px;
+    background-color: rgb(223, 77, 77);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}

@@ -25,7 +25,6 @@ function Routes() {
 
       children: [
   { index: true, element: <Home/> },
-
   { path: "Buynow", element: <Buynow /> },
   { path: "Orders", element: <Orders /> },
   { path: "Dashboard", element: <Dashboard /> },
@@ -36,7 +35,8 @@ function Routes() {
   { path: "login", element: <Login /> },
   { path: "signup", element: <Signup /> },
   { path: "Contact", element: <Contact /> },
-  { path:"*", element: <NotFound/>}
+    { path:"*", element: <NotFound/>},
+
 ] },
 
    
