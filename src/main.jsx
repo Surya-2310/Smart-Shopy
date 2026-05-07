@@ -14,6 +14,8 @@ import './Styles/Cart.css'
 import './Styles/Footer.css'
 import './Styles/About.css'
 import './Styles/Contact.css'
+import './Styles/Notfound.css'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

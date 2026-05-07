@@ -13,6 +13,7 @@ import QRgenerator from "../Pagess/Payment.jsx";
 import Cart from "../Pagess/Cart.jsx";
 import About from '../Pagess/About.jsx';
 import Contact from '../Pagess/Contact.jsx'
+import NotFound from './../Pagess/Notfound';
 
 function Routes() {
 
@@ -34,7 +35,8 @@ function Routes() {
   { path: "About", element: <About /> },
   { path: "login", element: <Login /> },
   { path: "signup", element: <Signup /> },
-  { path: "Contact", element: <Contact /> }
+  { path: "Contact", element: <Contact /> },
+  { path:"*", element: <NotFound/>}
 ] },
 
    

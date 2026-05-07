@@ -1,0 +1,27 @@
+.notfound{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+.notfound h1{
+    font-size: 70px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.notfound p{
+    color: rgb(120, 116, 116);
+}
+
+.notfound button{
+    padding: 12px 10px;
+    border: none;
+    background-color: rgb(223, 76, 76);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
