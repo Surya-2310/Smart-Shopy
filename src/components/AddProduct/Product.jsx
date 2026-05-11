@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import './product.css'
 
 function AddProduct() {
   const [name, setName] = useState("");

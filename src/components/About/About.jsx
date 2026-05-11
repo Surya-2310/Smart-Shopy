@@ -3,6 +3,8 @@ import Aboutpic from '../../assets/aboutpic.png'
 import Fullservices from '../../assets/Fullservices.png'
 import employee from '../../assets/founder.png'
 import ui from '../../assets/ui.jpg'
+import './About.css'
+
 function About() {
   return (
     <div className="about-container">

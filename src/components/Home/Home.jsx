@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import frame from '../../assets/Frame 560.png'
-import Buynow from './Buynow';
-import Cart from './Cart';
 import { toast, ToastContainer } from "react-toastify";
 import Frame740 from '../../assets/Frame740.png'
 import Star from '../../assets/Star.png'
+import './Home.css'
 import service from '../../assets/Fullservices.png'
 import product4 from '../../assets/product4.png'
 import product3 from '../../assets/product3.png'
@@ -72,7 +71,7 @@ function Home() {
     .catch((err) => {
       console.log(err);
     });
-}
+ }
   const searchProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
   );

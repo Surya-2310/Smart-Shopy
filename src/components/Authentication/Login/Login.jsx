@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
-import imagecart from '../../assets/Side Image.png'
-import Home from './../Pagess/Home';
+import './Login.css';
+import imagecart from '../../../assets/Side Image.png';
 
 function Login() {
 

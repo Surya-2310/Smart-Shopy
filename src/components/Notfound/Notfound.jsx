@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import './Notfound.css'
 
 function NotFound() {
 
@@ -14,9 +15,7 @@ function NotFound() {
         Your visited page not found. You may go home page.
       </p>
 
-      <button onClick={() => navigate("/")}>
-        Back to home page
-      </button>
+      <button onClick={() => navigate("/")}> Back to home page</button>
 
     </div>
   );

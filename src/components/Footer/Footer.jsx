@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import footerimg from '../../assets/webname.png'
+import './Footer.css'
 
 
 function Footer() {

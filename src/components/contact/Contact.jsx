@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import './Contact.css'
 
 function Contact() {
 
@@ -9,7 +10,9 @@ function Contact() {
    
     const [Message,setmessage]=useState("")
 
-  function handlemessage(){
+  function handlemessage()
+  
+  {
 
     if(!text||!phone||!Message||!email){
       toast.error("Fill the all filed",{

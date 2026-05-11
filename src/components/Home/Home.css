@@ -36,7 +36,7 @@
   outline: none;
   transition: 0.3s;
   max-width: 500px;
-  padding-left: 20%;
+  /* padding-left: 20%; */
 }
 
 .search-input:focus {
@@ -317,3 +317,9 @@ transition: 0.3s;
 .bottom-frame1 img:hover{
     transform: scale(1.1);
 }
+
+/* .loading-text{
+  text-align: center;
+  display: flex;
+  padding-left: 20%;
+} */

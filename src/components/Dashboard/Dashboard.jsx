@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import { useNavigate } from "react-router-dom";
-import Orders from './Orders';
+import Orders from '../Order/Orders';
+import './Dasboard.css'
 
 function Dashboard() {
 
