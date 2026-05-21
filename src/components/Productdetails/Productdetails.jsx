@@ -22,7 +22,7 @@ function ProductDetails() {
     setLoading(true);
 
     axios
-      .get("http://localhost:3000/product")
+      .get("https://smartshop-api-oas7.onrender.com/product")
       .then((response) => {
         setAllProducts(response.data);
         
