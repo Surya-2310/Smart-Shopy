@@ -40,9 +40,7 @@ const [Totalsalesamount,setTotalsalesamount] = useState(0);
 
         setChartData(chart);
         setTotalsalesamount(totalamont);
-        console.log(chart);
-        console.log(totalamont);
-
+        
       })
   }, []);
 

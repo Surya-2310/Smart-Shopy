@@ -1,5 +1,17 @@
 {
+  
   "product": [
+    {
+      "name": "Gaming",
+      "price": 907,
+      "image": [
+        "/productimage/image63.png",
+        "/productimage/image50.png",
+        "/productimage/image59.png",
+        "/productimage/image61.png"
+      ],
+      "id": "some-id"
+    },
     {
       "name": "PC lighting keyboard",
       "price": 997,

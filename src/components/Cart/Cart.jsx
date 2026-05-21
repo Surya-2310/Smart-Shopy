@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import './Cart.css'
 
+import "./Cart.css";
 
 function Cart() {
-
   const [cartItems, setCartItems] = useState([]);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,61 +14,56 @@ function Cart() {
   }, []);
 
   function fetchCart() {
-
-    axios .get("https://smartshop-api-oas7.onrender.com/cart")
+    axios
+      .get("https://smartshop-api-oas7.onrender.com/cart")
       .then((res) => {
-
-        const data = res.data.map((item) => ({...item, quantity: item.quantity || 1 }));
-
+        const data = res.data.map((item) => ({
+          ...item,
+          quantity: item.quantity || 1,
+        }));
         setCartItems(data);
-
       })
       .catch((err) => console.log(err));
   }
 
-
-
   function increaseQty(item) {
-
-    axios.patch(
-      `https://smartshop-api-oas7.onrender.com/cart/${item.id}`,
-      {
-        quantity: item.quantity + 1
-      }
-    ).then(fetchCart);
-
+    axios
+      .patch(`https://smartshop-api-oas7.onrender.com/cart/${item.id}`, {
+        quantity: item.quantity + 1,
+      })
+      .then(fetchCart);
   }
 
-
-
   function decreaseQty(item) {
-
     if (item.quantity === 1) return;
 
-    axios.patch(`https://smartshop-api-oas7.onrender.com/cart/${item.id}`,
-      {
-        quantity: item.quantity - 1
-      }
-    ).then(fetchCart);
-
+    axios
+      .patch(`https://smartshop-api-oas7.onrender.com/cart/${item.id}`, {
+        quantity: item.quantity - 1,
+      })
+      .then(fetchCart);
   }
 
   function removeItem(id) {
-
-axios.delete(`https://smartshop-api-oas7.onrender.com/cart/${id}`)      
-  .then(fetchCart);
-
+    axios
+      .delete(`https://smartshop-api-oas7.onrender.com/cart/${id}`)
+      .then(fetchCart);
   }
 
-  const totalProducts = cartItems.reduce((count, item) =>count + item.quantity,0);
+  const totalProducts = cartItems.reduce(
+    (count, item) => count + item.quantity,
+    0
+  );
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity,0);
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   function handleBuyNow() {
-
     if (cartItems.length === 0) {
-      toast.warning("Cart is empty",{
-        autoClose:1000,
+      toast.warning("Cart is empty", {
+        autoClose: 1000,
       });
       return;
     }
@@ -78,88 +71,111 @@ axios.delete(`https://smartshop-api-oas7.onrender.com/cart/${id}`)
     navigate("/Buynow", {
       state: {
         items: cartItems,
-        total: totalPrice
-      }
+        total: totalPrice,
+      },
     });
-
   }
 
   return (
     <div className="cart-page">
-
-      <h2>My Cart</h2>
+      <h1 className="cart-title">Cart</h1>
 
       {cartItems.length === 0 ? (
-
-        <p>Your cart is empty</p>
-
+        <div className="empty-cart">
+          <h2>Your Cart is Empty</h2>
+        </div>
       ) : (
-
-        <table className="cart-table">
-
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            {cartItems.map((item) => (
-
-              <tr key={item.id}>
-
-                <td className="product-cell">
-
-                  <img src={item.image}className="table-image" /> {item.name}
-                </td>
-
-                <td>₹ {item.price}</td>
-
-                <td>
-
-                  <div className="qty-box">
-
-                    <button onClick={() => decreaseQty(item) }>-</button>
-
-                    <span> {item.quantity} </span>
-
-                    <button  onClick={() => increaseQty(item)} >+</button>
-
-                  </div>
-
-                </td>
-
-                <td> ₹ {item.price * item.quantity} </td>
-
-                <td> <button className="remove-btn" onClick={() => removeItem(item.id)} > Remove</button></td>
-
+        <>
+          <table className="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Remove</th>
               </tr>
+            </thead>
+            <tbody>
+              {cartItems.map((item) => (
+                <tr key={item.id}>
+                  <td className="product-cell">
+                     
+                    <img
+                      className="table-image" src={Array.isArray(item.image) ? item.image[0] : item.image} alt={item.name}
+                    />
+                    <span>{item.name}</span>
+                  </td>
+                  <td>₹ {item.price}</td>
+                  <td>
+                    <div className="qty-box">
+                      <div className="qty-number">{item.quantity}</div>
+                      <div className="qty-icons">
+                        <i
+                          className="bi bi-chevron-up"
+                          onClick={() => increaseQty(item)}
+                        ></i>
+                        <i
+                          className="bi bi-chevron-down"
+                          onClick={() => decreaseQty(item)}
+                        ></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>₹ {item.price * item.quantity}</td>
+                  <td>
+                    <button
+                      className="remove-btn"
+                      onClick={() => removeItem(item.id)}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-            ))}
+          <div className="cart-actions">
+            <button className="return-btn" onClick={() => navigate("/")}>
+              Return To Shop
+            </button>
+            <button className="update-btn" >
+              Update Cart
+            </button>
+          </div>
 
-          </tbody>
+          <div className="bottom-cart">
+            <div className="coupon-box">
+              <input type="text" placeholder="Coupon Code" />
+              <button>Apply Coupon</button>
+            </div>
 
-        </table>
+            <div className="cart-summary">
+              <h2>Cart Total</h2>
 
+              <div className="summary-row">
+                <p>Total Products</p>
+                <span>{totalProducts}</span>
+              </div>
+
+              <div className="summary-row">
+                <p>Shipping</p>
+                <span>Free</span>
+              </div>
+
+              <div className="summary-row">
+                <p>Total</p>
+                <span>₹ {totalPrice}</span>
+              </div>
+
+              <button className="checkout-btn" onClick={handleBuyNow}>
+                Proceed to checkout
+              </button>
+            </div>
+          </div>
+        </>
       )}
-
-   
-
-      <div className="cart-summary">
-
-        <h3> Total Products: {totalProducts}</h3>
-
-        <h2>Total Price: ₹ {totalPrice}</h2>
-
-        <button className="buy-btn" onClick={handleBuyNow} > Buy Now</button>
-
-      </div>
-
     </div>
   );
 }

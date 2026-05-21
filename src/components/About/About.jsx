@@ -20,13 +20,14 @@ function About() {
             wide range of tailored marketing, data, and service solutions, 
             Exclusive has 10,500 sellers and 300 brands and serves 3 million 
             customers across the region.
-          </p>
+          </p><br />
+
 
           <p className="small-text">
             Exclusive has more than 1 Million products to offer, growing at a 
             very fast rate. Exclusive offers a diverse assortment in categories 
             ranging from consumer.
-          </p>
+          </p> <br />
           <p> MADE IN INDIA❤️</p>
         </div>
 
@@ -36,9 +37,7 @@ function About() {
 
       </div>
 
-      <div className="about-services">
-        <img src={Fullservices}  />
-      </div>
+      
            <div className='about2-servies'>
            <div className='ui-left'>
             <img src={ui} alt="" />
@@ -55,9 +54,113 @@ function About() {
             </p>
            </div>
            </div>
+
+           <div className="stats-container">
+
+  <div className="stats-card">
+
+    <div className="stats-icon-outer">
+      <div className="stats-icon-inner">
+        <i className="bi bi-shop"></i>
+      </div>
+    </div>
+
+    <h1>10.5k</h1>
+    <p>Sellers active our site</p>
+
+  </div>
+
+
+
+  <div className="stats-card active-card">
+
+    <div className="stats-icon-outer">
+      <div className="stats-icon-inner">
+        <i className="bi bi-currency-dollar"></i>
+      </div>
+    </div>
+
+    <h1>33k</h1>
+    <p>Monthly Product Sale</p>
+
+  </div>
+
+
+
+  <div className="stats-card">
+
+    <div className="stats-icon-outer">
+      <div className="stats-icon-inner">
+        <i className="bi bi-gift"></i>
+      </div>
+    </div>
+
+    <h1>45.5k</h1>
+    <p>Customer active in our site</p>
+
+  </div>
+
+
+
+  <div className="stats-card">
+
+    <div className="stats-icon-outer">
+      <div className="stats-icon-inner">
+        <i className="bi bi-cash-coin"></i>
+      </div>
+    </div>
+
+    <h1>25k</h1>
+    <p>Annual gross sale in our site</p>
+
+  </div>
+
+</div>
            <div className="about-employee">
             <img src={employee} alt="" />
            </div>
+
+             <div className="service-container">
+
+        <div className="service-card">
+
+       <div className="service-icon">
+       <i className="bi bi-truck"></i>
+     </div>
+
+    <h2>FREE AND FAST DELIVERY</h2>
+
+    <p> Free delivery for all orders over ₹140</p>
+
+  </div>
+
+
+  <div className="service-card">
+
+    <div className="service-icon">
+      <i className="bi bi-headset"></i>
+    </div>
+
+    <h2>24/7 CUSTOMER SERVICE</h2>
+
+    <p>Friendly 24/7 customer support</p>
+
+  </div>
+
+
+  <div className="service-card">
+
+    <div className="service-icon">
+       <i className="bi bi-shield-check"></i>
+    </div>
+
+    <h2>MONEY BACK GUARANTEE</h2>
+
+    <p> We return money within 30 days</p>
+
+  </div>
+
+</div>
     </div>
   )
 }

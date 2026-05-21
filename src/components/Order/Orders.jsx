@@ -39,15 +39,11 @@ function Orders() {
     <div className="orders-container">
       <ToastContainer/>
 
-      <h1 className="orders-title">
-        Orders List
-      </h1>
+      <h1 className="orders-title"> Orders List</h1>
 
       {order.length === 0 ? (
         <>
-        <h2 className="no-orders">
-          No Orders Found
-        </h2>
+        <h2 className="no-orders">No Orders Found</h2>
 
         <img className="img-noorder" src={computing}/>
         </>

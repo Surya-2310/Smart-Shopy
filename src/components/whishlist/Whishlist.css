@@ -1,0 +1,165 @@
+body{
+  background-color: white;
+}
+.shop-wrapper {
+  padding: 40px 5%;
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+}
+
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.wishlist-count {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.move-all-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 12px 30px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.move-all-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.shop-card {
+  width: 100%;
+}
+
+.image-section {
+  position: relative;
+  height: 250px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.item-image {
+  max-width: 180px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.offer-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #db4444;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.icon-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.circle-btn {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cart-hover-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  font-weight: 500;
+  cursor: pointer;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.image-section:hover .cart-hover-btn {
+  transform: translateY(0);
+}
+
+.details-section {
+  padding-top: 16px;
+}
+
+.item-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.price-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.new-price {
+  color: #db4444;
+  font-weight: 600;
+}
+
+.old-price {
+  color: #7d8184;
+  text-decoration: line-through;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stars {
+  color: #ffad33;
+  font-size: 14px;
+}
+
+.dull-star {
+  color: #bfbfbf;
+}
+
+.review-count {
+  color: #7d8184;
+  font-weight: 600;
+  font-size: 14px;
+}

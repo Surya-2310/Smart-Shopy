@@ -4,22 +4,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import confetti from "canvas-confetti";
-import './Payment.css'
+import './Payment.css';
 
 function Payment() {
-
   const location = useLocation();
   const navigate = useNavigate();
 
   const customerdetails = location.state;
-
   const amount = customerdetails?.total || 0;
 
   const [paymentMethod, setPaymentMethod] = useState("");
   const [showQR, setShowQR] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${amount}&cu=INR`;
+  const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${amount}&cu=INR`;
 
   const handleChange = (e) => {
     setPaymentMethod(e.target.value);
@@ -29,14 +27,13 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
 
   const celebrate = () => {
     confetti({
-      particleCount: 2000,
-      spread: 1000,
-      origin: { y: 0.6 }
+      particleCount: 2000, 
+      spread: 100,       
+      
     });
   };
 
   const createOrder = () => {
-
     const orderData = {
       ...customerdetails,
       paymentMethod: paymentMethod,
@@ -45,37 +42,33 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
 
     axios.post("https://smartshop-api-oas7.onrender.com/orders", orderData)
       .then(() => {
+        celebrate();
 
-       celebrate();
-
-        toast.success("Order Placed Successfully",{
-          position:"top-right",
-          autoClose:1000,
-          transition:Bounce
-        })
+        toast.success("Order Placed Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          transition: Bounce
+        });
 
         setOrderPlaced(true);
 
         setTimeout(() => {
           navigate("/");
         }, 4000);
-
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error creating order:", error);
+        toast.error("Failed to place order. Please try again.");
       });
   };
 
   const handlePlaceOrder = () => {
-
     if (!paymentMethod) {
-      // alert("Please select payment method");
-      toast.error("Please select payment method",{
-        position:"top-right",
-        transition:Bounce,
-        autoClose:1000
-      })
-      
+      toast.error("Please select payment method", {
+        position: "top-right",
+        transition: Bounce,
+        autoClose: 1000
+      });
       return;
     }
 
@@ -94,44 +87,59 @@ const qrValue = `upi://pay?pa=suryaseetharaman0@okhdfcbank&pn=SmartShopy&am=${am
 
   return (
     <div className="payment-container">
-      <ToastContainer/>
+      <ToastContainer />
 
       <h2 className="payment-title"> Payment </h2>
-
       <h4 className="payment-amount"> Total Amount: ₹{amount} </h4>
 
       <div className="payment-options">
-
         <label>
-          <input type="radio" name="payment" value="Cash" onChange={handleChange} />💵 Cash on Delivery </label>
-  <br /><br />
-
-        <label> <input type="radio" name="payment" value="GPay" onChange={handleChange} />💳 GPay /🏛️ UPI </label>
-
+          <input 
+            type="radio" 
+            name="payment" 
+            value="Cash" 
+            checked={paymentMethod === "Cash"}
+            onChange={handleChange} 
+          />
+          💵 Cash on Delivery 
+        </label>
+        <br /><br />
+        <label> 
+          <input 
+            type="radio" 
+            name="payment" 
+            value="GPay" 
+            checked={paymentMethod === "GPay"}
+            onChange={handleChange} 
+          />
+          💳 GPay / 🏛️ UPI 
+        </label>
       </div>
 
       <br />
       
-      <button className="place-order-btn" onClick={handlePlaceOrder} > Place Order </button>
+      {!showQR && (
+        <button className="place-order-btn" onClick={handlePlaceOrder}> 
+          Place Order 
+        </button>
+      )}
 
       <br /><br />
 
       {showQR && (
         <div className="qr-section">
-
-          <h3>  Scan to Pay ₹{amount}</h3>
-
-          <QRCodeCanvas  value={qrValue} size={100}  />
-
+          <h3> Scan to Pay ₹{amount}</h3>
+          <QRCodeCanvas value={qrValue} size={150} />
           <br /><br />
-
-          <button className="confirm-btn"  onClick={handleConfirmPayment} >  Confirm Payment </button>
-
+          <button className="confirm-btn" onClick={handleConfirmPayment}> 
+            Confirm Payment 
+          </button>
         </div>
       )}
 
-      {orderPlaced && (<h2 className="success-message"> Order placed successfully! </h2>)}
-
+      {orderPlaced && (
+        <h2 className="success-message"> Order placed successfully! </h2>
+      )}
     </div>
   );
 }

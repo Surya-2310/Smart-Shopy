@@ -1,208 +1,384 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import frame from '../../assets/Frame 560.png'
 import { toast, ToastContainer } from "react-toastify";
-import Frame740 from '../../assets/Frame740.png'
-import Star from '../../assets/Star.png'
-import './Home.css'
-import service from '../../assets/Fullservices.png'
-import product4 from '../../assets/product4.png'
-import product3 from '../../assets/product3.png'
-import product2 from '../../assets/frame2.png'
+
+import frame1 from "../../assets/frame1.png";
+import frame2 from "../../assets/frame2.png";
+import frame3 from "../../assets/frame3.png";
+import frame4 from "../../assets/frame4.png";
+import apple from "../../assets/apple.png";
+import phone from "../../assets/phone img.png";
+import camera from '../../assets/Category-Camera.png';
+import cellphone from '../../assets/Category-CellPhone.png';
+import gamepad from '../../assets/Category-Gamepad.png';
+import headphone from '../../assets/Category-Headphone.png'; 
+import watch from '../../assets/Category-SmartWatch.png';
+import jbl from '../../assets/jbl.png';
+
+import "./Home.css";
+import Api from './../ProductApI/Api.jsx';
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState("");
-    const [timeLeft, setTimeLeft] = useState(3*24*60*60);
+  const location = useLocation();
+  const [timeLeft, setTimeLeft] = useState(3 * 24 * 60 * 60);
   const navigate = useNavigate();
 
- useEffect(() => {
+ 
+  useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prev) => Math.max(prev - 1, 0));
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
-  
   const formatTime = (sec) => {
-    const t = String(Math.floor(sec / (24 * 3600))).padStart(2,"0");
-  const h = String(Math.floor((sec % (24 * 3600)) / 3600)).padStart(2, "0");   
-     const m = String(Math.floor((sec %3600) / 60)).padStart(2, "0");
+    const t = String(Math.floor(sec / (24 * 3600))).padStart(2, "0");
+    const h = String(Math.floor((sec % (24 * 3600)) / 3600)).padStart(2, "0");
+    const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
     const s = String(sec % 60).padStart(2, "0");
-    return { h, m, s,t };
+    return { t, h, m, s };
   };
 
   const time = formatTime(timeLeft);
 
-
-
+  const queryParams = new URLSearchParams(location.search);
+  const search = queryParams.get("search") || "";
+  
   useEffect(() => {
-    axios.get("https://smartshop-api-oas7.onrender.com/product")
+    axios
+      .get("http://localhost:3000/product")
       .then((res) => {
         setProducts(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
- function handleAddToCart(product) {
+ 
 
-  const isLoggedIn = localStorage.getItem("login");
+  function handleAddToCart(product) {
+    const isLoggedIn = localStorage.getItem("login");
+    if (!isLoggedIn) {
+      navigate("/login");
+      return;
+    }
 
-  if (!isLoggedIn) {
-    navigate("/login");
-    return;
+    axios
+      .post("https://smartshop-api-oas7.onrender.com/cart", product)
+      .then(() => {
+        toast.success("Product added to cart", {
+          autoClose: 1000,
+          position: "top-center",
+          theme: "dark",
+        });
+      })
+      .catch((err) => console.log(err));
   }
 
- axios.post("https://smartshop-api-oas7.onrender.com/cart",product)
-
-    .then(() => {
-
-      toast.success("Product added to cart",{
-        autoClose:1000,
-        position:"top-center",
-        theme:"dark",
-      });
-
-
-    })
-
-    .catch((err) => {
-      console.log(err);
-    });
- }
-  const searchProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
+  const filteredProducts = products.filter((product) =>
+    product.name?.toLowerCase().includes(search.toLowerCase())
   );
 
-  function Buynow(product){
+  function handleView() {
+    navigate("/Whishlist", { state: { allProducts: products } });
+  }
 
-  const isLoggedIn = localStorage.getItem("login");
-
-  const targetPath = isLoggedIn ? "/Buynow" : "/login";
-
-  navigate(targetPath, { state: product });
-
-}
+  const handleProductClicks = (id) => {
+    navigate(`/ProductDetails/${id}`);
+  };
 
   return (
     <div className="home-container">
-      <ToastContainer/>
-      
-    <div className="hero-section">
+      <ToastContainer />
 
- 
-  <div className="hero-left">
-    <ul>
-      <li>Woman's Fashion </li>
-      <li>Men's Fashion</li>
-      <li>Electronics</li>
-      <li>Home & Lifestyle</li>
-      <li>Medicine</li>
-      <li>Sports & Outdoor</li>
-      <li>Baby's & Toys</li>
-      <li>Groceries & Pets</li>
-      <li>Health & Beauty</li>
-    </ul>
-  </div>
+      <div className="hero-section">
+        <div className="hero-left">
+          <ul>
+            <li>Woman's Fashion</li>
+            <li>Men's Fashion</li>
+            <li>Electronics</li>
+            <li>Home & Lifestyle</li>
+            <li>Medicine</li>
+            <li>Sports & Outdoor</li>
+            <li>Baby's & Toys</li>
+            <li>Groceries & Pets</li>
+            <li>Health & Beauty</li>
+          </ul>
+        </div>
 
-  <div className="hero-right">
-    <img src={frame} alt="banner" />
-  </div>
-
-</div>
-
-   <div className="flash-sale">
-        <h4> Flash Sales</h4>
-
-        {timeLeft === 0 ? (
-          <h3 className="ended">Sale Ended</h3>
-        ) : (
-          <div className="timer">
-            
-            <div>
-              <p>day </p>
-              <h3>{time.t}</h3>
+        <div className="hero-whole">
+          <div className="hero-content">
+            <div className="hero-left-content">
+              <div className="apple-row">
+                <img src={apple} alt="apple" />
+                <p>iPhone 14 Series</p>
+              </div>
+              <h1>Up to 10% <br /> off Voucher</h1>
+              <button className="shop-btn">Shop Now →</button>
             </div>
-           
-            <div>
-              <p>Hours</p>
-              <h3>{time.h}</h3>
-            </div>
-            <div>
-              <p>Minutes</p>
-              <h3>{time.m}</h3>
-            </div>
-            <div>
-              <p>Seconds</p>
-              <h3>{time.s}</h3>
+            <div className="hero-right">
+              <img src={phone} alt="phone" />
             </div>
           </div>
-        )}
-      </div><br />
-      <h1 className="main-title">Our Products</h1>
-      
-      <div className="search-section">
-
-        <input type="text"  placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} className="search-input" />
-
-        <button onClick={() => setSearch("")} className="clear-button">Clear</button>
+        </div>
       </div>
 
-      <div className="product-grid">
+      <div className="flash-sale">
+        <div className="flash-header">
+          <div className="flash-box"></div>
+          <h4>Today's</h4>
+        </div>
 
-        {searchProducts.length > 0 ? (
-
-          searchProducts.map((product) => (
-            
-            <div className="product-card" key={product.id}>
-
-              <div className="image-card">
-
-                <img src={product.image}  className="product-img"/>
-              </div>
-              
-              <div className="product-info">
-
-                <h3 className="product-title">{product.name}</h3>
-
-                <p className="product-price">₹ {product.price}</p>
-
-                 <img src={Star} alt="" />
-                <div className="homebtn">
-                <button className="addtocart" onClick={() => handleAddToCart(product)}> <i className="bi bi-cart-check"></i>Cart</button>
-                <button className="Buynowbtn" onClick={()=> Buynow(product)}>Buynow</button>
-               </div>
-              </div>
-              
+        <div className="flash-content">
+          <h1 className="flash-title">Flash Sales</h1>
+          <div className="timer">
+            <div className="timer-box">
+              <p>Days</p>
+              <h2>{time.t}</h2>
             </div>
-            
-          ))
-
-           
-        ) : (
-          <p className="loading-text">Loading products...</p>
-        )}
+            <div className="timer-dot">:</div>
+            <div className="timer-box">
+              <p>Hours</p>
+              <h2>{time.h}</h2>
+            </div>
+            <div className="timer-dot">:</div>
+            <div className="timer-box">
+              <p>Minutes</p>
+              <h2>{time.m}</h2>
+            </div>
+            <div className="timer-dot">:</div>
+            <div className="timer-box">
+              <p>Seconds</p>
+              <h2>{time.s}</h2>
+            </div>
+          </div>
+        </div>
       </div>
-       <div className="bottom-frame">
-                <img src={Frame740} alt="frame" />
+
+      <div className="head-product">
+        <Api products={filteredProducts} handleAddToCart={handleAddToCart} />
+      </div>
+
+      <div className="header-btn1">
+        <button onClick={handleView}>view all Product</button>
+      </div>
+
+      <div className="catagories-header">
+        <h5>Categories</h5>
+      </div>
+      <div>
+        <h1 className="catagoriesh1">Browse By Categories</h1>
+      </div>
+      <div className="catagories-arrows">
+        <i className="bi bi-arrow-left leftarrow"></i>
+        <i className="bi bi-arrow-right rightarrow"></i>
+      </div>
+         
+      <div className="catagories">
+        <div className="catagories-content">
+          <div className="catagories-1">
+            <img src={camera} alt="Camera" />
+            <p>Camera</p>
+          </div>
+          <div className="catagories-2">
+            <img src={cellphone} alt="Cellphone" />
+            <p>Cellphone</p>
+          </div>
+          <div className="catagories-3">
+            <img src={gamepad} alt="Gamepad" />
+            <p>Gamepad</p>
+          </div>
+          <div className="catagories-4">
+            <img src={headphone} alt="Headphone" />
+            <p>Headphone</p>
+          </div>
+          <div className="catagories-5">
+            <img src={watch} alt="Watch" />
+            <p>Watch</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="month-sales">
+        <div>
+          <h5>This month</h5>
+          <h1>Best selling Products</h1>
+          <div className="header-btn2">
+            <button onClick={handleView}>view all Product</button>
+          </div>
+        </div>
+        <Api products={filteredProducts} handleAddToCart={handleAddToCart} />
+      </div>
+
+      <div className="bananer-container">
+        <div className="banner-content">
+          <div className="banner-left">
+            <p className="banner-category">Categories</p>
+            <h1 className="banner-title">Enhance Your <br /> Music Experience</h1>
+            <div className="timer-rounds">
+              <div className="time-box">
+                <h2>{time.t}</h2>
+                <p>Days</p>
+              </div>
+              <div className="time-box">
+                <h2>{time.h}</h2>
+                <p>Hours</p>
+              </div>
+              <div className="time-box">
+                <h2>{time.m}</h2>
+                <p>Minutes</p>
+              </div>
+              <div className="time-box">
+                <h2>{time.s}</h2>
+                <p>Seconds</p>
+              </div>
+            </div>
+            <button className="buy-btn2">Buy Now!</button>
+          </div>
+          <div className="banner-right">
+            <img src={jbl} alt="JBL Speaker" className="jbl-img" />
+          </div>
+        </div>
+      </div>
+
+      <div className="explore-container">
+        <div className="explore-name">
+          <h5>Our Products</h5>
+        </div>
+        <div>
+          <h2>Explore Our Product</h2>
+        </div>
+        <div>
+          <Api products={filteredProducts} handleAddToCart={handleAddToCart} />
+        </div>
+        <div className="explore-map">
+          {filteredProducts.map((exploreproduct) => (
+            <article 
+              className="shop-card" 
+              key={exploreproduct.id}
+              onClick={() => handleProductClicks(exploreproduct.id)}
+            >
+              <div className="image-section">
+                <span className="offer-tag">-35%</span>
+                <div className="icon-overlay">
+                  <button 
+                    className="circle-btn" 
+                    onClick={(e) => e.stopPropagation()} 
+                  >
+                    <i className="bi bi-trash"></i>
+                  </button>
+                </div>
+                <img 
+                  src={Array.isArray(exploreproduct.image) ? exploreproduct.image[0] : exploreproduct.image} 
+                  alt={exploreproduct.name} 
+                  className="item-image" 
+                />
+                <button 
+                  className="cart-hover-btn" 
+                  onClick={(e) => {
+                    e.stopPropagation(); 
+                    handleAddToCart(exploreproduct);
+                  }}
+                >
+                  <i className="bi bi-cart3"></i> Add To Cart
+                </button>
               </div>
 
-              <div className="bottom-product4">
-                <img src={product4}alt="" />
+              <div className="details-section">
+                <h3 className="item-name">{exploreproduct.name}</h3>
+                <div className="price-group">
+                  <span className="new-price">₹{exploreproduct.price}</span>
+                </div>
+                <div className="rating-row">
+                  <div className="stars">
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill dull-star"></i>
+                  </div>
+                  <span className="review-count">(88)</span>
+                </div>
               </div>
+            </article>
+          ))}
+        </div>
+      </div>
 
-               <div className="bottom-product3">
-                <img src={product3}alt="" />
-              </div>
+      <div className="bottom-header">
+        <h4>Featured</h4>
+        <div>
+          <h1>New Arrival</h1>
+        </div>
+      </div>
 
-            <div className="bottom-frame1">
-                <img src={product2}alt="" />
+      <div className="bottom-container">
+        <div className="bottom-frame1">
+          <img src={frame1} alt="PS5" className="frame-img1"/>
+          <div className="card-content ps5-text">
+            <h2>PlayStation 5</h2>
+            <p>Black and White version of the PS5 coming out on sale.</p>
+            <button>Shop Now</button>
+          </div>
+        </div>
+
+        <div className="right-section">
+          <div className="top-card">
+            <img src={frame2} alt="Women Collections" className="frame-img2"/>
+            <div className="card-content women-text">
+              <h2>Women’s Collections</h2>
+              <p>Featured woman collections that give you another vibe.</p>
+              <button>Shop Now</button>
+            </div>
+          </div>
+
+          <div className="small-cards">
+            <div className="small-card">
+              <img src={frame3} alt="Speakers" className="frame-img3"/>
+              <div className="card-content">
+                <h2>Speakers</h2>
+                <p>Amazon wireless speakers</p>
+                <button>Shop Now</button>
               </div>
-              <div className="bottom-service">
-                <img src={service} alt="" />
+            </div>
+            <div className="small-card">
+              <img src={frame4} alt="Perfume" className="frame-img4"/>
+              <div className="card-content">
+                <h2>Perfume</h2>
+                <p>GUCCI INTENSE OUD EDP</p>
+                <button>Shop Now</button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="service-container">
+        <div className="service-card">
+          <div className="service-icon">
+            <i className="bi bi-truck"></i>
+          </div>
+          <h2>FREE AND FAST DELIVERY</h2>
+          <p>Free delivery for all orders over ₹140</p>
+        </div>
+
+        <div className="service-card">
+          <div className="service-icon">
+            <i className="bi bi-headset"></i>
+          </div>
+          <h2>24/7 CUSTOMER SERVICE</h2>
+          <p>Friendly 24/7 customer support</p>
+        </div>
+
+        <div className="service-card">
+          <div className="service-icon">
+            <i className="bi bi-shield-check"></i>
+          </div>
+          <h2>MONEY BACK GUARANTEE</h2>
+          <p>We return money within 30 days</p>
+        </div> 
+      </div>
     </div>
   );
 }

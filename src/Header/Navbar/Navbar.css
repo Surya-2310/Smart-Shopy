@@ -1,4 +1,3 @@
-
 .navbar {
   position: fixed;
   top: 0;
@@ -12,27 +11,32 @@
 
   background-color: #fcfafa;
   color: rgb(11, 11, 11);
-   padding: 10px 30px;
-border-bottom: 1px solid black;}
+
+  padding: 15px 40px;
+
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+}
+
 body {
   padding-top: 100px;
   background-color: white;
-
 }
+
 .web-name h2 {
   font-size: 22px;
   font-weight: bold;
   color: #000;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-
 
 .navbar ul {
   display: flex;
+  align-items: center;
   gap: 30px;
   list-style: none;
-  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar ul li a {
@@ -46,33 +50,27 @@ body {
   color: #db4444;
 }
 
-
-
 .navbar ul li i {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-
-.dropdown i {
   font-size: 22px;
   cursor: pointer;
-  color: #333;
 }
-
-
 
 .dropdown {
   position: relative;
 }
 
+.dropdown i {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
 
 .dropdown-content {
   position: absolute;
   right: 0;
   top: 40px;
 
-  background: rgb(255, 255, 255);
+  background: white;
   border: 1px solid #ddd;
 
   border-radius: 6px;
@@ -82,8 +80,6 @@ body {
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
-
 
 .dropdown-content li {
   list-style: none;
@@ -101,33 +97,63 @@ body {
   background-color: #f5f5f5;
   color: #db4444;
 }
-.cart-notife{
-    position: relative;
-    display: inline-block;
-    width: 1px;
+
+
+
+.cart-notife {
+  position: relative;
 }
 
-.cart-notife a{
-    position: relative;
-    display: inline-block;
+.cart-notife a {
+  position: relative;
+}
+
+.cart-notife span {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+
+  background-color: rgb(253, 103, 103);
+  color: white;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 10px;
+  font-weight: bold;
 }
 
 
-.cart-notife span{
-    position: absolute;
-    top: -8px;  
-    background-color: rgb(253, 103, 103);
-    color: white;
-    width: 15px;
-    height: 15px;
-    border-radius:50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 10px;
-    font-weight: bold;
 
+.nav-search {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
-.cart-count{
-  padding-left: 8px;
+
+.nav-search input {
+  background-color: #ebe9e9;
+  border: none;
+  border-radius: 6px;
+
+  width: 250px;
+  height: 38px;
+
+  outline: none;
+
+  padding: 0 40px 0 15px;
+}
+
+.nav-search i {
+  position: absolute;
+  right: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #333;
 }

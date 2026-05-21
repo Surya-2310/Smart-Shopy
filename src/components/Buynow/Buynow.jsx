@@ -1,160 +1,95 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import './Buynow.css'
-
+import "./Buynow.css";
 
 function Buynow() {
-
   const location = useLocation();
   const navigate = useNavigate();
-
   const data = location.state;
 
-  useEffect(() => {
-    if (!data) ;
-  }, [data, navigate]);
+  const products = data?.items || (data?.id ? [data] : []);
+  const total = data?.total || products.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
 
-  const products = data?.items || [data];
+  const [formData, setFormData] = useState({
+    name: "", company: "", street: "", apartment: "", city: "", phone: "", email: ""
+  });
 
-  const total = data?.total || products.reduce(
-    (sum, item) =>
-      sum + item.price * (item.quantity || 1),
-    0
-  );
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [door, setDoor] = useState("");
-  const [address, setAddress] = useState("");
-  const date = useState(() => {
-    const dates = new Date();
-    const d =
-      dates.getDate() + "/" +
-      (dates.getMonth() + 1) + "/" +
-      dates.getFullYear()
-    return d;
-  })[0];
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   function handleOrder() {
-
-    if (!name || !email || !mobile || !door || !address) {
-      toast.warning("Please fill all fields",{
-        autoClose:1000,
-      });
+    const { name, street, city, phone, email } = formData;
+    if (!name || !street || !city || !phone || !email) {
+      toast.warning("Please fill all required fields", { autoClose: 1000 });
       return;
     }
-
-    if (mobile.length !== 10) {
-      toast.error("Enter valid mobile number",{
-        autoClose:1000,
-      });
-      return;
-    }
-
-    const orderData = {
-      name,
-      email,
-      mobile,
-      door,
-      address,
-      date,
-      items: products,
-      total
-    };
-
-    navigate("/Payment", { state: orderData });
+    navigate("/Payment", { state: { ...formData, items: products, total } });
   }
 
   return (
-
     <div className="checkout-page">
-
-    
-
       <div className="billing-section">
-
         <h2>Billing Details</h2>
-         <input value={date} disabled />
-
-        <input
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <input placeholder="Email Address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          placeholder="Mobile Number"
-          value={mobile}
-          onChange={(e) => setMobile(e.target.value)}
-        />
-
-        <input
-          placeholder="Door No"
-          value={door}
-          onChange={(e) => setDoor(e.target.value)}
-        />
-
-        <input
-          placeholder="Full Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-
-
+        <div className="input-group">
+          <label>First Name<span className="required-star">*</span></label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        </div>
+        <div className="input-group">
+          <label>Company Name</label>
+          <input type="text" name="company" value={formData.company} onChange={handleChange} />
+        </div>
+        <div className="input-group">
+          <label>Street Address<span className="required-star">*</span></label>
+          <input type="text" name="street" value={formData.street} onChange={handleChange} />
+        </div>
+        <div className="input-group">
+          <label>Apartment, floor, etc. (optional)</label>
+          <input type="text" name="apartment" value={formData.apartment} onChange={handleChange} />
+        </div>
+        <div className="input-group">
+          <label>Town/City<span className="required-star">*</span></label>
+          <input type="text" name="city" value={formData.city} onChange={handleChange} />
+        </div>
+        <div className="input-group">
+          <label>Phone Number<span className="required-star">*</span></label>
+          <input type="text" name="phone" value={formData.phone} onChange={handleChange} />
+        </div>
+        <div className="input-group">
+          <label>Email Address<span className="required-star">*</span></label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+        </div>
+        <div className="save-info">
+          <input type="checkbox" id="save" />
+          <label htmlFor="save">Save this information for faster check-out next time</label>
+        </div>
       </div>
-
-      
 
       <div className="order-section">
-
-        <h3>Order Summary</h3>
-
         {products.map((item) => (
-
-          <div key={item.id} className="order-item">
-
-            <img src={item.image} alt="" />
-
-            <div>
+          <div className="order-item" key={item.id}>
+            <div className="product-info">
+  
+              <img src={Array.isArray(item.image) ? item.image[0] : item.image} alt={item.name}/>
               <p>{item.name}</p>
-              <span>₹ {item.price}</span>
-              <p>Qty: {item.quantity || 1}</p>
             </div>
-
+            <span>₹{item.price * (item.quantity || 1)}</span>
           </div>
-
         ))}
 
-        <div className="price-row">
-          <p>Subtotal</p>
-          <span>₹ {total}</span>
+        <div className="price-row"><p>Subtotal:</p><span>₹{total}</span></div>
+        <div className="price-row"><p>Shipping:</p><span>Free</span></div>
+        <div className="price-row"><p>Total:</p><span>₹{total}</span></div>
+
+        <div className="coupon-box">
+          <input type="text" placeholder="Coupon Code" />
+          <button type="button">Apply Coupon</button>
         </div>
 
-        <div className="price-row">
-          <p>Shipping</p>
-          <span>Free</span>
-        </div>
-
-        <div className="price-row total">
-          <p>Total</p>
-          <span>₹ {total}</span>
-        </div>
-
-        <button className="place-order" onClick={handleOrder}>
-          Place Order
-        </button>
-
+        <button className="place-order" onClick={handleOrder}>Place Order</button>
       </div>
-
       <ToastContainer />
-
     </div>
   );
 }

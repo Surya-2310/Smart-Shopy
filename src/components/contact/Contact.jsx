@@ -42,7 +42,7 @@ function Contact() {
         
         <div className="contact-left">
 
-          <div className="contact-card">
+          <div className="contact-card1">
             <h4>📞 Call To Us</h4>
             <p>We are available 24/7, 7 days a week.</p>
             <p>Phone: +91 6374793301</p>

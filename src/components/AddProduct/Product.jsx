@@ -13,9 +13,9 @@ function AddProduct() {
 
     if (file)
        {
-      const reader = new FileReader();   // => convert to data
-      reader.readAsDataURL(file);   //=> data convert to base64
-      reader.onload = (event) => {  //=>file complete after run
+      const reader = new FileReader();   // => convert to data.
+      reader.readAsDataURL(file);   //=> data convert to base64.
+      reader.onload = (event) => {  //=>file complete after run.
         const img = new Image();
      
         img.src = event.target.result;
@@ -93,14 +93,13 @@ function AddProduct() {
 
     <input type="file" accept="image/*" onChange={handleImage} className="file-input" />
 
-    <br /><br />
+  <br /><br />
   </div>
 
   {image && (<img src={image} width="100" className="preview-image"/>)}
 
   <br />
 
- 
   <button type="submit" className="submit-btn">  Product</button>
  <ToastContainer/>
 </form>

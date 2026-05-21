@@ -14,7 +14,9 @@ import Cart from "../components/Cart/Cart.jsx";
 import About from '../components/About/About.jsx';
 import Contact from '../components/contact/Contact.jsx';
 import NotFound from '../components/Notfound/Notfound.jsx';
-
+import Api from './../components/ProductApI/Api.jsx';
+import Whishlist from './../components/whishlist/Whishlist.jsx';
+import ProductDetails from '../components/Productdetails/Productdetails.jsx'
 function Routes() {
 
   const move = createBrowserRouter([
@@ -34,10 +36,12 @@ function Routes() {
                   { path: "login", element: <Login /> },
                   { path: "signup", element: <Signup /> },
                   { path: "Contact", element: <Contact /> },
+                  {path: "Api",element:<Api/>},
+                  {path:"Whishlist",element:<Whishlist/>},
+                { path: "ProductDetails/:id", element: <ProductDetails /> },
                   { path:"*", element: <NotFound/>},
-
+                  
                 ] },
-
    
   ]);
  return <RouterProvider router={move} />;
