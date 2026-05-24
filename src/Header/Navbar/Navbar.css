@@ -158,23 +158,6 @@ body {
   color: #333;
 }
 
-@media (max-width: 992px) {
-  .navbar {
-    padding: 14px 25px;
-  }
-
-  .navbar ul {
-    gap: 18px;
-  }
-
-  .nav-search input {
-    width: 200px;
-  }
-
-  .web-name h2 {
-    font-size: 20px;
-  }
-}
 
 @media (max-width: 768px) {
   body {
@@ -188,7 +171,6 @@ body {
   }
 
   .navbar ul {
-    flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
   }
@@ -198,7 +180,7 @@ body {
   }
 
   .nav-search {
-    width: 100%;
+    width: 80%;
   }
 
   .nav-search input {

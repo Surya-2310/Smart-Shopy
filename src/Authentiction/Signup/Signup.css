@@ -114,21 +114,6 @@ label {
   text-decoration: none;
 }
 
-@media (max-width: 992px) {
-  .Signup-containerss {
-    max-width: 90%;
-    gap: 30px;
-    padding: 25px;
-  }
-
-  .sing-img img {
-    max-width: 380px;
-  }
-
-  .signpage {
-    max-width: 100%;
-  }
-}
 
 @media (max-width: 768px) {
   .Signup-containerss {

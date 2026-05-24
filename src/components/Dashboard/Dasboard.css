@@ -89,33 +89,6 @@
   background-color: #f13c3c;
 }
 
-@media (max-width: 992px) {
-  .dashboard-container {
-    padding: 20px;
-  }
-
-  .dashboard-cards {
-    gap: 18px;
-  }
-
-  .chart-product,
-  .chart-order,
-  .chart-amount {
-    min-width: 220px;
-    font-size: 16px;
-    padding: 18px;
-  }
-
-  .charts-container {
-    gap: 20px;
-  }
-
-  .charts,
-  .columcharts {
-    width: 100%;
-    overflow-x: auto;
-  }
-}
 
 @media (max-width: 768px) {
   .dashboard-container {

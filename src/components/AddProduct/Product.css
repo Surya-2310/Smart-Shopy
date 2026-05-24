@@ -103,22 +103,6 @@ body{
   background: #c73131;
 }
 
-@media (max-width: 992px) {
-  .product-form {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 35px;
-  }
-
-  .form-title {
-    font-size: 28px;
-  }
-
-  .preview-image {
-    width: 100px;
-    height: 100px;
-  }
-}
 
 @media (max-width: 768px) {
   .product-form {

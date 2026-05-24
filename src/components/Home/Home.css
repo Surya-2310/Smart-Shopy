@@ -816,63 +816,6 @@ position: relative;
 bottom: -52px;
  }
 
- @media (max-width: 992px) {
-  .home-container {
-    padding: 25px 30px;
-  }
-
-  .main-title {
-    padding-left: 0;
-    text-align: center;
-    font-size: 28px;
-  }
-
-  .hero-section {
-    flex-direction: column;
-  }
-
-  .hero-left,
-  .hero-right {
-    width: 100%;
-  }
-
-  .hero-left ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .hero-content {
-    width: 100%;
-    height: auto;
-    padding: 30px;
-  }
-
-  .hero-left-content h1 {
-    font-size: 46px;
-    line-height: 56px;
-  }
-
-  .bottom-container {
-    grid-template-columns: 1fr;
-  }
-
-  .banner-content {
-    width: 100%;
-  }
-
-  .catagories-content,
-  .service-container {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .explore-map {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .home-container {
     padding: 20px 15px;
@@ -928,9 +871,13 @@ bottom: -52px;
   .catagories-arrows,
   .header-btn1,
   .header-btn2 {
-    padding-left: 0;
-    text-align: center;
+    padding-left:0;
+    text-align: center; 
   }
+
+    .header-btn2{
+      padding-top: 50px;
+    }
 
   .banner-title {
     margin-bottom: 25px;
@@ -938,9 +885,28 @@ bottom: -52px;
 
   .jbl-img {
     width: 100%;
+    padding-top: 40px;
+    padding-bottom: 10px;
     padding-left: 0;
   }
 
+  .bananer-container p{
+    align-items: center;
+    padding-left:30%;
+  }
+
+  .bananer-container h1{
+    padding-left: 40px;
+  }
+  .time-box p{
+    padding-right: 15px;
+  }
+
+  .bananer-container button{
+    position: relative;
+    right: -80px;
+    
+  }
   .service-container {
     padding: 50px 15px;
     flex-direction: column;
@@ -949,6 +915,7 @@ bottom: -52px;
 
   .explore-map {
     grid-template-columns: 1fr;
+    padding-left: 50px;
   }
 
   .bottom-frame img,

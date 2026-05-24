@@ -29,8 +29,7 @@ function ProductDetails() {
         const foundProduct = response.data.find((item) => String(item.id) === String(id));
         
         if (foundProduct) {
-          setProduct(foundProduct);
-          console.log(foundProduct)
+          setProduct(foundProduct)
           const defaultImg = Array.isArray(foundProduct.image) ? foundProduct.image[0] : foundProduct.image;
           setMainImage(defaultImg);
         } else {
