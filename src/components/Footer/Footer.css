@@ -76,6 +76,21 @@
   font-size: 14px;
 }
 
+@media (max-width: 992px) {
+  .footer {
+    padding: 35px 35px 18px;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .footer-logo {
+    width: 260px;
+    padding-right: 0;
+  }
+}
 
 @media (max-width: 768px) {
   .footer {
