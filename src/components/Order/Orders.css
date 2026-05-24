@@ -86,4 +86,59 @@
 
 .order-delete button:hover {
   background: #b83232;
+}@media (max-width: 992px) {
+  .orders-container {
+    padding: 35px 40px;
+  }
+
+  .orders-title {
+    font-size: 28px;
+  }
+
+  .order-card {
+    gap: 18px;
+  }
+
+  .order-image {
+    width: 105px;
+    height: 105px;
+  }
+}
+
+@media (max-width: 768px) {
+  .orders-container {
+    padding: 25px 15px;
+  }
+
+  .orders-title {
+    font-size: 24px;
+  }
+
+  .img-noorder {
+    width: 180px;
+  }
+
+  .order-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px;
+  }
+
+  .order-image {
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+  }
+
+  .order-product {
+    font-size: 18px;
+  }
+
+  .order-delete {
+    width: 100%;
+  }
+
+  .order-delete button {
+    width: 100%;
+  }
 }

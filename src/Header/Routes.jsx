@@ -19,31 +19,37 @@ import Whishlist from './../components/whishlist/Whishlist.jsx';
 import ProductDetails from '../components/Productdetails/Productdetails.jsx'
 function Routes() {
 
-  const move = createBrowserRouter([
-
+  const move = createBrowserRouter(
+  [
     {
       path: "/",
       element: <MainLayout />,
       children: [
-                  { index: true, element: <Home/> },
-                  { path: "Buynow", element: <Buynow /> },
-                  { path: "Orders", element: <Orders /> },
-                  { path: "Dashboard", element: <Dashboard /> },
-                  { path: "AddProduct", element: <AddProduct /> },
-                  { path: "Payment", element: <QRgenerator /> },
-                  { path: "Cart", element: <Cart /> },
-                  { path: "About", element: <About /> },
-                  { path: "login", element: <Login /> },
-                  { path: "signup", element: <Signup /> },
-                  { path: "Contact", element: <Contact /> },
-                  {path: "Api",element:<Api/>},
-                  {path:"Whishlist",element:<Whishlist/>},
-                { path: "ProductDetails/:id", element: <ProductDetails /> },
-                  { path:"*", element: <NotFound/>},
-                  
-                ] },
-   
-  ]);
+        { index: true, element: <Home /> },
+        { path: "Buynow", element: <Buynow /> },
+        { path: "Orders", element: <Orders /> },
+        { path: "Dashboard", element: <Dashboard /> },
+        { path: "AddProduct", element: <AddProduct /> },
+        { path: "Payment", element: <QRgenerator /> },
+        { path: "Cart", element: <Cart /> },
+        { path: "About", element: <About /> },
+        { path: "login", element: <Login /> },
+        { path: "signup", element: <Signup /> },
+        { path: "Contact", element: <Contact /> },
+        { path: "Api", element: <Api /> },
+        { path: "Whishlist", element: <Whishlist /> },
+        { path: "ProductDetails/:id", element: <ProductDetails /> },
+        { path: "*", element: <NotFound /> },
+      ],
+    },
+  ],
+  {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    },
+  }
+);
  return <RouterProvider router={move} />;
 }
 

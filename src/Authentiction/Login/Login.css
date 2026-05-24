@@ -100,3 +100,67 @@ label {
   color: #db4444;
   text-decoration: none;
 }
+
+@media (max-width: 992px) {
+  .login-container {
+    max-width: 90%;
+    gap: 30px;
+    padding: 25px;
+  }
+
+  .login-left img {
+    max-width: 380px;
+  }
+
+  .login-right {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    margin: 30px 15px;
+    padding: 20px;
+    gap: 25px;
+    border-radius: 20px;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+  }
+
+  .login-left img {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  .login-h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .login-right p {
+    text-align: center;
+  }
+
+  .form-input {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .btn-row {
+    justify-content: center;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .log-1 {
+    text-align: center;
+  }
+}

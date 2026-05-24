@@ -815,3 +815,145 @@ top: -65px;
 position: relative;
 bottom: -52px;
  }
+
+ @media (max-width: 992px) {
+  .home-container {
+    padding: 25px 30px;
+  }
+
+  .main-title {
+    padding-left: 0;
+    text-align: center;
+    font-size: 28px;
+  }
+
+  .hero-section {
+    flex-direction: column;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero-left ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+  }
+
+  .hero-left-content h1 {
+    font-size: 46px;
+    line-height: 56px;
+  }
+
+  .bottom-container {
+    grid-template-columns: 1fr;
+  }
+
+  .banner-content {
+    width: 100%;
+  }
+
+  .catagories-content,
+  .service-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .explore-map {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 20px 15px;
+  }
+
+  .hero-content,
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 15px;
+  }
+
+  .hero-left-content h1,
+  .banner-title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .apple-row,
+  .timer-rounds {
+    justify-content: center;
+  }
+
+  .bottom-frame1,
+  .top-card,
+  .small-card {
+    height: 300px;
+  }
+
+  .small-cards {
+    flex-direction: column;
+  }
+
+  .flash-content {
+    gap: 25px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .flash-title,
+  .catagories-content h1 {
+    font-size: 30px;
+  }
+
+  .catagories {
+    padding: 30px 15px;
+  }
+
+  .catagories-content {
+    flex-direction: column;
+  }
+
+  .catagories-arrows,
+  .header-btn1,
+  .header-btn2 {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .banner-title {
+    margin-bottom: 25px;
+  }
+
+  .jbl-img {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .service-container {
+    padding: 50px 15px;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .explore-map {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-frame img,
+  .bottom-service img {
+    width: 100%;
+    padding-left: 0;
+  }
+}

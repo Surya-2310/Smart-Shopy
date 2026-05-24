@@ -113,3 +113,68 @@ label {
   color: #db4444;
   text-decoration: none;
 }
+
+@media (max-width: 992px) {
+  .Signup-containerss {
+    max-width: 90%;
+    gap: 30px;
+    padding: 25px;
+  }
+
+  .sing-img img {
+    max-width: 380px;
+  }
+
+  .signpage {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Signup-containerss {
+    flex-direction: column;
+    margin: 30px 15px;
+    padding: 20px;
+    gap: 25px;
+    border-radius: 20px;
+  }
+
+  .sing-img,
+  .signpage {
+    width: 100%;
+  }
+
+  .sing-img img {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  .signpage h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .signpage p {
+    text-align: center;
+  }
+
+  .form-control {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .btn-group {
+    justify-content: center;
+  }
+
+  .btn-create,
+  .btn-reset {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .sign1 {
+    text-align: center;
+  }
+}

@@ -88,3 +88,73 @@
 .Dash-btn:hover {
   background-color: #f13c3c;
 }
+
+@media (max-width: 992px) {
+  .dashboard-container {
+    padding: 20px;
+  }
+
+  .dashboard-cards {
+    gap: 18px;
+  }
+
+  .chart-product,
+  .chart-order,
+  .chart-amount {
+    min-width: 220px;
+    font-size: 16px;
+    padding: 18px;
+  }
+
+  .charts-container {
+    gap: 20px;
+  }
+
+  .charts,
+  .columcharts {
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .chart-product,
+  .chart-order,
+  .chart-amount {
+    width: 100%;
+    min-width: 100%;
+    font-size: 15px;
+    padding: 16px;
+  }
+
+  .chart-title {
+    font-size: 22px;
+  }
+
+  .charts-container {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .charts,
+  .columcharts {
+    width: 100%;
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  .Dash-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}

@@ -102,3 +102,61 @@ body{
 .submit-btn:hover{
   background: #c73131;
 }
+
+@media (max-width: 992px) {
+  .product-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 35px;
+  }
+
+  .form-title {
+    font-size: 28px;
+  }
+
+  .preview-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-form {
+    max-width: 100%;
+    margin: 30px 15px;
+    padding: 25px 20px;
+    border-radius: 14px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .input-field {
+    height: 50px;
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+
+  .file-input {
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  .preview-container {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .preview-image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .submit-btn {
+    height: 50px;
+    font-size: 16px;
+  }
+}
