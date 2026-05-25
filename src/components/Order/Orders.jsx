@@ -53,19 +53,16 @@ function Orders() {
 
           <div key={item.id} className="order-card" >
 
-            <img src={item.items?.[0]?.image ||computing}   className="order-image" />
+           <img src={Array.isArray(item.items?.[0]?.image)? item.items[0].image[0]: item.items?.[0]?.image || computing} className="order-image"/>
 
                 <div className="order-details">
 
         <h3 className="order-product"> {item.items?.[0]?.name || "No Product"} </h3>
 
-          <p className="order-text">Date:{item.date}</p>
 
         <p className="order-text"> Name: {item.name} </p>
 
         <p className="order-text"> Email: {item.email} </p>
-
-        <p className="order-text"> Address: {item.address} </p>
 
         <p className="order-text">Quantity: {item.items?.[0]?.quantity}</p>
 

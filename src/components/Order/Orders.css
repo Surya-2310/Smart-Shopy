@@ -86,28 +86,12 @@
 
 .order-delete button:hover {
   background: #b83232;
-}@media (max-width: 992px) {
-  .orders-container {
-    padding: 35px 40px;
-  }
-
-  .orders-title {
-    font-size: 28px;
-  }
-
-  .order-card {
-    gap: 18px;
-  }
-
-  .order-image {
-    width: 105px;
-    height: 105px;
-  }
 }
 
 @media (max-width: 768px) {
   .orders-container {
     padding: 25px 15px;
+    padding-top: 100px;
   }
 
   .orders-title {

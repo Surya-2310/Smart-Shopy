@@ -185,39 +185,11 @@
 
 }
 
-@media (max-width: 992px) {
-  .cart-page {
-    width: 90%;
-    margin: 50px auto;
-  }
-
-  .cart-table th,
-  .cart-table td {
-    padding: 18px 16px;
-    font-size: 14px;
-  }
-
-  .bottom-cart {
-    gap: 25px;
-  }
-
-  .coupon-box input {
-    width: 220px;
-  }
-
-  .coupon-box button {
-    width: 150px;
-  }
-
-  .cart-summary {
-    width: 330px;
-  }
-}
-
 @media (max-width: 768px) {
   .cart-page {
     width: 92%;
     margin: 30px auto;
+    padding-top: 60px;
   }
 
   .cart-title {

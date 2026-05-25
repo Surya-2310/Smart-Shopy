@@ -134,36 +134,7 @@
   margin-left: 4px;
 }
 
-@media (max-width: 992px) {
-  .checkout-page {
-    padding: 60px 5%;
-    gap: 50px;
-  }
 
-  .billing-section h2 {
-    font-size: 30px;
-  }
-
-  .input-group input {
-    width: 100%;
-  }
-
-  .order-section {
-    width: 360px;
-  }
-
-  .price-row {
-    width: 100%;
-  }
-
-  .coupon-box input {
-    width: 100%;
-  }
-
-  .coupon-box button {
-    width: 180px;
-  }
-}
 
 @media (max-width: 768px) {
   .checkout-page {
@@ -201,10 +172,9 @@
     gap: 12px;
   }
 
-  .coupon-box input,
-  .coupon-box button {
+  .coupon-box input {
     width: 100%;
-    height: 50px;
+    height: 100px;
   }
 
   .place-order {
