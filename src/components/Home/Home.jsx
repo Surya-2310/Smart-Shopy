@@ -7,30 +7,82 @@ import frame1 from "../../assets/frame1.png";
 import frame2 from "../../assets/frame2.png";
 import frame3 from "../../assets/frame3.png";
 import frame4 from "../../assets/frame4.png";
+
 import apple from "../../assets/apple.png";
+import LG from '../../assets/LG.png';
 import phone from "../../assets/phone img.png";
-import camera from '../../assets/Category-Camera.png';
-import cellphone from '../../assets/Category-CellPhone.png';
-import gamepad from '../../assets/Category-Gamepad.png';
-import headphone from '../../assets/Category-Headphone.png'; 
-import watch from '../../assets/Category-SmartWatch.png';
-import jbl from '../../assets/jbl.png';
+
+import camera from "../../assets/Category-Camera.png";
+import cellphone from "../../assets/Category-CellPhone.png";
+import gamepad from "../../assets/Category-Gamepad.png";
+import headphone from "../../assets/Category-Headphone.png";
+import watch from "../../assets/Category-SmartWatch.png";
+
+import jbl from "../../assets/jbl.png";
+import Ac from "../../assets/Ac.png";
+import Headphone from "../../assets/Headphone.png";
+import Laptop from "../../assets/Laptop.png";
 
 import "./Home.css";
-import Api from './../ProductApI/Api.jsx';
+import Api from "./../ProductApI/Api.jsx";
+import Whishlist from './../whishlist/Whishlist';
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const location = useLocation();
   const [timeLeft, setTimeLeft] = useState(3 * 24 * 60 * 60);
-  const navigate = useNavigate();
+  const [index, setIndex] = useState(0);
 
- 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const ads = [
+    {
+      icon: apple,
+      title: "iPhone 14 Series",
+      offer: "Up to 10%",
+      image: phone,
+    },
+    {
+      icon: apple,
+      title: "Laptop Sale",
+      offer: "Up to 20%",
+      image: Laptop,
+    },
+    {
+      icon: LG,
+      title: "AC Offer",
+      offer: "Up to 30%",
+      image: Ac,
+    },
+    {
+      icon: apple,
+      title: "Headset Deal",
+      offer: "Up to 40%",
+      image: Headphone,
+    },
+  ];
+
+  useEffect(() => {
+    const slider = setInterval(() => {
+      setIndex((prev) => (prev + 1) % ads.length);
+    }, 2000);
+
+    return () => clearInterval(slider);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
+
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://smartshop-api-oas7.onrender.com/product")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
   const formatTime = (sec) => {
@@ -45,20 +97,14 @@ function Home() {
 
   const queryParams = new URLSearchParams(location.search);
   const search = queryParams.get("search") || "";
-  
-  useEffect(() => {
-    axios
-      .get("https://smartshop-api-oas7.onrender.com/product")
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => console.error("Error fetching products:", err));
-  }, []);
 
- 
+  const filteredProducts = products.filter((product) =>
+    product.name?.toLowerCase().includes(search.toLowerCase())
+  );
 
   function handleAddToCart(product) {
     const isLoggedIn = localStorage.getItem("login");
+
     if (!isLoggedIn) {
       navigate("/login");
       return;
@@ -76,17 +122,13 @@ function Home() {
       .catch((err) => console.log(err));
   }
 
-  const filteredProducts = products.filter((product) =>
-    product.name?.toLowerCase().includes(search.toLowerCase())
-  );
-
   function handleView() {
     navigate("/Whishlist", { state: { allProducts: products } });
   }
 
-  const handleProductClicks = (id) => {
+  function handleProductClicks(id) {
     navigate(`/ProductDetails/${id}`);
-  };
+  }
 
   return (
     <div className="home-container">
@@ -111,14 +153,19 @@ function Home() {
           <div className="hero-content">
             <div className="hero-left-content">
               <div className="apple-row">
-                <img src={apple} alt="apple" />
-                <p>iPhone 14 Series</p>
+                <img src={ads[index].icon} alt="icon" />
+                <p>{ads[index].title}</p>
               </div>
-              <h1>Up to 10% <br /> off Voucher</h1>
-              <button className="shop-btn">Shop Now →</button>
+
+              <h1>
+                {ads[index].offer} <br /> off Voucher
+              </h1>
+
+            <button className="shop-btn" onClick={()=>handleView()}>Shop Now →</button>
             </div>
+
             <div className="hero-right">
-              <img src={phone} alt="phone" />
+              <img src={ads[index].image} alt="product" />
             </div>
           </div>
         </div>
@@ -132,6 +179,7 @@ function Home() {
 
         <div className="flash-content">
           <h1 className="flash-title">Flash Sales</h1>
+
           <div className="timer">
             <div className="timer-box">
               <p>Days</p>
@@ -161,20 +209,20 @@ function Home() {
       </div>
 
       <div className="header-btn1">
-        <button onClick={handleView}>view all Product</button>
+        <button onClick={handleView}>View All Product</button>
       </div>
 
       <div className="catagories-header">
         <h5>Categories</h5>
       </div>
-      <div>
-        <h1 className="catagoriesh1">Browse By Categories</h1>
-      </div>
+
+      <h1 className="catagoriesh1">Browse By Categories</h1>
+
       <div className="catagories-arrows">
         <i className="bi bi-arrow-left leftarrow"></i>
         <i className="bi bi-arrow-right rightarrow"></i>
       </div>
-         
+
       <div className="catagories">
         <div className="catagories-content">
           <div className="catagories-1">
@@ -203,11 +251,13 @@ function Home() {
       <div className="month-sales">
         <div>
           <h5>This month</h5>
-          <h1>Best selling Products</h1>
+          <h1>Best Selling Products</h1>
+
           <div className="header-btn2">
-            <button onClick={handleView}>view all Product</button>
+            <button onClick={handleView}>View All Product</button>
           </div>
         </div>
+
         <Api products={filteredProducts} handleAddToCart={handleAddToCart} />
       </div>
 
@@ -215,7 +265,10 @@ function Home() {
         <div className="banner-content">
           <div className="banner-left">
             <p className="banner-category">Categories</p>
-            <h1 className="banner-title">Enhance Your <br /> Music Experience</h1>
+            <h1 className="banner-title">
+              Enhance Your <br /> Music Experience
+            </h1>
+
             <div className="timer-rounds">
               <div className="time-box">
                 <h2>{time.t}</h2>
@@ -234,8 +287,10 @@ function Home() {
                 <p>Seconds</p>
               </div>
             </div>
+
             <button className="buy-btn2">Buy Now!</button>
           </div>
+
           <div className="banner-right">
             <img src={jbl} alt="JBL Speaker" className="jbl-img" />
           </div>
@@ -246,38 +301,42 @@ function Home() {
         <div className="explore-name">
           <h5>Our Products</h5>
         </div>
-        <div>
-          <h2>Explore Our Product</h2>
-        </div>
-        <div>
-          <Api products={filteredProducts} handleAddToCart={handleAddToCart} />
-        </div>
+
+        <h2>Explore Our Product</h2>
+
         <div className="explore-map">
           {filteredProducts.map((exploreproduct) => (
-            <article 
-              className="shop-card" 
+            <article
+              className="shop-card"
               key={exploreproduct.id}
               onClick={() => handleProductClicks(exploreproduct.id)}
             >
               <div className="image-section">
                 <span className="offer-tag">-35%</span>
+
                 <div className="icon-overlay">
-                  <button 
-                    className="circle-btn" 
-                    onClick={(e) => e.stopPropagation()} 
+                  <button
+                    className="circle-btn"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <i className="bi bi-trash"></i>
                   </button>
                 </div>
-                <img 
-                  src={Array.isArray(exploreproduct.image) ? exploreproduct.image[0] : exploreproduct.image} 
-                  alt={exploreproduct.name} 
-                  className="item-image" 
+
+                <img
+                  src={
+                    Array.isArray(exploreproduct.image)
+                      ? exploreproduct.image[0]
+                      : exploreproduct.image
+                  }
+                  alt={exploreproduct.name}
+                  className="item-image"
                 />
-                <button 
-                  className="cart-hover-btn" 
+
+                <button
+                  className="cart-hover-btn"
                   onClick={(e) => {
-                    e.stopPropagation(); 
+                    e.stopPropagation();
                     handleAddToCart(exploreproduct);
                   }}
                 >
@@ -287,9 +346,11 @@ function Home() {
 
               <div className="details-section">
                 <h3 className="item-name">{exploreproduct.name}</h3>
+
                 <div className="price-group">
                   <span className="new-price">₹{exploreproduct.price}</span>
                 </div>
+
                 <div className="rating-row">
                   <div className="stars">
                     <i className="bi bi-star-fill"></i>
@@ -308,14 +369,12 @@ function Home() {
 
       <div className="bottom-header">
         <h4>Featured</h4>
-        <div>
-          <h1>New Arrival</h1>
-        </div>
+        <h1>New Arrival</h1>
       </div>
 
       <div className="bottom-container">
         <div className="bottom-frame1">
-          <img src={frame1} alt="PS5" className="frame-img1"/>
+          <img src={frame1} alt="PS5" className="frame-img1" />
           <div className="card-content ps5-text">
             <h2>PlayStation 5</h2>
             <p>Black and White version of the PS5 coming out on sale.</p>
@@ -325,7 +384,7 @@ function Home() {
 
         <div className="right-section">
           <div className="top-card">
-            <img src={frame2} alt="Women Collections" className="frame-img2"/>
+            <img src={frame2} alt="Women Collections" className="frame-img2" />
             <div className="card-content women-text">
               <h2>Women’s Collections</h2>
               <p>Featured woman collections that give you another vibe.</p>
@@ -335,15 +394,16 @@ function Home() {
 
           <div className="small-cards">
             <div className="small-card">
-              <img src={frame3} alt="Speakers" className="frame-img3"/>
+              <img src={frame3} alt="Speakers" className="frame-img3" />
               <div className="card-content">
                 <h2>Speakers</h2>
                 <p>Amazon wireless speakers</p>
                 <button>Shop Now</button>
               </div>
             </div>
+
             <div className="small-card">
-              <img src={frame4} alt="Perfume" className="frame-img4"/>
+              <img src={frame4} alt="Perfume" className="frame-img4" />
               <div className="card-content">
                 <h2>Perfume</h2>
                 <p>GUCCI INTENSE OUD EDP</p>
@@ -377,7 +437,7 @@ function Home() {
           </div>
           <h2>MONEY BACK GUARANTEE</h2>
           <p>We return money within 30 days</p>
-        </div> 
+        </div>
       </div>
     </div>
   );

@@ -85,7 +85,7 @@ function Whishlist() {
           </article>
         ))}
       </div>
-      
+    
       <Api products={items} />
     </div>
   );
