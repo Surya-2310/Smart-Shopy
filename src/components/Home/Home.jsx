@@ -25,7 +25,7 @@ import Laptop from "../../assets/Laptop.png";
 
 import "./Home.css";
 import Api from "./../ProductApI/Api.jsx";
-import Whishlist from './../whishlist/Whishlist';
+
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -82,7 +82,7 @@ function Home() {
     axios
       .get("https://smartshop-api-oas7.onrender.com/product")
       .then((res) => setProducts(res.data))
-      .catch((err) => console.error("Error fetching products:", err));
+      .catch((err) => toast.error("Error fetching products:", err));
   }, []);
 
   const formatTime = (sec) => {
@@ -119,7 +119,7 @@ function Home() {
           theme: "dark",
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   }
 
   function handleView() {

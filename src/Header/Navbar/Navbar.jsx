@@ -16,7 +16,7 @@ function Navbar() {
       .then((res) => {
         setTotal(res.data.length);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   }, []);
 
   function Dropdowns(e) {

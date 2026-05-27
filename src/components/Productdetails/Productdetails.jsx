@@ -180,10 +180,10 @@ function ProductDetails() {
             </div>
           </div>
         </div> 
-      </div> {/* Closing product-main-layout */}
+      </div>
 
       <div className="related-section">
-         <h2 className="related-title">Related Items</h2>
+         <h1 className="related-title">Related Items</h1>
          <Api products={allProducts} />
       </div>
     </div>

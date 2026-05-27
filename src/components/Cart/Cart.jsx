@@ -23,7 +23,7 @@ function Cart() {
         }));
         setCartItems(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   }
 
   function increaseQty(item) {

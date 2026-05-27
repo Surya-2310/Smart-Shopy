@@ -12,7 +12,7 @@ function Orders() {
   useEffect(() => {
     axios.get("https://smartshop-api-oas7.onrender.com/orders")
       .then((res) => setOrder(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   }, []);
 
  
@@ -27,7 +27,7 @@ function Orders() {
       });
 
     })
-    .catch((err) => {console.log(err);
+    .catch((err) => {toast.error(err);
       toast.error("Failed to cancelled order",{
         autoClose:500,
       });
