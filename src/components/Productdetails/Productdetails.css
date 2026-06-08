@@ -264,7 +264,9 @@
 .d-sub {
   font-size: 12px;
 }
-
+.related-section{
+  padding-left:10%;
+}
 .related-section h1{
   font-weight: bold;
   border-left: 15px solid rgb(248, 78, 78);
