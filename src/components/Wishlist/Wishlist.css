@@ -1,4 +1,6 @@
 .wishlist-container {
+  position: relative;
+  top: -60px;
   width: 95%;
   max-width: 1400px;
   margin: 100px auto 40px;

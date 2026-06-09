@@ -78,11 +78,14 @@ function Cart() {
 
   return (
     <div className="cart-page">
-      <h1 className="cart-title">Cart</h1>
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <h2>Your Cart is Empty</h2>
+         
+<i className="bi bi-cart-x empty-cart-icon"></i>
+    
+   <h2>Your Cart is Empty</h2>
+    <p>Add some products to your cart and start shopping!</p>
         </div>
       ) : (
         <>
