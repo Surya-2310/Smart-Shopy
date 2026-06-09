@@ -92,8 +92,7 @@ function Navbar() {
 
           <div className="heart-icon">
             <i 
-              className="bi bi-heart-fill" 
-              style={{ color: "#db4444", cursor: "pointer" }} 
+              className="bi bi-heart-fill navbar-heart-icon" 
               onClick={sendwhishlist}
             ></i>
           </div>

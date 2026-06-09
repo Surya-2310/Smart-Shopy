@@ -35,49 +35,55 @@ function Orders() {
     });
 
 }
-  return (
-    <div className="orders-container">
-
-      <h1 className="orders-title"> Orders List</h1>
-
-      {order.length === 0 ? (
-        <>
+return (
+  <div className="orders-container">
+    {order.length === 0 ? (
+      <div className="empty-orders">
+        <i className="bi bi-bag-heart empty-order-icon"></i>
         <h2 className="no-orders">No Orders Found</h2>
+        <p>Your placed orders will appear here.</p>
+      </div>
+    ) : (
+      <>
+        <h1 className="orders-title">My Orders</h1>
 
-        <img className="img-noorder" src={computing}/>
-        </>
-      ) : (
+        {order.map((item) => (
+          <div key={item.id} className="order-card">
+            <img
+              src={
+                Array.isArray(item.items?.[0]?.image)
+                  ? item.items[0].image[0]
+                  : item.items?.[0]?.image || computing
+              }
+              alt="product"
+              className="order-image"
+            />
 
-        order.map((item) => (
+            <div className="order-details">
+              <h3 className="order-product">
+                {item.items?.[0]?.name || "No Product"}
+              </h3>
 
-          <div key={item.id} className="order-card" >
+              <p className="order-text">Name: {item.name}</p>
+              <p className="order-text">Email: {item.email}</p>
+              <p className="order-text">
+                Quantity: {item.items?.[0]?.quantity}
+              </p>
 
-           <img src={Array.isArray(item.items?.[0]?.image)? item.items[0].image[0]: item.items?.[0]?.image || computing} className="order-image"/>
+              <p className="order-total">
+                Total: ₹{item.total}
+              </p>
+            </div>
 
-                <div className="order-details">
-
-        <h3 className="order-product"> {item.items?.[0]?.name || "No Product"} </h3>
-
-
-        <p className="order-text"> Name: {item.name} </p>
-
-        <p className="order-text"> Email: {item.email} </p>
-
-        <p className="order-text">Quantity: {item.items?.[0]?.quantity}</p>
-
-      <p className="order-total"> Total: ₹{item.total} </p>
- </div>
-  
-  <div className="order-delete">
-      <button onClick={()=>{handleDelete(item.id)}}>Delete item</button>
+            <div className="order-delete">
+              <button onClick={() => handleDelete(item.id)}>
+                Delete Item
+              </button>
+            </div>
           </div>
-</div>
-        ))
-
-      )}
-
-    </div>
-  );
-}
-
+        ))}
+      </>
+    )}
+  </div>
+);}
 export default Orders;
