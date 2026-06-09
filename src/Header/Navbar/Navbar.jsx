@@ -16,7 +16,7 @@ function Navbar() {
       .then((res) => {
         setTotal(res.data.length);
       })
-      .catch((err) => toast.error(err));
+      .catch((err) => console.error(err));
   }, []);
 
   function Dropdowns(e) {
@@ -32,21 +32,22 @@ function Navbar() {
 
   const role = localStorage.getItem("role");
 
-function handleSearch(e) {
-  const value = e.target.value;
+  function handleSearch(e) {
+    const value = e.target.value;
+    setSearch(value);
+    navigate(`/?search=${value}`);
+  }
 
-  setSearch(value);
-
-  navigate(`/?search=${value}`);
-}
+  function sendwhishlist() {
+    navigate('/Wishlist');
+  }
 
   return (
     <div className="navbar" onClick={() => setShow(false)}>
-
-<div className="logo">
-  <span>SMART</span>
-  <span>Shopy</span>
-</div>
+      <div className="logo">
+        <span>SMART</span>
+        <span>Shopy</span>
+      </div>
 
       <ul className="nav-links">
         <li>
@@ -64,12 +65,12 @@ function handleSearch(e) {
       </ul>
 
       <div className="nav-search">
-         <input
-    type="text"
-    placeholder="what are you looking for?"
-    value={search}
-    onChange={handleSearch}
-  />
+        <input
+          type="text"
+          placeholder="what are you looking for?"
+          value={search}
+          onChange={handleSearch}
+        />
         <i className="bi bi-search"></i>
       </div>
 
@@ -89,7 +90,17 @@ function handleSearch(e) {
             </li>
           </div>
 
-          <i className="bi bi-person-circle" onClick={Dropdowns}></i>
+          <div className="heart-icon">
+            <i 
+              className="bi bi-heart-fill" 
+              style={{ color: "#db4444", cursor: "pointer" }} 
+              onClick={sendwhishlist}
+            ></i>
+          </div>
+
+          <div className="profile-icon">
+            <i className="bi bi-person-circle" onClick={Dropdowns}></i>
+          </div>
 
           {show && (
             <div className="dropdown-content">

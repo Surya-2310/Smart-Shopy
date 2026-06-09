@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import './Product.css'
 
 function AddProduct() {
@@ -101,7 +101,6 @@ function AddProduct() {
   <br />
 
   <button type="submit" className="submit-btn">  Product</button>
- <ToastContainer/>
 </form>
 
   );

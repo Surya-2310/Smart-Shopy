@@ -4,16 +4,12 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: #fcfafa;
   color: rgb(11, 11, 11);
-
   padding: 15px 40px;
-
   border-bottom: 1px solid black;
   box-sizing: border-box;
 }
@@ -69,15 +65,11 @@ body {
   position: absolute;
   right: 0;
   top: 40px;
-
   background: white;
   border: 1px solid #ddd;
-
   border-radius: 6px;
   padding: 10px 0;
-
   width: 150px;
-
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -128,24 +120,30 @@ body {
   position: absolute;
   top: -8px;
   right: -10px;
-
   background-color: rgb(253, 103, 103);
   color: white;
-
   width: 16px;
   height: 16px;
-
   border-radius: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 10px;
   font-weight: bold;
 }
 
+.heart-icon i::before {
+  content: "\f417";
+  transition: color 0.2s ease;
+}
 
+.heart-icon i:hover::before {
+  content: "\f415";
+}
+
+.heart-icon i:hover {
+  color: #db4444 !important;
+}
 
 .nav-search {
   position: relative;
@@ -157,12 +155,9 @@ body {
   background-color: #ebe9e9;
   border: none;
   border-radius: 6px;
-
   width: 250px;
   height: 38px;
-
   outline: none;
-
   padding: 0 40px 0 15px;
 }
 
@@ -173,8 +168,6 @@ body {
   cursor: pointer;
   color: #333;
 }
-
-
 
 @media (max-width: 768px) {
   body {

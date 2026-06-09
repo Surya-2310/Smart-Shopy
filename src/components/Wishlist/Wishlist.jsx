@@ -1,17 +1,15 @@
-
-import  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "./Wishlist.css";
-
 
 function Wishlist() {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const API_URL = "https://smartshop-api-oas7.onrender.com/Wishlist";
+  const API_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
   const CART_URL = "https://smartshop-api-oas7.onrender.com/cart";
 
   useEffect(() => {
@@ -21,12 +19,11 @@ function Wishlist() {
         setWishlistItems(res.data || []);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("Error loading wishlist items");
         setLoading(false);
       });
   }, []);
-
 
   const handleRemoveFromWishlist = (e, id) => {
     e.stopPropagation();
@@ -39,7 +36,6 @@ function Wishlist() {
       .catch(() => toast.error("Failed to remove item"));
   };
 
- 
   const handleAddToCart = (e, product) => {
     e.stopPropagation();
     const isLoggedIn = localStorage.getItem("login");
@@ -52,18 +48,21 @@ function Wishlist() {
     axios
       .post(CART_URL, product)
       .then(() => {
-        toast.success("Added to cart!", { autoClose: 1000, position: "top-center", theme: "dark" });
+        toast.success("Added to cart!", 
+          { autoClose: 1000,
+            position: "top-center",
+              theme: "dark"
+             });
       })
       .catch(() => toast.error("Failed to add to cart"));
   };
 
   if (loading) {
-    return <h2 className="loading-title" style={{ textAlign: "center", marginTop: "50px" }}>Loading Wishlist...</h2>;
+    return <h2 className="loading-title">Loading Wishlist...</h2>;
   }
 
   return (
     <div className="wishlist-container">
-      <ToastContainer />
       <div className="wishlist-header">
         <h1>Wishlist ({wishlistItems.length})</h1>
         <button className="bag-btn" onClick={() => navigate("/")}>
@@ -73,7 +72,7 @@ function Wishlist() {
 
       {wishlistItems.length === 0 ? (
         <div className="empty-wishlist">
-          <i className="bi bi-heartbreak" style={{ fontSize: "3rem", color: "#db4444" }}></i>
+          <i className="bi bi-heartbreak"></i>
           <h2>Your Wishlist is Empty</h2>
           <p>Explore our products and tap the heart to save your favorites!</p>
         </div>
@@ -103,7 +102,7 @@ function Wishlist() {
                 />
 
                 <button className="cart-hover-btn" onClick={(e) => handleAddToCart(e, item)}>
-                  <i className="bi bi-cart3" style={{ marginRight: "8px" }}></i> Add To Cart
+                  <i className="bi bi-cart3"></i> Add To Cart
                 </button>
               </div>
 

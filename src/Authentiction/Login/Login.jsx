@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 import './Login.css';
 import imagecart from '../../assets/Side Image.png';
 
@@ -159,8 +159,6 @@ return (
           <p className="log-1">
             Switch account? <Link to="/signup">Signup</Link>
           </p> 
-
-          <ToastContainer />
 
         </form>
 

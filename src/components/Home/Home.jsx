@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 import frame1 from "../../assets/frame1.png";
 import frame2 from "../../assets/frame2.png";
@@ -26,11 +26,13 @@ import Laptop from "../../assets/Laptop.png";
 import "./Home.css";
 import Api from "./../ProductApI/Api.jsx";
 
-
 function Home() {
   const [products, setProducts] = useState([]);
   const [timeLeft, setTimeLeft] = useState(3 * 24 * 60 * 60);
   const [index, setIndex] = useState(0);
+  const [dbWishlist, setDbWishlist] = useState([]);
+
+  const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -68,7 +70,7 @@ function Home() {
     }, 2000);
 
     return () => clearInterval(slider);
-  }, []);
+  }, [ads.length]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -81,8 +83,13 @@ function Home() {
   useEffect(() => {
     axios
       .get("https://smartshop-api-oas7.onrender.com/product")
-      .then((res) => setProducts(res.data))
-      .catch((err) => toast.error("Error fetching products:", err));
+      .then((res) => setProducts(res.data || []))
+      .catch(() => toast.error("Error fetching products"));
+
+    axios
+      .get(WISHLIST_URL)
+      .then((res) => setDbWishlist(res.data || []))
+      .catch(() => console.error("Error fetching wishlist"));
   }, []);
 
   const formatTime = (sec) => {
@@ -102,7 +109,7 @@ function Home() {
     product.name?.toLowerCase().includes(search.toLowerCase())
   );
 
-  function handleAddToCart(product) {
+  const handleAddToCart = (product) => {
     const isLoggedIn = localStorage.getItem("login");
 
     if (!isLoggedIn) {
@@ -119,21 +126,48 @@ function Home() {
           theme: "dark",
         });
       })
-      .catch((err) => toast.error(err));
-  }
+      .catch(() => toast.error("Failed to add cart"));
+  };
 
-  function handleView() {
+  const handleHeartClick = (e, item) => {
+    e.stopPropagation();
+    const isAlreadySaved = dbWishlist.some((wishItem) => wishItem.id === item.id);
+
+    if (isAlreadySaved) {
+      axios
+        .delete(`${WISHLIST_URL}/${item.id}`)
+        .then(() => {
+          setDbWishlist((prev) => prev.filter((wishItem) => wishItem.id !== item.id));
+          toast.info("Removed from Wishlist", {
+            autoClose: 1000,
+            position: "top-center",
+          });
+        })
+        .catch(() => toast.error("Failed to remove from wishlist"));
+    } else {
+      axios
+        .post(WISHLIST_URL, item)
+        .then(() => {
+          setDbWishlist((prev) => [...prev, item]);
+          toast.success("Added to Wishlist", {
+            autoClose: 1000,
+            position: "top-center",
+          });
+        })
+        .catch(() => toast.error("Failed to add to wishlist"));
+    }
+  };
+
+  const handleView = () => {
     navigate("/Allproduct", { state: { allProducts: products } });
-  }
+  };
 
-  function handleProductClicks(id) {
+  const handleProductClicks = (id) => {
     navigate(`/ProductDetails/${id}`);
-  }
+  };
 
   return (
     <div className="home-container">
-      <ToastContainer />
-
       <div className="hero-section">
         <div className="hero-left">
           <ul>
@@ -161,7 +195,7 @@ function Home() {
                 {ads[index].offer} <br /> off Voucher
               </h1>
 
-            <button className="shop-btn" onClick={()=>handleView()}>Shop Now →</button>
+              <button className="shop-btn" onClick={handleView}>Shop Now →</button>
             </div>
 
             <div className="hero-right">
@@ -266,7 +300,7 @@ function Home() {
           <div className="banner-left">
             <p className="banner-category">Categories</p>
             <h1 className="banner-title">
-              Enhance Your <br /> Music Experience
+              Enhayce Your <br /> Music Experience
             </h1>
 
             <div className="timer-rounds">
@@ -305,65 +339,64 @@ function Home() {
         <h2>Explore Our Product</h2>
 
         <div className="explore-map">
-          {filteredProducts.map((exploreproduct) => (
-            <article
-              className="shop-card"
-              key={exploreproduct.id}
-              onClick={() => handleProductClicks(exploreproduct.id)}
-            >
-              <div className="image-section">
-                <span className="offer-tag">-35%</span>
+          {filteredProducts.map((exploreproduct) => {
+            const isLiked = dbWishlist.some((wishItem) => wishItem.id === exploreproduct.id);
+            return (
+              <article
+                className="shop-card"
+                key={exploreproduct.id}
+                onClick={() => handleProductClicks(exploreproduct.id)}
+              >
+                <div className="image-section">
+                  <span className="offer-tag">-35%</span>
 
-                <div className="icon-overlay">
+                  <div className="icon-overlay">
+                  <button className="circle-btn" onClick={(e) => handleHeartClick(e, exploreproduct)}>
+                          <i className={`wishlist-heart bi ${isLiked ? "bi-heart-fill active-heart" : "bi-heart"}`}></i>
+                        </button>
+                  </div>
+                  <img
+                    src={
+                      Array.isArray(exploreproduct.image)
+                        ? exploreproduct.image[0]
+                        : exploreproduct.image
+                    }
+                    alt={exploreproduct.name}
+                    className="item-image"
+                  />
+
                   <button
-                    className="circle-btn"
-                    onClick={(e) => e.stopPropagation()}
+                    className="cart-hover-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAddToCart(exploreproduct);
+                    }}
                   >
-                     <i className="bi bi-heart"></i>
+                    <i className="bi bi-cart3"></i> Add To Cart
                   </button>
                 </div>
 
-                <img
-                  src={
-                    Array.isArray(exploreproduct.image)
-                      ? exploreproduct.image[0]
-                      : exploreproduct.image
-                  }
-                  alt={exploreproduct.name}
-                  className="item-image"
-                />
+                <div className="details-section">
+                  <h3 className="item-name">{exploreproduct.name}</h3>
 
-                <button
-                  className="cart-hover-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleAddToCart(exploreproduct);
-                  }}
-                >
-                  <i className="bi bi-cart3"></i> Add To Cart
-                </button>
-              </div>
-
-              <div className="details-section">
-                <h3 className="item-name">{exploreproduct.name}</h3>
-
-                <div className="price-group">
-                  <span className="new-price">₹{exploreproduct.price}</span>
-                </div>
-
-                <div className="rating-row">
-                  <div className="stars">
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill dull-star"></i>
+                  <div className="price-group">
+                    <span className="new-price">₹{exploreproduct.price}</span>
                   </div>
-                  <span className="review-count">(88)</span>
+
+                  <div className="rating-row">
+                    <div className="stars">
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill dull-star"></i>
+                    </div>
+                    <span className="review-count">(88)</span>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
 
@@ -405,7 +438,7 @@ function Home() {
             <div className="small-card">
               <img src={frame4} alt="Perfume" className="frame-img4" />
               <div className="card-content">
-                <h2>Perfume</h2>
+                <h2>Speakers</h2>
                 <p>GUCCI INTENSE OUD EDP</p>
                 <button>Shop Now</button>
               </div>

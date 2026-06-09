@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 import imagecart from '../../assets/Side Image.png';
 import './Signup.css';
 
@@ -176,7 +176,6 @@ function Signup() {
             <p className="sign1">Switch account?<Link to="/login"> Login</Link></p>
 </div>
       </form>
-      <ToastContainer />
       </div>
     </>
   );

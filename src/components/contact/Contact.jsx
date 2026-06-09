@@ -1,5 +1,5 @@
 import  { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import './Contact.css'
 
 function Contact() {
@@ -35,7 +35,6 @@ function Contact() {
   }
   return (
     <div className="contact-container">
-      <ToastContainer/>
 
       <div className="contact-box">
 

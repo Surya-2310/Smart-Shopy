@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 import confetti from "canvas-confetti";
 import { Wallet, Smartphone, CreditCard, CheckCircle, X } from "lucide-react";
 import "react-toastify/dist/ReactToastify.css";
@@ -75,7 +75,6 @@ function Payment() {
 
   return (
     <div className="payment-page">
-      <ToastContainer />
 
       <div className="split-payment-wrapper">
         

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "./Productdetails.css";
 import Api from '../ProductApI/Api.jsx';
 
@@ -66,7 +66,6 @@ function ProductDetails() {
 
   return (
     <div className="product-page-wrapper">
-      <ToastContainer />
       
       <nav className="breadcrumb">
         <span onClick={() => navigate("/")}>Account</span> / 

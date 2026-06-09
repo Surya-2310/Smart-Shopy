@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "./Buynow.css";
 
 function Buynow() {
@@ -89,7 +89,6 @@ function Buynow() {
 
         <button className="place-order" onClick={handleOrder}>Place Order</button>
       </div>
-      <ToastContainer />
     </div>
   );
 }

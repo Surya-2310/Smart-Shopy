@@ -816,6 +816,31 @@ position: relative;
 bottom: -52px;
  }
 
+ .circle-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wishlist-heart {
+  color: #555;
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+
+.active-heart {
+  color: #db4444;
+}
+
+.circle-btn:hover .wishlist-heart {
+  color: #db4444;
+}
 
 
 @media (max-width: 768px) {

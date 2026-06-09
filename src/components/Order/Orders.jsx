@@ -1,7 +1,7 @@
 import axios from "axios";
 import  { useEffect, useState } from "react";
 import computing from '../../assets/computing.png';
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import './Orders.css'
 
 
@@ -37,7 +37,6 @@ function Orders() {
 }
   return (
     <div className="orders-container">
-      <ToastContainer/>
 
       <h1 className="orders-title"> Orders List</h1>
 
