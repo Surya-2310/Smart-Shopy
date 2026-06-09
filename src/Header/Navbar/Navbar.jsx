@@ -42,9 +42,11 @@ function handleSearch(e) {
 
   return (
     <div className="navbar" onClick={() => setShow(false)}>
-      <div className="web-name">
-        <h2>Smart Shopy</h2>
-      </div>
+
+<div className="logo">
+  <span>SMART</span>
+  <span>Shopy</span>
+</div>
 
       <ul className="nav-links">
         <li>

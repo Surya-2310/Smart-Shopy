@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "./Whishlist.css";
+import "./Allproduct.css";
 import Api from '../ProductApI/Api.jsx';
 
-function Whishlist() {
+function Allproduct() {
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -32,7 +32,7 @@ function Whishlist() {
       <ToastContainer />
       
       <div className="wishlist-header">
-        <h2 className="wishlist-count">Wishlist ({items.length})</h2>
+        <h2 className="wishlist-count">All Products ({items.length})</h2>
         <button className="move-all-btn" onClick={() => handlemove()}>Move All To Bag</button>
       </div>
 
@@ -47,7 +47,7 @@ function Whishlist() {
               <span className="offer-tag">-35%</span>
               <div className="icon-overlay">
                 <button className="circle-btn" onClick={(e) => e.stopPropagation()}>
-                  <i className="bi bi-trash"></i>
+                    <i className="bi bi-heart"></i>
                 </button>
               </div>
              
@@ -91,4 +91,4 @@ function Whishlist() {
   );
 }
 
-export default Whishlist;
+export default Allproduct;

@@ -123,7 +123,7 @@ function Home() {
   }
 
   function handleView() {
-    navigate("/Whishlist", { state: { allProducts: products } });
+    navigate("/Allproduct", { state: { allProducts: products } });
   }
 
   function handleProductClicks(id) {
@@ -319,7 +319,7 @@ function Home() {
                     className="circle-btn"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <i className="bi bi-trash"></i>
+                     <i className="bi bi-heart"></i>
                   </button>
                 </div>
 

@@ -42,7 +42,7 @@ function Payment() {
       spread: 1220,
       origin: { y: 0.6 }
     });
-  };
+  };``
 
   const createOrder = () => {
     const orderData = {

@@ -15,8 +15,11 @@ import About from '../components/About/About.jsx';
 import Contact from '../components/contact/Contact.jsx';
 import NotFound from '../components/Notfound/Notfound.jsx';
 import Api from './../components/ProductApI/Api.jsx';
-import Whishlist from './../components/whishlist/Whishlist.jsx';
+import Allproduct from './../components/Allproduct/Allproduct.jsx';
 import ProductDetails from '../components/Productdetails/Productdetails.jsx'
+import Wishlist from './../components/Wishlist/Wishlist.jsx';
+
+
 function Routes() {
 
   const move = createBrowserRouter(
@@ -37,7 +40,8 @@ function Routes() {
         { path: "signup", element: <Signup /> },
         { path: "Contact", element: <Contact /> },
         { path: "Api", element: <Api /> },
-        { path: "Whishlist", element: <Whishlist /> },
+        { path: "Allproduct", element: <Allproduct /> },
+         { path: "Wishlist", element: <Wishlist /> },
         { path: "ProductDetails/:id", element: <ProductDetails /> },
         { path: "*", element: <NotFound /> },
       ],

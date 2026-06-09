@@ -98,7 +98,23 @@ body {
   color: #db4444;
 }
 
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  font-weight: 800;
+}
 
+.logo span:first-child {
+  color: #111827;
+  font-size: 1rem;
+}
+
+.logo span:last-child {
+  color: #db4444;
+  font-size: 2rem;
+  font-family: cursive;
+}
 
 .cart-notife {
   position: relative;
