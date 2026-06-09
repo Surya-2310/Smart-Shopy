@@ -56,12 +56,7 @@ function Payment() {
         setOrderPlaced(true);
         celebrate();
 
-        toast.success("Order Placed Successfully", {
-          position: "top-right",
-          autoClose: 1500,
-          transition: Bounce
-        });
-
+    
         setTimeout(() => {
           setIsModalOpen(false);
           navigate("/");
