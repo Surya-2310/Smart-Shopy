@@ -9,7 +9,7 @@ function Api({ products }) {
   const navigate = useNavigate();
   const [dbWishlist, setDbWishlist] = useState([]);
 
-  const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/Wishlist";
+  const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
 
   useEffect(() => {
     axios
