@@ -27,8 +27,7 @@ function Wishlist() {
 
   const handleRemoveFromWishlist = (e, id) => {
     e.stopPropagation();
-    axios
-      .delete(`${API_URL}/${id}`)
+    axios.delete(`${API_URL}/${id}`)
       .then(() => {
         setWishlistItems((prev) => prev.filter((item) => item.id !== id));
         toast.info("Removed from Wishlist", { autoClose: 1000, position: "top-center" });
@@ -45,14 +44,14 @@ function Wishlist() {
       return;
     }
 
-    axios
-      .post(CART_URL, product)
+    const cartProduct = { ...product };
+    if (cartProduct.productId) {
+      cartProduct.id = cartProduct.productId;
+    }
+
+    axios.post(CART_URL, cartProduct)
       .then(() => {
-        toast.success("Added to cart!", 
-          { autoClose: 1000,
-            position: "top-center",
-              theme: "dark"
-             });
+        toast.success("Added to cart!", { autoClose: 1000, position: "top-center", theme: "dark" });
       })
       .catch(() => toast.error("Failed to add to cart"));
   };
@@ -65,9 +64,7 @@ function Wishlist() {
     <div className="wishlist-container">
       <div className="wishlist-header">
         <h1>Wishlist ({wishlistItems.length})</h1>
-        <button className="bag-btn" onClick={() => navigate("/")}>
-          Continue Shopping
-        </button>
+        <button className="bag-btn" onClick={() => navigate("/")}>Continue Shopping</button>
       </div>
 
       {wishlistItems.length === 0 ? (
@@ -78,43 +75,42 @@ function Wishlist() {
         </div>
       ) : (
         <div className="wishlist-grid">
-          {wishlistItems.map((item) => (
-            <article
-              className="shop-card"
-              key={item.id}
-              onClick={() => navigate(`/ProductDetails/${item.id}`)}
-            >
-              <div className="image-section">
-                <span className="offer-tag">-35%</span>
-                <div className="icon-overlay">
-                  <button
-                    className="circle-icon-btn remove-btn"
-                    onClick={(e) => handleRemoveFromWishlist(e, item.id)}
-                  >
-                    <i className="bi bi-trash3-fill text-danger"></i>
+          {wishlistItems.map((item) => {
+            const targetId = item.productId || item.id;
+
+            return (
+              <article  
+                className="shop-card"
+                key={item.id}
+                onClick={() => navigate(`/ProductDetails/${targetId}`)}
+              >
+                <div className="image-section">
+                  <span className="offer-tag">-35%</span>
+                  <div className="icon-overlay">
+                    <button className="circle-icon-btn remove-btn" onClick={(e) => handleRemoveFromWishlist(e, item.id)}>
+                      <i className="bi bi-trash3-fill text-danger"></i>
+                    </button>
+                  </div>
+                  <img src={Array.isArray(item.image) ? item.image[0] : item.image}
+                    alt={item.name}
+                    className="item-image"
+                  />
+
+                  <button className="cart-hover-btn" onClick={(e) => handleAddToCart(e, item)}>
+                    <i className="bi bi-cart3"></i> Add To Cart
                   </button>
                 </div>
 
-                <img
-                  src={Array.isArray(item.image) ? item.image[0] : item.image}
-                  alt={item.name}
-                  className="item-image"
-                />
-
-                <button className="cart-hover-btn" onClick={(e) => handleAddToCart(e, item)}>
-                  <i className="bi bi-cart3"></i> Add To Cart
-                </button>
-              </div>
-
-              <div className="details-section">
-                <h3 className="item-name">{item.name}</h3>
-                <div className="price-group">
-                  <span className="new-price">₹{item.price}</span>
-                  <span className="old-price">₹{item.price + 500}</span>
+                <div className="details-section">
+                  <h3 className="item-name">{item.name}</h3>
+                  <div className="price-group">
+                    <span className="new-price">₹{item.price}</span>
+                    <span className="old-price">₹{item.price + 500}</span>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       )}
     </div>

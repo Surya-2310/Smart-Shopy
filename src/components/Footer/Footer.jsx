@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import footerimg from '../../assets/webname.png'
+import setqr from '../../assets/QR.png'
 import './Footer.css'
 
 
@@ -55,15 +56,18 @@ function Footer() {
 
           <div className="social-icons">
 
-            <i className="bi bi-facebook"></i>
+            <i className="bi bi-facebook"  onClick={() => window.open("https://www.facebook.com/")}></i>
 
-            <i className="bi bi-instagram"></i>
+            <i className="bi bi-instagram"  onClick={() => window.open("https://www.instagram.com/surya_crz_23/")}></i>
 
-            <i className="bi bi-twitter-x"></i>
+            <i className="bi bi-twitter-x"  onClick={() => window.open("https://x.com/")}></i>
 
-            <i className="bi bi-youtube"></i>
-
+          <i className="bi bi-youtube" onClick={() => window.open("https://www.youtube.com")}></i>
           </div>
+
+           <div className="footer-qr">
+             <img src={setqr} alt="" />
+           </div>
 
         </div>
 

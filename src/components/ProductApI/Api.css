@@ -238,6 +238,13 @@
 .dynamic-heart-liked {
   color: #db4444;
 }
+.bi-heart-fill {
+  color: #db4444 !important;
+}
+
+.bi-heart {
+  color: #555;
+}
 
 @media (max-width: 768px) {
   .shop-wrapper {

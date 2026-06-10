@@ -75,7 +75,12 @@
   padding-top: 15px;
   font-size: 14px;
 }
-
+.footer-qr img{
+  align-items: center;
+  width: 60%;
+  position: relative;
+  bottom: -14px;
+}
 
 
 @media (max-width: 768px) {

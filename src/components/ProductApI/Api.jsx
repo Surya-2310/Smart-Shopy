@@ -56,13 +56,16 @@ function Api({ products }) {
 
   const handleHeartClick = (e, item) => {
     e.stopPropagation();
-    const isAlreadySaved = dbWishlist.some((wishItem) => wishItem.id === item.id);
+    
+    const existingWishItem = dbWishlist.find(
+      (wishItem) => String(wishItem.productId) === String(item.id) || String(wishItem.id) === String(item.id)
+    );
 
-    if (isAlreadySaved) {
+    if (existingWishItem) {
       axios
-        .delete(`${WISHLIST_URL}/${item.id}`)
+        .delete(`${WISHLIST_URL}/${existingWishItem.id}`)
         .then(() => {
-          setDbWishlist((prev) => prev.filter((wishItem) => wishItem.id !== item.id));
+          setDbWishlist((prev) => prev.filter((wishItem) => wishItem.id !== existingWishItem.id));
           toast.info("Removed from Wishlist", {
             autoClose: 1000,
             position: "top-center",
@@ -70,10 +73,17 @@ function Api({ products }) {
         })
         .catch(() => toast.error("Failed to remove from wishlist"));
     } else {
+      const wishItemToSend = {
+        ...item,
+        productId: item.id 
+      };
+      
+      delete wishItemToSend.id; 
+
       axios
-        .post(WISHLIST_URL, item)
-        .then(() => {
-          setDbWishlist((prev) => [...prev, item]);
+        .post(WISHLIST_URL, wishItemToSend)
+        .then((res) => {
+          setDbWishlist((prev) => [...prev, res.data]);
           toast.success("Added to Wishlist ❤️", {
             autoClose: 1000,
             position: "top-center",
@@ -85,7 +95,6 @@ function Api({ products }) {
 
   return (
     <div className="shop-wrapper">
-
       <div className="section-header">
         <div className="arrow-group">
           <button className="slide-btn" onClick={() => moveSlider("prev")}>
@@ -105,7 +114,9 @@ function Api({ products }) {
             <h3 className="no-products-title">No products found.</h3>
           ) : (
             products.map((item) => {
-              const isLiked = dbWishlist.some((wishItem) => wishItem.id === item.id);
+              const isLiked = dbWishlist.some(
+                (wishItem) => String(wishItem.productId) === String(item.id) || String(wishItem.id) === String(item.id)
+              );
               
               return (
                 <article
@@ -117,10 +128,7 @@ function Api({ products }) {
                     <span className="offer-tag">-35%</span>
                     <div className="icon-overlay">
                       <button className="circle-icon-btn" onClick={(e) => handleHeartClick(e, item)}>
-                        <i 
-                          className={`bi ${isLiked ? "bi-heart-fill" : "bi-heart"}`}
-                          style={{ color: isLiked ? "#db4444" : "#000000" }}
-                        ></i>
+                        <i className={`bi ${isLiked ? "bi-heart-fill" : "bi-heart"}`}></i>
                       </button>
                     </div>
 

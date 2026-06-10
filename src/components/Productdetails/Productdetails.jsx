@@ -8,32 +8,54 @@ function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   
-            const [product, setProduct] = useState(null);
-            const [allProducts, setAllProducts] = useState([]); 
-            const [loading, setLoading] = useState(true);
-            const [mainImage, setMainImage] = useState("");
-            const [count, setCount] = useState(1);
-            const [selectedSize, setSelectedSize] = useState('M'); 
-            const [selectedColor, setSelectedColor] = useState('red'); 
+  const [product, setProduct] = useState(null);
+  const [allProducts, setAllProducts] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [mainImage, setMainImage] = useState("");
+  const [count, setCount] = useState(1);
+  const [selectedSize, setSelectedSize] = useState('M'); 
+  const [selectedColor, setSelectedColor] = useState('red'); 
 
-    useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
     setLoading(true);
 
     axios.get("https://smartshop-api-oas7.onrender.com/product")
-         .then((response) => {
-          setAllProducts(response.data || []);
-        
-        const foundProduct = response.data.find((item) => String(item.id) === String(id));
-        
-        if (foundProduct) {
-          setProduct(foundProduct);
-          const defaultImg = Array.isArray(foundProduct.image) ? foundProduct.image[0] : foundProduct.image;
-          setMainImage(defaultImg);
-        } else {
-          setProduct(null);
-        }
-        setLoading(false);
+      .then((productResponse) => {
+        const masterProducts = productResponse.data || [];
+        setAllProducts(masterProducts);
+
+        axios.get("https://smartshop-api-oas7.onrender.com/wishlist")
+          .then((wishlistResponse) => {
+            const wishlistItems = wishlistResponse.data || [];
+            const matchedWishItem = wishlistItems.find(w => String(w.id) === String(id));
+
+            const foundProduct = masterProducts.find((item) => {
+              if (!item) return false;
+              const isDirectIdMatch = String(item.id).trim() === String(id).trim();
+              const isProductIdMatch = matchedWishItem && String(item.id) === String(matchedWishItem.productId);
+              const isNameMatch = matchedWishItem && item.name && String(item.name).trim() === String(matchedWishItem.name).trim();
+              return isDirectIdMatch || isProductIdMatch || isNameMatch;
+            });
+
+            if (foundProduct) {
+              setProduct(foundProduct);
+              const defaultImg = Array.isArray(foundProduct.image) ? foundProduct.image[0] : foundProduct.image;
+              setMainImage(defaultImg);
+            } else {
+              setProduct(null);
+            }
+            setLoading(false);
+          })
+          .catch(() => {
+            const foundProduct = masterProducts.find((item) => item && String(item.id) === String(id));
+            setProduct(foundProduct || null);
+            if (foundProduct) {
+              const defaultImg = Array.isArray(foundProduct.image) ? foundProduct.image[0] : foundProduct.image;
+              setMainImage(defaultImg);
+            }
+            setLoading(false);
+          });
       })
       .catch((error) => {
         console.error("Error fetching product:", error);
@@ -43,7 +65,7 @@ function ProductDetails() {
 
   if (loading) {
     return (
-      <div className="loading-state">
+      <div className="loading-state" style={{ textAlign: 'center', padding: '50px' }}>
         <h1>Loading Product Details...</h1>
       </div>
     );
@@ -51,8 +73,12 @@ function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="loading-state">
+      <div className="loading-state" style={{ textAlign: 'center', padding: '50px' }}>
         <h1>Product not found.</h1>
+        <p>The product you are looking for might have been removed or the ID is incorrect.</p>
+        <button onClick={() => navigate("/")} className="buy-now-btn" style={{ marginTop: '20px', width: 'auto', padding: '10px 20px' }}>
+          Go Back Home
+        </button>
       </div>
     );
   }
@@ -70,24 +96,23 @@ function ProductDetails() {
     });
   };
 
-  const MultipleImages = Array.isArray(product.image) && product.image.length > 1;
   const imageList = Array.isArray(product.image) ? product.image : [product.image];
+  const MultipleImages = imageList.length > 1;
 
   return (
     <div className="product-page-wrapper">
-      
       <nav className="breadcrumb">
-        <span onClick={() => navigate("/")}>Account</span> / 
+        <span onClick={() => navigate("/")} style={{ cursor: 'pointer' }}>Account</span> / 
         <span>Gaming</span> /
         <span className="current">{product.name}</span>
       </nav>
 
       <div className="product-main-layout">
         <div className="gallery-section">
-        {MultipleImages ? (
-         <div className="thumb-stack">
+          {MultipleImages ? (
+            <div className="thumb-stack">
               {imageList.map(function (smallimg, index) {
-               return (
+                return (
                   <div
                     key={index}
                     className="thumb-card"
@@ -142,10 +167,10 @@ function ProductDetails() {
                 className={`dot red ${selectedColor === 'red' ? 'active' : ''}`} 
                 onClick={() => setSelectedColor('red')}
               ></span>
-              </div>
-              </div>
+            </div>
+          </div>
 
-            <div className="config-row">
+          <div className="config-row">
             <span className="label">Size:</span>
             <div className="size-selector">
               {['XS', 'S', 'M', 'L', 'XL'].map(s => (
