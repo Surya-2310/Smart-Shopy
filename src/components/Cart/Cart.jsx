@@ -23,7 +23,11 @@ function Cart() {
         }));
         setCartItems(data);
       })
-      .catch((err) => toast.error(err));
+      .catch((err) =>
+        toast.error(
+          err?.response?.data?.message || err?.message || "Failed to fetch cart items"
+        )
+      );
   }
 
   function increaseQty(item) {

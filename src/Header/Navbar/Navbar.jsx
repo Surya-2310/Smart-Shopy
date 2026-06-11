@@ -78,23 +78,15 @@ function Navbar() {
         <ul>
           <div className="cart-notife">
             <li>
-              <Link to="/Cart">
-                <i className="bi bi-cart-check">
-                  {total > 0 && (
-                    <div className="cart-count">
-                      <span>{total}</span>
-                    </div>
-                  )}
+              <Link to="/Cart"><i className="bi bi-cart-check">{total > 0 && (
+                    <div className="cart-count"><span>{total}</span></div>)}
                 </i>
               </Link>
             </li>
           </div>
 
           <div className="heart-icon">
-            <i 
-              className="bi bi-heart-fill navbar-heart-icon" 
-              onClick={sendwhishlist}
-            ></i>
+            <i className="bi bi-heart-fill navbar-heart-icon" onClick={sendwhishlist}></i>
           </div>
 
           <div className="profile-icon">
@@ -114,16 +106,12 @@ function Navbar() {
               )}
 
               <li>
-                <Link
-                  to="/"
-                  onClick={(e) => {
+                <Link to="/"onClick={(e) => {
                     e.preventDefault();
                     handleLogout();
                     setShow(false);
                   }}
-                >
-                  Logout
-                </Link>
+                >Logout</Link>
               </li>
             </div>
           )}

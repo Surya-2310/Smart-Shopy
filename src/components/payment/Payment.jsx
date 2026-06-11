@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -42,7 +42,7 @@ function Payment() {
       spread: 1220,
       origin: { y: 0.6 }
     });
-  };``
+  };
 
   const createOrder = () => {
     const orderData = {
@@ -78,11 +78,11 @@ function Payment() {
 
       <div className="split-payment-wrapper">
         
-        <div className="payment-summary-panel">
-          <div className="brand-header">
-            <h2>SmartShopy</h2>
-            <p>Secure Checkout Gateway</p>
-          </div>
+    <div className="payment-summary-panel">
+      <div className="brand-header">
+        <h2>SmartShopy</h2>
+        <p>Secure Checkout Gateway</p>
+      </div>
           <div className="amount-display-box">
             <span>Total Payable Amount</span>
             <h1>₹{amount}</h1>
@@ -97,33 +97,33 @@ function Payment() {
           <p className="panel-title-label">Select Preferred Payment Method</p>
 
           <div className="payment-methods-stack">
-            
-            <div className="method-box-card" onClick={() => handleSelectMethod("Cash")}>
-              <div className="method-box-icon cod-icon">
-                <Wallet size={26} /></div>
-              <div className="method-box-info">
-                <h4>Cash on Delivery</h4>
-                <p>Pay with cash upon delivery</p>
-              </div>
-            </div>
+  
+  <div className="method-box-card" onClick={() => handleSelectMethod("Cash")}>
+<div className="method-box-icon cod-icon">
+  <Wallet size={26} /></div>
+<div className="method-box-info">
+  <h4>Cash on Delivery</h4>
+  <p>Pay with cash upon delivery</p>
+</div>
+  </div>
 
-            <div className="method-box-card" onClick={() => handleSelectMethod("GPay")}>
-              <div className="method-box-icon upi-icon">
-                <Smartphone size={26} /></div>
-              <div className="method-box-info">
-                <h4>GPay / UPI Payment</h4>
-                <p>Click to open QR Code window</p>
-              </div>
-            </div>
+  <div className="method-box-card" onClick={() => handleSelectMethod("GPay")}>
+    <div className="method-box-icon upi-icon">
+  <Smartphone size={26} /></div>
+    <div className="method-box-info">
+  <h4>GPay / UPI Payment</h4>
+  <p>Click to open QR Code window</p>
+    </div>
+  </div>
 
-            <div className="method-box-card" onClick={() => handleSelectMethod("Card")}>
-              <div className="method-box-icon card-icon">
-                <CreditCard size={26} /></div>
-              <div className="method-box-info">
-                <h4>Credit / Debit Card</h4>
-                <p>Pay securely using your card</p>
-              </div>
-            </div>
+  <div className="method-box-card" onClick={() => handleSelectMethod("Card")}>
+    <div className="method-box-icon card-icon">
+      <CreditCard size={26} /></div>
+    <div className="method-box-info">
+      <h4>Credit / Debit Card</h4>
+      <p>Pay securely using your card</p>
+    </div>
+  </div>
 
           </div>
         </div>
@@ -147,53 +147,53 @@ function Payment() {
                 {paymentMethod === "Cash" ? "Cash On Delivery" : paymentMethod === "GPay" ? "Scan QR Code" : "Card Payment"}
               </h3>
               
-              {paymentMethod === "GPay" ? (
-                <div className="modal-qr-display-area">
-                  <p>Scan to Pay ₹{amount}</p>
-                  <div className="qr-container-border">
-                    <QRCodeCanvas value={qrValue} size={180} />
-                  </div>
-                  <button type="button" className="modal-pay-now-btn" onClick={createOrder}>
-                    Confirm Payment
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleModalSubmit}>
-                  {paymentMethod === "Cash" && (
-                    <p className="modal-info-alert">Please keep the exact cash amount ready at the time of delivery.</p>
-                  )}
+    {paymentMethod === "GPay" ? (
+      <div className="modal-qr-display-area">
+        <p>Scan to Pay ₹{amount}</p>
+        <div className="qr-container-border">
+          <QRCodeCanvas value={qrValue} size={180} />
+        </div>
+        <button type="button" className="modal-pay-now-btn" onClick={createOrder}>
+          Confirm Payment
+        </button>
+      </div>
+    ) : (
+      <form onSubmit={handleModalSubmit}>
+        {paymentMethod === "Cash" && (
+          <p className="modal-info-alert">Please keep the exact cash amount ready at the time of delivery.</p>
+        )}
 
-                  {paymentMethod === "Card" && (
-                    <div className="card-input-wrapper">
-                      <div className="input-element-block">
-                        <label>Card Number</label>
-                        <input type="text" placeholder="XXXX XXXX XXXX XXXX" maxLength="19" required 
-                          value={cardDetails.number} onChange={(e) => setCardDetails({...cardDetails, number: e.target.value})}
-                        />
-                      </div>
-                      <div className="input-element-row">
-                        <div className="input-element-block">
-                          <label>Expiry Date</label>
-                          <input type="text" placeholder="MM/YY" maxLength="5" required 
-                            value={cardDetails.expiry} onChange={(e) => setCardDetails({...cardDetails, expiry: e.target.value})}
-                          />
-                        </div>
-                        <div className="input-element-block">
-                          <label>CVV</label>
-                          <input type="password" placeholder="****" maxLength="4" required 
-                            value={cardDetails.cvv} onChange={(e) => setCardDetails({...cardDetails, cvv: e.target.value})}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <button type="submit" className="modal-pay-now-btn">
-                    Pay ₹{amount}
-                  </button>
-                </form>
-              )}
+        {paymentMethod === "Card" && (
+          <div className="card-input-wrapper">
+    <div className="input-element-block">
+      <label>Card Number</label>
+      <input type="text" placeholder="XXXX XXXX XXXX XXXX" maxLength="19" required 
+        value={cardDetails.number} onChange={(e) => setCardDetails({...cardDetails, number: e.target.value})}
+      />
+    </div>
+            <div className="input-element-row">
+        <div className="input-element-block">
+          <label>Expiry Date</label>
+          <input type="text" placeholder="MM/YY" maxLength="5" required 
+            value={cardDetails.expiry} onChange={(e) => setCardDetails({...cardDetails, expiry: e.target.value})}
+          />
+        </div>
+      <div className="input-element-block">
+        <label>CVV</label>
+        <input type="password" placeholder="****" maxLength="4" required 
+          value={cardDetails.cvv} onChange={(e) => setCardDetails({...cardDetails, cvv: e.target.value})}
+        />
+      </div>
             </div>
+          </div>
+        )}
+
+        <button type="submit" className="modal-pay-now-btn">
+          Pay ₹{amount}
+        </button>
+      </form>
+    )}
+  </div>
           ) : (
             <div className="modal-green-success-state active-popup-anim">
               <div className="success-big-tick">

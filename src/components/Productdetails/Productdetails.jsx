@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Productdetails.css";
 import Api from '../ProductApI/Api.jsx';
+import { toast } from "react-toastify";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -17,9 +18,7 @@ function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState('red'); 
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setLoading(true);
-
+ 
     axios.get("https://smartshop-api-oas7.onrender.com/product")
       .then((productResponse) => {
         const masterProducts = productResponse.data || [];
@@ -31,11 +30,15 @@ function ProductDetails() {
             const matchedWishItem = wishlistItems.find(w => String(w.id) === String(id));
 
             const foundProduct = masterProducts.find((item) => {
-              if (!item) return false;
-              const isDirectIdMatch = String(item.id).trim() === String(id).trim();
+              if (!item) 
+                return false;
+
+              const isDirectIdMatch = String(item.id)=== String(id);
               const isProductIdMatch = matchedWishItem && String(item.id) === String(matchedWishItem.productId);
-              const isNameMatch = matchedWishItem && item.name && String(item.name).trim() === String(matchedWishItem.name).trim();
+              const isNameMatch = matchedWishItem && item.name && String(item.name)=== String(matchedWishItem.name);
+
               return isDirectIdMatch || isProductIdMatch || isNameMatch;
+
             });
 
             if (foundProduct) {
@@ -47,25 +50,17 @@ function ProductDetails() {
             }
             setLoading(false);
           })
-          .catch(() => {
-            const foundProduct = masterProducts.find((item) => item && String(item.id) === String(id));
-            setProduct(foundProduct || null);
-            if (foundProduct) {
-              const defaultImg = Array.isArray(foundProduct.image) ? foundProduct.image[0] : foundProduct.image;
-              setMainImage(defaultImg);
-            }
-            setLoading(false);
-          });
       })
       .catch((error) => {
-        console.error("Error fetching product:", error);
+        console.error(error);
+        toast.error("Error fetching product.");
         setLoading(false);
       });
   }, [id]);
 
   if (loading) {
     return (
-      <div className="loading-state" style={{ textAlign: 'center', padding: '50px' }}>
+      <div className="loading-state">
         <h1>Loading Product Details...</h1>
       </div>
     );
@@ -73,7 +68,7 @@ function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="loading-state" style={{ textAlign: 'center', padding: '50px' }}>
+      <div className="loading-state">
         <h1>Product not found.</h1>
         <p>The product you are looking for might have been removed or the ID is incorrect.</p>
         <button onClick={() => navigate("/")} className="buy-now-btn" style={{ marginTop: '20px', width: 'auto', padding: '10px 20px' }}>
@@ -103,7 +98,7 @@ function ProductDetails() {
     <div className="product-page-wrapper">
       <nav className="breadcrumb">
         <span onClick={() => navigate("/")} style={{ cursor: 'pointer' }}>Account</span> / 
-        <span>Gaming</span> /
+        <span>Product</span> /
         <span className="current">{product.name}</span>
       </nav>
 

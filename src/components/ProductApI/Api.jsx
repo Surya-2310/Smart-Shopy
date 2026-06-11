@@ -12,8 +12,7 @@ function Api({ products }) {
   const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
 
   useEffect(() => {
-    axios
-      .get(WISHLIST_URL)
+    axios.get(WISHLIST_URL)
       .then((res) => {
         setDbWishlist(res.data || []);
       })
@@ -22,7 +21,7 @@ function Api({ products }) {
 
   const moveSlider = (direction) => {
     if (sliderRef.current) {
-      const { scrollLeft } = sliderRef.current;
+      const scrollLeft = sliderRef.current.scrollLeft;
       sliderRef.current.scrollTo({
         left: direction === "prev" ? scrollLeft - 600 : scrollLeft + 600,
         behavior: "smooth",
@@ -62,8 +61,8 @@ function Api({ products }) {
     );
 
     if (existingWishItem) {
-      axios
-        .delete(`${WISHLIST_URL}/${existingWishItem.id}`)
+      
+      axios.delete(`${WISHLIST_URL}/${existingWishItem.id}`)
         .then(() => {
           setDbWishlist((prev) => prev.filter((wishItem) => wishItem.id !== existingWishItem.id));
           toast.info("Removed from Wishlist", {
@@ -80,11 +79,10 @@ function Api({ products }) {
       
       delete wishItemToSend.id; 
 
-      axios
-        .post(WISHLIST_URL, wishItemToSend)
+      axios.post(WISHLIST_URL, wishItemToSend)
         .then((res) => {
           setDbWishlist((prev) => [...prev, res.data]);
-          toast.success("Added to Wishlist ❤️", {
+          toast.success("Added to Wishlist ", {
             autoClose: 1000,
             position: "top-center",
           });
