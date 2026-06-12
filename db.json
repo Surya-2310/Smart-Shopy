@@ -143,15 +143,16 @@
       "name": "Men's Jeans Pant",
       "price": 1499,
       "category": "Pant",
-      "image": "/Products/Men's Jeans Pant.jpg"
+      "image": "/Products/Jeans Pant.jpg"
     },
     {
       "id": "watch001",
       "name": "Men's Watch",
-      "price": 2999,
+      "price": 2599,
       "category": "Watch",
       "image": "/Products/men's Watch.jpg"
-    },{
+    },
+    {
   "id": "pant001",
   "name": "Pant",
     "price": 2999,
@@ -178,7 +179,8 @@
     "price": 4999,
   "category": "Electronics",
   "image": "/Products/Sound system.png"
-},{
+}
+,{
   "id": "sport001",
   "name": "Sport Shoes",
     "price": 2999,
