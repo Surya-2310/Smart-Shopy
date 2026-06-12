@@ -2,11 +2,11 @@
   "product": [
     {
       "id": "ac001",
-      "name": "AC",
+      "name": "Bluestar AC",
       "price": 25999,
       "category": "Air Conditioner",
       "sizes": ["1 Ton", "1.5 Ton", "2 Ton"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Energy-efficient Bluestar air conditioner with fast cooling, low power consumption, and silent operation.",
       "image": "/Products/Ac.png"
     },
     {
@@ -15,7 +15,8 @@
       "price": 5600,
       "category": "Home Appliance",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Digital alarm clock with LED display, snooze function, and adjustable brightness.",
       "image": "/Products/Alarm Clock.jpg"
     },
     {
@@ -24,7 +25,8 @@
       "price": 999,
       "category": "Shirt",
       "sizes": ["S", "M", "L", "XL", "XXL"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Premium cotton blue shirt designed for comfort and style in both casual and formal settings.",
       "image": "/Products/Blue shirt.jpg"
     },
     {
@@ -33,7 +35,8 @@
       "price": 4500,
       "category": "Electronics",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Wireless audio system with powerful sound output and seamless Bluetooth connectivity.",
       "image": "/Products/bluetooth audio system.png"
     },
     {
@@ -42,7 +45,8 @@
       "price": 1999,
       "category": "Electronics",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Portable Bluetooth speaker with rich bass, clear sound, and long battery life.",
       "image": "/Products/Blutooth Speaker.png"
     },
     {
@@ -51,7 +55,8 @@
       "price": 899,
       "category": "Furniture",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Adjustable book stand ideal for reading, studying, and tablet support.",
       "image": "/Products/Books stand.png"
     },
     {
@@ -60,7 +65,8 @@
       "price": 35999,
       "category": "Electronics",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "High-performance Canon camera delivering stunning image quality and video recording.",
       "image": "/Products/cannon camera.png"
     },
     {
@@ -69,7 +75,8 @@
       "price": 1500000,
       "category": "Vehicle",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Modern car featuring advanced safety systems, comfort, and fuel efficiency.",
       "image": "/Products/car.png"
     },
     {
@@ -78,7 +85,8 @@
       "price": 1599,
       "category": "Furniture",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Comfortable and durable chair suitable for home, office, and study rooms.",
       "image": "/Products/chair.png"
     },
     {
@@ -87,7 +95,8 @@
       "price": 799,
       "category": "Accessories",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Stylish UV-protected cooling glasses designed for everyday outdoor use.",
       "image": "/Products/Cooling Glase.jpg"
     },
     {
@@ -96,7 +105,8 @@
       "price": 12999,
       "category": "Electronics",
       "sizes": ["24 inch", "27 inch", "32 inch"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Dell monitor with Full HD display, vibrant colors, and wide viewing angles.",
       "image": "/Products/Dell pc monitor.png"
     },
     {
@@ -105,7 +115,8 @@
       "price": 2499,
       "category": "Gaming",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Ergonomic gaming joystick offering precise controls and immersive gameplay.",
       "image": "/Products/Gaming joystick.png"
     },
     {
@@ -114,7 +125,8 @@
       "price": 2999,
       "category": "Electronics",
       "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Mechanical gaming keyboard with RGB lighting and responsive key switches.",
       "image": "/Products/gaming keyboard.png"
     },
     {
@@ -123,7 +135,8 @@
       "price": 4999,
       "category": "Beauty",
       "sizes": ["50ml", "100ml", "150ml"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Luxury Gucci perfume with a long-lasting fragrance and elegant scent profile.",
       "image": "/Products/Gucci Perfume.png"
     },
     {
@@ -132,98 +145,9 @@
       "price": 1999,
       "category": "Fashion",
       "sizes": ["Small", "Medium", "Large"],
-       "colors": ["Black", "White", "Red", "Blue"],
+      "colors": ["Black", "White", "Red", "Blue"],
+      "description": "Fashionable handbag with spacious compartments and premium-quality materials.",
       "image": "/Products/hand bag.png"
-    },
-    {
-      "id": "headphone001",
-      "name": "Headphone",
-      "price": 1499,
-      "category": "Electronics",
-      "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/Headphone.png"
-    },
-    {
-      "id": "hp001",
-      "name": "HP Laptop",
-      "price": 55999,
-      "category": "Laptop",
-      "sizes": ["13 inch", "14 inch", "15.6 inch"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/Hp Laptop.png"
-    },
-    {
-      "id": "mac001",
-      "name": "Mac Laptop",
-      "price": 89999,
-      "category": "Laptop",
-      "sizes": ["13 inch", "14 inch", "16 inch"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/Mac Laptop.png"
-    },
-    {
-      "id": "jeans001",
-      "name": "Men's Jeans Pant",
-      "price": 1499,
-      "category": "Pant",
-      "sizes": ["34", "36", "38", "40"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/Jeans Pant.jpg"
-    },
-    {
-      "id": "watch001",
-      "name": "Men's Watch",
-      "price": 2599,
-      "category": "Watch",
-      "sizes": ["Standard"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/men's Watch.jpg"
-    },
-    {
-      "id": "pant001",
-      "name": "Pant",
-      "price": 2999,
-      "category": "Pant",
-      "sizes": ["34", "36", "38", "40"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/pant.jpg"
-    },
-    {
-      "id": "rain001",
-      "name": "Rain Court",
-      "price": 999,
-      "category": "Fashion",
-      "sizes": ["S", "M", "L", "XL"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/Rain court.png"
-    },
-    {
-      "id": "shirt002",
-      "name": "Shirt",
-      "price": 1999,
-      "category": "Shirt",
-      "sizes": ["S", "M", "L", "XL", "XXL"],
-       "colors": ["Black", "White", "Red", "Blue","gray"],
-      "image": "/Products/shirt.jpg"
-    },
-    {
-      "id": "sound001",
-      "name": "Sound System",
-      "price": 4999,
-      "category": "Electronics",
-      "sizes": ["Standard"],
-       "colors": ["Black", "White", "Blue"],
-      "image": "/Products/Sound system.png"
-    },
-    {
-      "id": "sport001",
-      "name": "Sport Shoes",
-      "price": 1499,
-      "category": "Footwear",
-      "sizes": ["6", "7", "8", "9", "10", "11"],
-       "colors": ["Black", "White", "Red", "Blue"],
-      "image": "/Products/Sport shoes.png"
     }
   ],
   "orders": [],

@@ -170,26 +170,29 @@
 
 .color-dots {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+.color-dots button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
   cursor: pointer;
-  position: relative;
-  border: 2px solid transparent;
+  
 }
 
-.dot.blue { background-color: #a0bce0; }
-.dot.red { background-color: #e07575; }
-
-.dot.active {
-  border-color: #000000;
-  box-shadow: inset 0 0 0 2px #fff;
+.color-dots button:hover {
+  border-color: #030303;
+  background-color: #dcd9d9;
 }
 
+.color-dots .active-color {
+  background: #db4444;
+  color: white;
+  border-color: #db4444;
+}
 .size-selector {
   display: flex;
   gap: 16px;

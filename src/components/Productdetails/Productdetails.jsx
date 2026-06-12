@@ -55,6 +55,7 @@ const [currentPrice, setCurrentPrice] = useState(0);
 
               console.log(foundProduct);
 console.log(foundProduct.colors);
+
             }
             setLoading(false);
           })
@@ -129,11 +130,7 @@ console.log(foundProduct.colors);
             <div className="thumb-stack">
               {imageList.map(function (smallimg, index) {
                 return (
-                  <div
-                    key={index}
-                    className="thumb-card"
-                    onClick={() => setMainImage(smallimg)}
-                  >
+                  <div key={index}className="thumb-card" onClick={() => setMainImage(smallimg)}>
                     <img src={smallimg} alt="thumbnail" />
                   </div>
                 );
@@ -175,11 +172,7 @@ console.log(foundProduct.colors);
   Color: <strong>{selectedColor}</strong>
 </p>
 
-          <p className="short-desc">
-            High-quality product made with durable materials for long-lasting use. 
-            Designed for easy handling, smooth performance, and a better user experience. 
-            Simple to use, easy to maintain, and suitable for everyday needs.
-          </p>
+        <p className="short-desc">{product.description}</p>
 
           <hr className="sep-line" />
 
@@ -188,17 +181,8 @@ console.log(foundProduct.colors);
 
   <div className="color-dots">
     {(product.colors || []).map((color) => (
-      <button
-        key={color}
-        className={
-          selectedColor === color
-            ? "active-color"
-            : ""
-        }
-        onClick={() => setSelectedColor(color)}
-      >
-        {color}
-      </button>
+
+      <button key={color}className={selectedColor === color? "active-color": ""}onClick={() => setSelectedColor(color)}>{color}</button>
     ))}
   </div>
 </div>
@@ -208,56 +192,46 @@ console.log(foundProduct.colors);
 
   <div className="size-selector">
     {(product.sizes || ["Standard"]).map((size) => (
-      <button
-        key={size}
-        className={
-          selectedSize === size
-            ? "active"
-            : ""
-        }
-        onClick={() => setSelectedSize(size)}
-      >
-        {size}
-      </button>
+      <button key={size} className={ selectedSize === size? "active": ""}onClick={() => setSelectedSize(size)}>{size}</button>
     ))}
   </div>
 </div>
 
-          <div className="purchase-actions">
-            <div className="qty-control">
-              <button onClick={() => count > 1 && setCount(count - 1)}>−</button>
-              <span className="qty-val">{count}</span>
-              <button className="plus" onClick={() => setCount(count + 1)}>+</button>
-            </div>
-            <button className="buy-now-btn" onClick={handleBuyNow}>Buy Now</button>
-            <button className="wish-btn"><i className="bi bi-heart"></i></button>
-          </div>
-
-          <div className="delivery-card">
-            <div className="d-item">
-              <i className="bi bi-truck"></i>
-              <div className="d-text">
-                <div className="d-title">Free Delivery</div>
-                <div className="d-sub"><u>Enter your postal code for Delivery Availability</u></div>
-              </div>
-            </div>
-            <div className="d-item">
-              <i className="bi bi-arrow-repeat"></i>
-              <div className="d-text">
-                <div className="d-title">Return Delivery</div>
-                <div className="d-sub">Free 30 Days Delivery Returns. <u>Details</u></div>
-              </div>
-            </div>
-          </div>
-        </div> 
+    <div className="purchase-actions">
+      <div className="qty-control">
+        <button onClick={() => count > 1 && setCount(count - 1)}>−</button>
+        <span className="qty-val">{count}</span>
+        <button className="plus" onClick={() => setCount(count + 1)}>+</button>
       </div>
+      <button className="buy-now-btn" onClick={handleBuyNow}>Buy Now</button>
+      <button className="wish-btn"><i className="bi bi-heart"></i></button>
+    </div>
 
-      <div className="related-section">
-          <h1 className="related-title">Related Items</h1>
-          <Api products={allProducts} />
+    <div className="delivery-card">
+      <div className="d-item">
+        <i className="bi bi-truck"></i>
+        <div className="d-text">
+          <div className="d-title">Free Delivery</div>
+          <div className="d-sub"><u>Enter your postal code for Delivery Availability</u></div>
+        </div>
+      </div>
+      <div className="d-item">
+        <i className="bi bi-arrow-repeat"></i>
+        <div className="d-text">
+          <div className="d-title">Return Delivery</div>
+          <div className="d-sub">Free 30 Days Delivery Returns. <u>Details</u></div>
+        </div>
       </div>
     </div>
-  );
+  </div> 
+</div>
+
+<div className="related-section">
+    <h1 className="related-title">Related Items</h1>
+    <Api products={allProducts} />
+</div>
+</div>
+);
 }
 
 export default ProductDetails;
