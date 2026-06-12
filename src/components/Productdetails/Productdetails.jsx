@@ -20,7 +20,7 @@ const [selectedColor, setSelectedColor] = useState('red');
 
 useEffect(() => {
 
-axios.get("https://smartshop-api-oas7.onrender.com/product")
+axios.get("http://localhost:3000/product")
 .then((productResponse) => {
   const masterProducts = productResponse.data || [];
   setAllProducts(masterProducts);
