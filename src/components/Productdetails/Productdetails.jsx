@@ -160,7 +160,7 @@ useEffect(() => {
   <span className="label">Colours:</span>
 
   <div className="color-dots">
-    {(product.colors).map((color) => (
+    {(product.colors||[]).map((color) => (
 
       <button key={color}className={selectedColor === color? "active-color": ""}onClick={() => setSelectedColor(color)}>{color}</button>
     ))}
