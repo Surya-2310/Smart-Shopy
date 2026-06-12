@@ -6,6 +6,7 @@
       "price": 25999,
       "category": "Air Conditioner",
       "sizes": ["1 Ton", "1.5 Ton", "2 Ton"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Ac.png"
     },
     {
@@ -14,6 +15,7 @@
       "price": 5600,
       "category": "Home Appliance",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Alarm Clock.jpg"
     },
     {
@@ -22,6 +24,7 @@
       "price": 999,
       "category": "Shirt",
       "sizes": ["S", "M", "L", "XL", "XXL"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Blue shirt.jpg"
     },
     {
@@ -30,6 +33,7 @@
       "price": 4500,
       "category": "Electronics",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/bluetooth audio system.png"
     },
     {
@@ -38,6 +42,7 @@
       "price": 1999,
       "category": "Electronics",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Blutooth Speaker.png"
     },
     {
@@ -46,6 +51,7 @@
       "price": 899,
       "category": "Furniture",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Books stand.png"
     },
     {
@@ -54,6 +60,7 @@
       "price": 35999,
       "category": "Electronics",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/cannon camera.png"
     },
     {
@@ -62,6 +69,7 @@
       "price": 1500000,
       "category": "Vehicle",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/car.png"
     },
     {
@@ -70,6 +78,7 @@
       "price": 1599,
       "category": "Furniture",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/chair.png"
     },
     {
@@ -78,6 +87,7 @@
       "price": 799,
       "category": "Accessories",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Cooling Glase.jpg"
     },
     {
@@ -86,6 +96,7 @@
       "price": 12999,
       "category": "Electronics",
       "sizes": ["24 inch", "27 inch", "32 inch"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Dell pc monitor.png"
     },
     {
@@ -94,6 +105,7 @@
       "price": 2499,
       "category": "Gaming",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Gaming joystick.png"
     },
     {
@@ -102,6 +114,7 @@
       "price": 2999,
       "category": "Electronics",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/gaming keyboard.png"
     },
     {
@@ -110,6 +123,7 @@
       "price": 4999,
       "category": "Beauty",
       "sizes": ["50ml", "100ml", "150ml"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Gucci Perfume.png"
     },
     {
@@ -118,6 +132,7 @@
       "price": 1999,
       "category": "Fashion",
       "sizes": ["Small", "Medium", "Large"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/hand bag.png"
     },
     {
@@ -126,6 +141,7 @@
       "price": 1499,
       "category": "Electronics",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Headphone.png"
     },
     {
@@ -134,6 +150,7 @@
       "price": 55999,
       "category": "Laptop",
       "sizes": ["13 inch", "14 inch", "15.6 inch"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Hp Laptop.png"
     },
     {
@@ -142,6 +159,7 @@
       "price": 89999,
       "category": "Laptop",
       "sizes": ["13 inch", "14 inch", "16 inch"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Mac Laptop.png"
     },
     {
@@ -150,6 +168,7 @@
       "price": 1499,
       "category": "Pant",
       "sizes": ["34", "36", "38", "40"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Jeans Pant.jpg"
     },
     {
@@ -158,6 +177,7 @@
       "price": 2599,
       "category": "Watch",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/men's Watch.jpg"
     },
     {
@@ -166,6 +186,7 @@
       "price": 2999,
       "category": "Pant",
       "sizes": ["34", "36", "38", "40"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/pant.jpg"
     },
     {
@@ -174,6 +195,7 @@
       "price": 999,
       "category": "Fashion",
       "sizes": ["S", "M", "L", "XL"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Rain court.png"
     },
     {
@@ -182,6 +204,7 @@
       "price": 1999,
       "category": "Shirt",
       "sizes": ["S", "M", "L", "XL", "XXL"],
+       "colors": ["Black", "White", "Red", "Blue","gray"],
       "image": "/Products/shirt.jpg"
     },
     {
@@ -190,6 +213,7 @@
       "price": 4999,
       "category": "Electronics",
       "sizes": ["Standard"],
+       "colors": ["Black", "White", "Blue"],
       "image": "/Products/Sound system.png"
     },
     {
@@ -198,6 +222,7 @@
       "price": 1499,
       "category": "Footwear",
       "sizes": ["6", "7", "8", "9", "10", "11"],
+       "colors": ["Black", "White", "Red", "Blue"],
       "image": "/Products/Sport shoes.png"
     }
   ],

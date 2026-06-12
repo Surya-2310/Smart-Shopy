@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,9 +16,11 @@ function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [mainImage, setMainImage] = useState("");
   const [count, setCount] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(''); 
-  const [selectedColor, setSelectedColor] = useState('red'); 
-  const [currentPrice, setCurrentPrice] = useState(0);
+ const [selectedSize, setSelectedSize] = useState("");
+const [selectedColor, setSelectedColor] = useState("");
+const [currentPrice, setCurrentPrice] = useState(0);
+
+  
 
   useEffect(() => {
     axios.get("https://smartshop-api-oas7.onrender.com/product")
@@ -40,23 +43,26 @@ function ProductDetails() {
               return isDirectIdMatch || isProductIdMatch || isNameMatch;
             });
 
-   if (foundProduct) {
-  setProduct(foundProduct);
+            if (foundProduct) {
+              setProduct(foundProduct);
 
-  const defaultImg = Array.isArray(foundProduct.image)
-    ? foundProduct.image[0]
-    : foundProduct.image;
+              const defaultImg = Array.isArray(foundProduct.image)? foundProduct.image[0]: foundProduct.image;
 
-  setMainImage(defaultImg);
+              setMainImage(defaultImg);
+              setCurrentPrice(foundProduct.price);
+              setSelectedSize(foundProduct.sizes?.[0] || "Standard");
+              setSelectedColor(foundProduct.colors?.[0] || "");
 
-  setCurrentPrice(foundProduct.price);
-
-  setSelectedSize(
-    foundProduct.sizes?.[0] || "Standard"
-  );
-
-  setLoading(false);
-}
+              console.log(foundProduct);
+console.log(foundProduct.colors);
+            }
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error(error);
+            toast.error("Error fetching data.");
+            setLoading(false);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -142,21 +148,32 @@ function ProductDetails() {
 
         <div className="info-section">
           <h1 className="product-title">{product.name}</h1>
-      
-      <div className="stats-row">
-        <div className="stars-group">
-          <i className="bi bi-star-fill"></i>
-          <i className="bi bi-star-fill"></i>
-          <i className="bi bi-star-fill"></i>
-          <i className="bi bi-star-fill"></i>
-          <i className="bi bi-star-fill muted"></i>
-          <span className="review-text">(150 Reviews) </span>
-        </div>
-        <span className="divider">|</span>
-        <span className="stock-status"> In Stock</span>
-      </div>
+          
+          <div className="stats-row">
+            <div className="stars-group">
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill muted"></i>
+              <span className="review-text">(150 Reviews) </span>
+            </div>
+            <span className="divider">|</span>
+            <span className="stock-status"> In Stock</span>
+          </div>
 
           <div className="price-tag"> ₹{currentPrice * count}.00 </div>
+          <p className="product-category">
+  Category: {product.category}
+</p>
+
+<p className="selected-size">
+  Size: <strong>{selectedSize}</strong>
+</p>
+
+<p className="selected-color">
+  Color: <strong>{selectedColor}</strong>
+</p>
 
           <p className="short-desc">
             High-quality product made with durable materials for long-lasting use. 
@@ -166,64 +183,74 @@ function ProductDetails() {
 
           <hr className="sep-line" />
 
-          <div className="config-row">
-            <span className="label">Colours:</span>
-            <div className="color-dots">
-              <span 
-                className={`dot blue ${selectedColor === 'blue' ? 'active' : ''}`} 
-                onClick={() => setSelectedColor('blue')}
-              ></span>
-              <span 
-                className={`dot red ${selectedColor === 'red' ? 'active' : ''}`} 
-                onClick={() => setSelectedColor('red')}
-              ></span>
-            </div>
-          </div>
+        <div className="config-row">
+  <span className="label">Colours:</span>
 
-          <div className="config-row">
-  <span className="label">Size:</span>
-
-  <div className="size-selector">
-    {(product.sizes || ["Standard"]).map((s) => (
+  <div className="color-dots">
+    {(product.colors || []).map((color) => (
       <button
-        key={s}
-        className={selectedSize === s ? "active" : ""}
-        onClick={() => setSelectedSize(s)}
+        key={color}
+        className={
+          selectedColor === color
+            ? "active-color"
+            : ""
+        }
+        onClick={() => setSelectedColor(color)}
       >
-        {s}
+        {color}
       </button>
     ))}
   </div>
 </div>
 
-  <div className="purchase-actions">
-    <div className="qty-control">
-      <button onClick={() => count > 1 && setCount(count - 1)}>−</button>
-      <span className="qty-val">{count}</span>
-      <button className="plus" onClick={() => setCount(count + 1)}>+</button>
-    </div>
-    <button className="buy-now-btn" onClick={handleBuyNow}>Buy Now</button>
-    <button className="wish-btn"><i className="bi bi-heart"></i></button>
-  </div>
+<div className="config-row">
+  <span className="label">Size:</span>
 
-      <div className="delivery-card">
-  <div className="d-item">
-    <i className="bi bi-truck"></i>
-    <div className="d-text">
-      <div className="d-title">Free Delivery</div>
-      <div className="d-sub"><u>Enter your postal code for Delivery Availability</u></div>
-    </div>
-  </div>
-  <div className="d-item">
-    <i className="bi bi-arrow-repeat"></i>
-    <div className="d-text">
-      <div className="d-title">Return Delivery</div>
-      <div className="d-sub">Free 30 Days Delivery Returns. <u>Details</u></div>
-    </div>
+  <div className="size-selector">
+    {(product.sizes || ["Standard"]).map((size) => (
+      <button
+        key={size}
+        className={
+          selectedSize === size
+            ? "active"
+            : ""
+        }
+        onClick={() => setSelectedSize(size)}
+      >
+        {size}
+      </button>
+    ))}
   </div>
 </div>
-</div> 
-</div>
+
+          <div className="purchase-actions">
+            <div className="qty-control">
+              <button onClick={() => count > 1 && setCount(count - 1)}>−</button>
+              <span className="qty-val">{count}</span>
+              <button className="plus" onClick={() => setCount(count + 1)}>+</button>
+            </div>
+            <button className="buy-now-btn" onClick={handleBuyNow}>Buy Now</button>
+            <button className="wish-btn"><i className="bi bi-heart"></i></button>
+          </div>
+
+          <div className="delivery-card">
+            <div className="d-item">
+              <i className="bi bi-truck"></i>
+              <div className="d-text">
+                <div className="d-title">Free Delivery</div>
+                <div className="d-sub"><u>Enter your postal code for Delivery Availability</u></div>
+              </div>
+            </div>
+            <div className="d-item">
+              <i className="bi bi-arrow-repeat"></i>
+              <div className="d-text">
+                <div className="d-title">Return Delivery</div>
+                <div className="d-sub">Free 30 Days Delivery Returns. <u>Details</u></div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
 
       <div className="related-section">
           <h1 className="related-title">Related Items</h1>
