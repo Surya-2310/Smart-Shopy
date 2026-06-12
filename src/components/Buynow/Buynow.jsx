@@ -78,7 +78,7 @@ function Buynow() {
           </div>
         ))}
 
-        <div className="price-row"><p>Subtotal:</p><span>₹{total}</span></div>
+        <div className="price-row"><p>Subtotal:</p><span>₹{data.price}</span></div>
         <div className="price-row"><p>Shipping:</p><span>Free</span></div>
         <div className="price-row"><p>Total:</p><span>₹{total}</span></div>
 

@@ -398,7 +398,44 @@
  padding: 50px;
   }
 
+.config-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
+.size-selector button {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  color: #333333;
+  padding: 8px 16px; 
+  min-width: 45px;   
+  width: auto; 
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-selector button:hover {
+  border-color: #000000;
+  background-color: #f9f9f9;
+}
+
+.size-selector button.active {
+  background-color: #db4444; 
+  border-color: #db4444;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.size-selector button:focus {
+  outline: none;
+}
 
 
 @media (max-width: 992px) {

@@ -10,9 +10,11 @@ function Navbar() {
   const [total, setTotal] = useState(0);
   const [search, setSearch] = useState("");
 
+  const isLoggedIn = localStorage.getItem("login") === "true";
+  const role = localStorage.getItem("role");
+
   useEffect(() => {
-    axios
-      .get("https://smartshop-api-oas7.onrender.com/cart")
+    axios.get("https://smartshop-api-oas7.onrender.com/cart")
       .then((res) => {
         setTotal(res.data.length);
       })
@@ -21,7 +23,11 @@ function Navbar() {
 
   function Dropdowns(e) {
     e.stopPropagation();
-    setShow(!show);
+    if (!isLoggedIn) {
+      navigate("/login");
+    } else {
+      setShow(!show);
+    }
   }
 
   function handleLogout() {
@@ -29,8 +35,6 @@ function Navbar() {
     localStorage.removeItem("role");
     navigate("/");
   }
-
-  const role = localStorage.getItem("role");
 
   function handleSearch(e) {
     const value = e.target.value;
@@ -45,17 +49,16 @@ function Navbar() {
   return (
     <div className="navbar" onClick={() => setShow(false)}>
       <div className="logo">
+          <Link to="/">
         <span>SMART</span>
-        <span>Shopy</span>
+        <span>Shopy</span></Link>
       </div>
 
       <ul className="nav-links">
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/Signup">Signup</Link>
-        </li>
+      
         <li>
           <Link to="/About">About</Link>
         </li>
@@ -65,7 +68,7 @@ function Navbar() {
       </ul>
 
       <div className="nav-search">
-        <input type="text" placeholder="what are you looking for?"value={search} onChange={handleSearch}/>
+        <input type="text" placeholder="what are you looking for?" value={search} onChange={handleSearch}/>
         <i className="bi bi-search"></i>
       </div>
 
@@ -73,8 +76,11 @@ function Navbar() {
         <ul>
           <div className="cart-notife">
             <li>
-              <Link to="/Cart"><i className="bi bi-cart-check">{total > 0 && (
-                    <div className="cart-count"><span>{total}</span></div>)}
+              <Link to="/Cart">
+                <i className="bi bi-cart-check">
+                  {total > 0 && (
+                    <div className="cart-count"><span>{total}</span></div>
+                  )}
                 </i>
               </Link>
             </li>
@@ -88,7 +94,7 @@ function Navbar() {
             <i className="bi bi-person-circle" onClick={Dropdowns}></i>
           </div>
 
-          {show && (
+          {show && isLoggedIn && (
             <div className="dropdown-content">
               <li>
                 <Link to="/Orders">My Orders</Link>
@@ -101,8 +107,9 @@ function Navbar() {
               )}
 
               <li>
-                <Link to="/"onClick={(e) => {e.preventDefault(); 
-                handleLogout();
+                <Link to="/" onClick={(e) => {
+                    e.preventDefault(); 
+                    handleLogout();
                     setShow(false);
                   }}>Logout</Link>
               </li>
