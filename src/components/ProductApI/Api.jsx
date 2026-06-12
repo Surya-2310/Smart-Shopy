@@ -2,14 +2,26 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Gif from '../../assets/Gif.svg'
 import "./Api.css";
 
-function Api({ products }) {
+function Api() {
   const sliderRef = useRef(null);
   const navigate = useNavigate();
+
   const [dbWishlist, setDbWishlist] = useState([]);
+  const [products,setproducts]= useState();
+
 
   const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
+  const PRODUCT_URL = "https://smartshop-api-oas7.onrender.com/product";
+
+useEffect(()=>{
+  axios.get(PRODUCT_URL)
+  .then((res)=>{
+    setproducts(res.data)
+  })
+},[])
 
   useEffect(() => {
     axios.get(WISHLIST_URL)
@@ -42,8 +54,7 @@ function Api({ products }) {
       return;
     }
 
-    axios
-      .post("https://smartshop-api-oas7.onrender.com/cart", product)
+    axios.post("https://smartshop-api-oas7.onrender.com/cart", product)
       .then(() => {
         toast.success("Added to Cart", {
           autoClose: 1000,
@@ -107,7 +118,10 @@ function Api({ products }) {
       <div className="slider-container" ref={sliderRef}>
         <div className="card-row">
           {!products ? (
-            <h2 className="loading-title">Loading Products...</h2>
+           <div className="loading-containers">
+      <img src={Gif} alt="Loading" />
+      <h2 className="loading-title">Loading Product...</h2>
+    </div>
           ) : products.length === 0 ? (
             <h3 className="no-products-title">No products found.</h3>
           ) : (

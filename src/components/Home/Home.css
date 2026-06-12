@@ -841,6 +841,41 @@ bottom: -52px;
 .circle-btn:hover .wishlist-heart {
   color: #db4444;
 }
+/* .loading-container {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-gif {
+  width: 120px;
+  height: 120px;
+} */
+
+.loading-containers {
+  width: 100%;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.loading-containers img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.loading-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #db4444;
+  margin: 0;
+}
 
 
 @media (max-width: 768px) {

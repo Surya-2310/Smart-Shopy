@@ -2,24 +2,25 @@ import axios from "axios";
 import  { useEffect, useState } from "react";
 import computing from '../../assets/computing.png';
 import { toast } from "react-toastify";
+import Gif from '../../assets/Gif.svg';
 import './Orders.css'
 
 
 function Orders() {
 
   const [order, setOrder] = useState([]);
+  const [loading,setLoading]=useState(true);
 
-  useEffect(() => {
-    axios.get("https://smartshop-api-oas7.onrender.com/orders")
-      .then((res) => setOrder(res.data))
-      .catch((err) =>
-        toast.error(
-          err?.response?.data?.message || err?.message || "Failed to load orders"
-        )
-      );
-  }, []);
+useEffect(() => {
+  setLoading(true);
 
- 
+  axios.get("https://smartshop-api-oas7.onrender.com/orders")
+    .then((res) => {setOrder(res.data);})
+    .catch((err) => {toast.error(err?.response?.data?.message ||err?.message ||"Failed to load orders");})
+    .finally(() => {
+      setLoading(false);
+    });
+}, []);
 
   function handleDelete(id) {
 
@@ -39,7 +40,12 @@ function Orders() {
 }
 return (
   <div className="orders-container">
-    {order.length === 0 ? (
+ {loading ? (
+  <div className="loading-containers">
+    <img src={Gif} alt="Loading" />
+    <h2 className="loading-title">Loading Orders...</h2>
+  </div>
+) : order.length === 0 ? (
       <div className="empty-orders">
         <i className="bi bi-bag-heart empty-order-icon"></i>
         <h2 className="no-orders">No Orders Found</h2>
@@ -52,11 +58,7 @@ return (
         {order.map((item) => (
           <div key={item.id} className="order-card">
             <img
-              src={
-                Array.isArray(item.items?.[0]?.image)
-                  ? item.items[0].image[0]
-                  : item.items?.[0]?.image || computing
-              }
+              src={Array.isArray(item.items?.[0]?.image)? item.items[0].image[0]: item.items?.[0]?.image || computing}
               alt="product"
               className="order-image"
             />

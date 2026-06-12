@@ -129,10 +129,7 @@ return (
 
           <div className="form-group">
             <label>Email address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
               className="form-input"
                  autoComplete="new-email"
             />
@@ -140,19 +137,14 @@ return (
 
           <div className="form-group">
             <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
               className="form-input"
               autoComplete="new-password"
             />
           </div>
 
           <div className="btn-row">
-            <button type="submit" className="btn-submit">
-              Log In
-            </button> 
+            <button type="submit" className="btn-submit">Log In</button> 
  </div> <br />
          
 

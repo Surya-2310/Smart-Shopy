@@ -25,7 +25,7 @@ function Buynow() {
       toast.warning("Please fill all required fields", { autoClose: 1000 });
       return;
     }
-    navigate("/Payment", { state: { ...formData, items: products, total } });
+    navigate("/Payment", { state: { ...formData, items: products, total } });  
   }
 
   return (
@@ -71,7 +71,7 @@ function Buynow() {
           <div className="order-item" key={item.id}>
             <div className="product-info">
   
-              <img src={Array.isArray(item.image) ? item.image[0] : item.image} alt={item.name}/>
+              <img src={Array.isArray(item.image) ? item.image[0] : item.image}/>
               <p>{item.name}</p>
             </div>
             <span>₹{item.price * (item.quantity || 1)}</span>

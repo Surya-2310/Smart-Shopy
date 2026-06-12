@@ -65,12 +65,7 @@ function Navbar() {
       </ul>
 
       <div className="nav-search">
-        <input
-          type="text"
-          placeholder="what are you looking for?"
-          value={search}
-          onChange={handleSearch}
-        />
+        <input type="text" placeholder="what are you looking for?"value={search} onChange={handleSearch}/>
         <i className="bi bi-search"></i>
       </div>
 
@@ -106,12 +101,10 @@ function Navbar() {
               )}
 
               <li>
-                <Link to="/"onClick={(e) => {
-                    e.preventDefault();
-                    handleLogout();
+                <Link to="/"onClick={(e) => {e.preventDefault(); 
+                handleLogout();
                     setShow(false);
-                  }}
-                >Logout</Link>
+                  }}>Logout</Link>
               </li>
             </div>
           )}
