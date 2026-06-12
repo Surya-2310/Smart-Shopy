@@ -14,7 +14,7 @@ function Api() {
 
 
   const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
-  const PRODUCT_URL = "http://localhost:3000/product";
+  const PRODUCT_URL = "https://smartshop-api-oas7.onrender.com/product";
 
 useEffect(()=>{
   axios.get(PRODUCT_URL)

@@ -1,33 +1,193 @@
 {
-  
   "product": [
     {
+      "id": "some-id",
       "name": "Gaming",
       "price": 907,
+      "category": "Gaming",
       "image": [
         "/productimage/image63.png",
         "/productimage/image50.png",
         "/productimage/image59.png",
         "/productimage/image61.png"
-      ],
-      "id": "some-id"
-    },
-
-    {
-      "name": "Chair ",
-      "price": 1599,
-      "id": "sISuXq50JIk",
-      "image":"/Products/Ac.png"
+      ]
     },
     {
-      "name": "Prestige Iris Plus 1600",
+      "id": "ac001",
+      "name": "AC",
+      "price": 25999,
+      "category": "Air Conditioner",
+      "image": "/Products/Ac.png"
+    },
+    {
+      "id": "alarm001",
+      "name": "Alarm Clock",
       "price": 5600,
-      "image":"/Products/Alarm Clock.jpg",
-      "id": "zCalfSV2whQ"
-    }
-   ],
+      "category": "Home Appliance",
+      "image": "/Products/Alarm Clock.jpg"
+    },
+    {
+      "id": "shirt001",
+      "name": "Blue Shirt",
+      "price": 999,
+      "category": "Shirt",
+      "image": "/Products/Blue shirt.jpg"
+    },
+    {
+      "id": "audio001",
+      "name": "Bluetooth Audio System",
+      "price": 4500,
+      "category": "Electronics",
+      "image": "/Products/bluetooth audio system.png"
+    },
+    {
+      "id": "speaker001",
+      "name": "Bluetooth Speaker",
+      "price": 1999,
+      "category": "Electronics",
+      "image": "/Products/Blutooth Speaker.png"
+    },
+    {
+      "id": "book001",
+      "name": "Book Stand",
+      "price": 899,
+      "category": "Furniture",
+      "image": "/Products/Books stand.png"
+    },
+    {
+      "id": "camera001",
+      "name": "Canon Camera",
+      "price": 35999,
+      "category": "Electronics",
+      "image": "/Products/cannon camera.png"
+    },
+    {
+      "id": "car001",
+      "name": "Car",
+      "price": 1500000,
+      "category": "Vehicle",
+      "image": "/Products/car.png"
+    },
+    {
+      "id": "chair001",
+      "name": "Chair",
+      "price": 1599,
+      "category": "Furniture",
+      "image": "/Products/chair.png"
+    },
+    {
+      "id": "glass001",
+      "name": "Cooling Glass",
+      "price": 799,
+      "category": "Accessories",
+      "image": "/Products/Cooling Glase.jpg"
+    },
+    {
+      "id": "monitor001",
+      "name": "Dell PC Monitor",
+      "price": 12999,
+      "category": "Electronics",
+      "image": "/Products/Dell pc monitor.png"
+    },
+    {
+      "id": "joystick001",
+      "name": "Gaming Joystick",
+      "price": 2499,
+      "category": "Gaming",
+      "image": "/Products/Gaming joystick.png"
+    },
+    {
+      "id": "keyboard001",
+      "name": "Gaming Keyboard",
+      "price": 2999,
+      "category": "Electronics",
+      "image": "/Products/gaming keyboard.png"
+    },
+    {
+      "id": "perfume001",
+      "name": "Gucci Perfume",
+      "price": 4999,
+      "category": "Beauty",
+      "image": "/Products/Gucci Perfume.png"
+    },
+    {
+      "id": "bag001",
+      "name": "Hand Bag",
+      "price": 1999,
+      "category": "Fashion",
+      "image": "/Products/hand bag.png"
+    },
+    {
+      "id": "headphone001",
+      "name": "Headphone",
+      "price": 1499,
+      "category": "Electronics",
+      "image": "/Products/Headphone.png"
+    },
+    {
+      "id": "hp001",
+      "name": "HP Laptop",
+      "price": 55999,
+      "category": "Laptop",
+      "image": "/Products/Hp Laptop.png"
+    },
+    {
+      "id": "mac001",
+      "name": "Mac Laptop",
+      "price": 89999,
+      "category": "Laptop",
+      "image": "/Products/Mac Laptop.png"
+    },
+    {
+      "id": "jeans001",
+      "name": "Men's Jeans Pant",
+      "price": 1499,
+      "category": "Pant",
+      "image": "/Products/Men's Jeans Pant.jpg"
+    },
+    {
+      "id": "watch001",
+      "name": "Men's Watch",
+      "price": 2999,
+      "category": "Watch",
+      "image": "/Products/men's Watch.jpg"
+    },{
+  "id": "pant001",
+  "name": "Pant",
+    "price": 2999,
+  "category": "Pant",
+  "image": "/Products/pant.jpg"
+},
+{
+  "id": "rain001",
+  "name": "Rain Court",
+    "price": 999,
+  "category": "Fashion",
+  "image": "/Products/Rain court.png"
+},
+{
+  "id": "shirt002",
+  "name": "Shirt",
+    "price": 1999,
+  "category": "Shirt",
+  "image": "/Products/shirt.jpg"
+},
+{
+  "id": "sound001",
+  "name": "Sound System",
+    "price": 4999,
+  "category": "Electronics",
+  "image": "/Products/Sound system.png"
+},{
+  "id": "sport001",
+  "name": "Sport Shoes",
+    "price": 2999,
+  "category": "Footwear",
+  "image": "/Products/Sport shoes.png"
+}
+  ],
   "orders": [],
   "cart": [],
-  "wishlist":[],
+  "wishlist": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
