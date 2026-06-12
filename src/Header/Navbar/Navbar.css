@@ -169,9 +169,15 @@ body {
   color: #333;
 }
 .logo {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 800;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
+ 
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .logo a {
@@ -179,12 +185,12 @@ body {
 }
 
 .logo span:first-child {
-  color: #db4444;
-  letter-spacing: 1px;
+  color: #fa4646;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .logo span:last-child {
-  color: #000;
+  color: #222;
 }
 
 @media (max-width: 768px) {

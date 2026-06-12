@@ -21,56 +21,36 @@ const [selectedColor, setSelectedColor] = useState("");
 const [currentPrice, setCurrentPrice] = useState(0);
 
   
+useEffect(() => {
+  axios.get("https://smartshop-api-oas7.onrender.com/product")
+    .then((res) => {
+      const products = res.data || [];
 
-  useEffect(() => {
-    axios.get("https://smartshop-api-oas7.onrender.com/product")
-      .then((productResponse) => {
-        const masterProducts = productResponse.data || [];
-        setAllProducts(masterProducts);
+      setAllProducts(products);
 
-        axios.get("https://smartshop-api-oas7.onrender.com/wishlist")
-          .then((wishlistResponse) => {
-            const wishlistItems = wishlistResponse.data || [];
-            const matchedWishItem = wishlistItems.find(w => String(w.id) === String(id));
+      const foundProduct = products.find((item) => String(item.id) === String(id));
 
-            const foundProduct = masterProducts.find((item) => {
-              if (!item) return false;
+      if (foundProduct) {
+        setProduct(foundProduct);
 
-              const isDirectIdMatch = String(item.id) === String(id);
-              const isProductIdMatch = matchedWishItem && String(item.id) === String(matchedWishItem.productId);
-              const isNameMatch = matchedWishItem && item.name && String(item.name) === String(matchedWishItem.name);
+        const defaultImg = Array.isArray(foundProduct.image)? foundProduct.image[0]: foundProduct.image;
 
-              return isDirectIdMatch || isProductIdMatch || isNameMatch;
-            });
+        setMainImage(defaultImg);
+        setCurrentPrice(foundProduct.price);
+        setSelectedSize(foundProduct.sizes?.[0] || "Standard");
+        setSelectedColor(foundProduct.colors?.[0] || "");
 
-            if (foundProduct) {
-              setProduct(foundProduct);
+        console.log(foundProduct);
+      }
 
-              const defaultImg = Array.isArray(foundProduct.image)? foundProduct.image[0]: foundProduct.image;
-
-              setMainImage(defaultImg);
-              setCurrentPrice(foundProduct.price);
-              setSelectedSize(foundProduct.sizes?.[0] || "Standard");
-              setSelectedColor(foundProduct.colors?.[0] || "");
-
-              console.log(foundProduct);
-console.log(foundProduct.colors);
-
-            }
-            setLoading(false);
-          })
-          .catch((error) => {
-            console.error(error);
-            toast.error("Error fetching data.");
-            setLoading(false);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-        toast.error("Error fetching product.");
-        setLoading(false);
-      });
-  }, [id]);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error(error);
+      toast.error("Error fetching product.");
+      setLoading(false);
+    });
+}, [id]);
 
   if (loading) {
     return (
@@ -86,7 +66,7 @@ console.log(foundProduct.colors);
       <div className="loading-state">
         <h1>Product not found.</h1>
         <p>The product you are looking for might have been removed or the ID is incorrect.</p>
-        <button onClick={() => navigate("/")} className="buy-now-btn" style={{ marginTop: '20px', width: 'auto', padding: '10px 20px' }}>
+        <button onClick={() => navigate("/")} >
           Go Back Home
         </button>
       </div>
@@ -161,7 +141,7 @@ console.log(foundProduct.colors);
 
           <div className="price-tag"> ₹{currentPrice * count}.00 </div>
           <p className="product-category">
-  Category: {product.category}
+     Category: {product.category}
 </p>
 
 <p className="selected-size">
@@ -180,7 +160,7 @@ console.log(foundProduct.colors);
   <span className="label">Colours:</span>
 
   <div className="color-dots">
-    {(product.colors || []).map((color) => (
+    {(product.colors).map((color) => (
 
       <button key={color}className={selectedColor === color? "active-color": ""}onClick={() => setSelectedColor(color)}>{color}</button>
     ))}

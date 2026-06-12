@@ -188,6 +188,7 @@
   background-color: #dcd9d9;
 }
 
+
 .color-dots .active-color {
   background: #db4444;
   color: white;
@@ -439,7 +440,31 @@
 .size-selector button:focus {
   outline: none;
 }
+.loading-state {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
 
+.go-home-btn {
+  margin-top: 20px;
+  width: auto;
+  padding: 10px 20px;
+  background: #db4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.go-home-btn:hover {
+  opacity: 0.9;
+}
 
 @media (max-width: 992px) {
   .product-main-layout {

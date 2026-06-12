@@ -37,32 +37,32 @@ const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
 const navigate = useNavigate();
 const location = useLocation();
 
-const ads = [
-{
-icon: apple,
-title: "iPhone 14 Series",
-offer: "Up to 10%",
-image: phone,
-},
-{
-icon: apple,
-title: "Laptop Sale",
-offer: "Up to 20%",
-image: Laptop,
-},
-{
-icon: LG,
-title: "AC Offer",
-offer: "Up to 30%",
-image: Ac,
-},
-{
-icon: apple,
-title: "Headset Deal",
-offer: "Up to 40%",
-image: Headphone,
-},
-];
+          const ads = [
+          {
+          icon: apple,
+          title: "iPhone 14 Series",
+          offer: "Up to 10%",
+          image: phone,
+          },
+          {
+          icon: apple,
+          title: "Laptop Sale",
+          offer: "Up to 20%",
+          image: Laptop,
+          },
+          {
+          icon: LG,
+          title: "AC Offer",
+          offer: "Up to 30%",
+          image: Ac,
+          },
+          {
+          icon: apple,
+          title: "Headset Deal",
+          offer: "Up to 40%",
+          image: Headphone,
+          },
+          ];
 
 useEffect(() => {
 const slider = setInterval(() => {

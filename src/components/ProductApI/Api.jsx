@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Gif from '../../assets/Gif.svg'
@@ -11,6 +11,15 @@ function Api() {
 
   const [dbWishlist, setDbWishlist] = useState([]);
   const [products,setproducts]= useState();
+
+  const location = useLocation();
+
+const searchParams = new URLSearchParams(location.search);
+const search = searchParams.get("search") || "";
+
+const filteredProducts = products?.filter((item) =>
+  item.name.toLowerCase().includes(search.toLowerCase())
+);
 
 
   const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
@@ -117,25 +126,23 @@ useEffect(()=>{
 
       <div className="slider-container" ref={sliderRef}>
         <div className="card-row">
-          {!products ? (
-           <div className="loading-containers">
-      <img src={Gif} alt="Loading" />
-      <h2 className="loading-title">Loading Product...</h2>
-    </div>
-          ) : products.length === 0 ? (
-            <h3 className="no-products-title">No products found.</h3>
-          ) : (
-            products.map((item) => {
-              const isLiked = dbWishlist.some(
-                (wishItem) => String(wishItem.productId) === String(item.id) || String(wishItem.id) === String(item.id)
-              );
-              
-              return (
-                <article
-                  className="shop-card"
-                  key={item.id}
-                  onClick={() => handleProductClick(item.id)}
-                >
+              {!products ? (
+                <div className="loading-containers">
+                  <img src={Gif} alt="Loading" />
+                  <h2 className="loading-title">Loading Product...</h2>
+                </div>
+              ) : filteredProducts?.length === 0 ? (
+                <h3 className="no-products-title">No products found.</h3>
+              ) : (
+                filteredProducts.map((item) => {
+                  const isLiked = dbWishlist.some(
+                    (wishItem) =>
+                      String(wishItem.productId) === String(item.id) ||
+                      String(wishItem.id) === String(item.id)
+                  );
+
+                  return (
+                    <article className="shop-card" key={item.id} onClick={() => handleProductClick(item.id)}>
                   <div className="image-section">
                     <span className="offer-tag">-35%</span>
                     <div className="icon-overlay">
