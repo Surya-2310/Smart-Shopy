@@ -1,6 +1,20 @@
 {
   "product": [
     {
+       "id": "joystick001",
+      "name": "Gaming joy stick",
+      "price": 1999,
+      "category": "Gaming",
+      "sizes": ["Standard"],
+      "description":"Premium gaming joystick with responsive controls and comfortable grip.",
+       "image":[
+         "/productimage/image50.png",
+          "/productimage/image59.png",
+          "/productimage/image61.png",
+          "/productimage/image63.png"
+       ]
+    },
+    {
       "id": "ac001",
       "name": "Bluestar AC",
       "price": 25999,
@@ -110,7 +124,7 @@
       "image": "/Products/Dell pc monitor.png"
     },
     {
-      "id": "joystick001",
+      "id": "joystick002",
       "name": "Gaming Joystick",
       "price": 2499,
       "category": "Gaming",

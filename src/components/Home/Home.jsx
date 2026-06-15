@@ -85,6 +85,7 @@ const ads = [
     .get("https://smartshop-api-oas7.onrender.com/product")
     .then((res) => setProducts(res.data || []))
     .catch(() => toast.error("Error fetching products"));
+  
 
     axios
     .get(WISHLIST_URL)
