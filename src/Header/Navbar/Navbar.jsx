@@ -42,7 +42,7 @@ function Navbar() {
     navigate(`/?search=${value}`);
   }
 
-  function sendwhishlist() {
+  function sendwhishlist() { 
     navigate('/Wishlist');
   }
 

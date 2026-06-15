@@ -5,7 +5,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Breadcrumb */
+
 .breadcrumb {
   font-size: 14px;
   color: #7d8184;
@@ -21,7 +21,7 @@
   font-weight: 500;
 }
 
-/* Main Layout */
+
 .product-main-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -29,7 +29,7 @@
   margin-bottom: 60px;
 }
 
-/* Gallery Section */
+
 .gallery-section {
   display: flex;
   gap: 30px;
@@ -466,7 +466,7 @@
   opacity: 0.9;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 500px) {
   .product-main-layout {
     grid-template-columns: 1fr;
     gap: 40px;

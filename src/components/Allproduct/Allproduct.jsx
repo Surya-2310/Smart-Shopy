@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -10,17 +10,17 @@ function Allproduct() {
   const navigate = useNavigate();
   
   const items = location.state?.allProducts || [];
+
   const [dbWishlist, setDbWishlist] = useState([]);
 
   const WISHLIST_URL = "https://smartshop-api-oas7.onrender.com/wishlist";
 
   useEffect(() => {
-    axios
-      .get(WISHLIST_URL)
+    axios.get(WISHLIST_URL)
       .then((res) => {
         setDbWishlist(res.data || []);
       })
-      .catch((err) => console.error("Error fetching wishlist:", err));
+      .catch((err) => toast.error("Error fetching wishlist:", err));
   }, []);
 
   const addCart = (product) => {
@@ -90,8 +90,7 @@ function Allproduct() {
           const heartClass = isLiked ? "bi-heart-fill dynamic-heart-liked" : "bi-heart dynamic-heart-unliked";
 
           return (
-            <article className="shop-card" key={item.id} 
-              onClick={() => handleclicks(item.id)} >
+            <article className="shop-card" key={item.id} onClick={() => handleclicks(item.id)} >
 
               <div className="image-section">
                 <span className="offer-tag">-35%</span>

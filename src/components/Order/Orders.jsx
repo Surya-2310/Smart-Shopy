@@ -15,8 +15,11 @@ useEffect(() => {
   setLoading(true);
 
   axios.get("https://smartshop-api-oas7.onrender.com/orders")
-    .then((res) => {setOrder(res.data);})
-    .catch((err) => {toast.error(err?.response?.data?.message ||err?.message ||"Failed to load orders");})
+    .then((res) => setOrder(res.data))
+    .catch(()=>{
+      toast.error("Failed to load orders")
+    }
+  )
     .finally(() => {
       setLoading(false);
     });
@@ -31,11 +34,10 @@ useEffect(() => {
         autoClose: 500,
       });
     })
-    .catch((err) => {
-      toast.error(
-        err?.response?.data?.message || err?.message || "Failed to cancel order"
-      );
-    });
+    .catch(()=>{
+      toast.error("Failed to cancel order"  );
+    } 
+    )
 
 }
 return (

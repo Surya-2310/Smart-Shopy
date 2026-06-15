@@ -170,9 +170,9 @@
   font-weight: 500;
   color: #000000;
   margin: 0;
-  white-space: nowrap;
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   width: 100%;
 }
 

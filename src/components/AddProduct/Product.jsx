@@ -13,9 +13,10 @@ function AddProduct() {
     const file = e.target.files[0];
 
     if (file) {
-      const reader = new FileReader();   
-      reader.readAsDataURL(file);   
-      reader.onload = (event) => {  
+      const reader = new FileReader();
+      reader.readAsDataURL(file)
+      reader.onload = (event) => {
+
         const img = new Image();
      
         img.src = event.target.result;

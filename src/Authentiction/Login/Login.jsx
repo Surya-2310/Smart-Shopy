@@ -65,9 +65,7 @@ function Login() {
 
          })
 
-         setTimeout(()=>{
-           navigate("/");
-         },1500)
+         setTimeout(()=>{navigate("/");},1500)
 
       } 
       else 
@@ -142,7 +140,7 @@ return (
               autoComplete="new-password"
             />
           </div>
-
+``
           <div className="btn-row">
             <button type="submit" className="btn-submit">Log In</button> 
  </div> <br />

@@ -45,8 +45,7 @@ function Payment() {
   };
 
   const createOrder = () => {
-    const orderData = {
-      ...customerdetails,
+    const orderData = {...customerdetails,
       paymentMethod: paymentMethod,
       status: "Placed", ...(paymentMethod === "Card" && { card: { ...cardDetails } })
     };
@@ -62,8 +61,7 @@ function Payment() {
           navigate("/");
         }, 5000);
       })
-      .catch((error) => {
-        console.error("Error creating order:", error);
+      .catch(() => {
         toast.error("Failed to place order. Please try again.");
       });
   };
@@ -189,7 +187,7 @@ function Payment() {
         )}
 
         <button type="submit" className="modal-pay-now-btn">
-          Pay ₹{amount}
+          Place Order
         </button>
       </form>
     )}
