@@ -75,7 +75,6 @@ function Signup() {
         });
         return;
       }
-      
 
       const userdata ={
         email:email,

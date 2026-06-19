@@ -19,7 +19,7 @@ function ProductDetails() {
  const [selectedSize, setSelectedSize] = useState("");
 const [selectedColor, setSelectedColor] = useState("");
 const [currentPrice, setCurrentPrice] = useState(0);
-
+ 
   
 useEffect(() => {
   axios.get("https://smartshop-api-oas7.onrender.com/product")

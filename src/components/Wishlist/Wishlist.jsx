@@ -45,7 +45,8 @@ if (!isLoggedIn) {
 }
 
 const cartProduct = { ...product };
-if (cartProduct.productId) {
+if (cartProduct.productId)
+   {
   cartProduct.id = cartProduct.productId;
 }
 

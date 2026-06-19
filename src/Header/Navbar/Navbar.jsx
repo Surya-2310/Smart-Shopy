@@ -9,6 +9,7 @@ function Navbar() {
   const [show, setShow] = useState(false);
   const [total, setTotal] = useState(0);
   const [search, setSearch] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const isLoggedIn = localStorage.getItem("login") === "true";
   const role = localStorage.getItem("role");
@@ -49,73 +50,76 @@ function Navbar() {
   return (
     <div className="navbar" onClick={() => setShow(false)}>
       <div className="logo">
-          <Link to="/">
-        <span>SMART</span>
-        <span>Shopy</span></Link>
+        <Link to="/">
+          <span>SMART</span>
+          <span>Shopy</span>
+        </Link>
       </div>
 
-      <ul className="nav-links">
+      <ul className={`nav-links ${menuOpen ? "show-menu" : ""}`}>
         <li>
-          <Link to="/">Home</Link>
-        </li>
-      
-        <li>
-          <Link to="/About">About</Link>
+          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
         </li>
         <li>
-          <Link to="/Contact">Contact</Link>
+          <Link to="/About" onClick={() => setMenuOpen(false)}>About</Link>
+        </li>
+        <li>
+          <Link to="/Contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </li>
       </ul>
 
       <div className="nav-search">
-        <input type="text" placeholder="what are you looking for?" value={search} onChange={handleSearch}/>
+        <input 
+          type="text" 
+          placeholder="What are you looking for?" 
+          value={search} 
+          onChange={handleSearch}
+        />
         <i className="bi bi-search"></i>
       </div>
 
-      <div className="dropdown">
-        <ul>
-          <div className="cart-notife">
-            <li>
-              <Link to="/Cart">
-                <i className="bi bi-cart-check">
-                  {total > 0 && (
-                    <div className="cart-count"><span>{total}</span></div>
-                  )}
-                </i>
-              </Link>
-            </li>
-          </div>
+      <div className="nav-actions">
+        <div className="cart-notife">
+          <Link to="/Cart">
+            <i className="bi bi-cart-check">
+              {total > 0 && (
+                <div className="cart-count"><span>{total}</span></div>
+              )}
+            </i>
+          </Link>
+        </div>
 
-          <div className="heart-icon">
-            <i className="bi bi-heart-fill navbar-heart-icon" onClick={sendwhishlist}></i>
-          </div>
+        <div className="heart-icon">
+          <i className="bi bi-heart-fill navbar-heart-icon" onClick={sendwhishlist}></i>
+        </div>
 
-          <div className="profile-icon">
-            <i className="bi bi-person-circle" onClick={Dropdowns}></i>
-          </div>
-
+        <div className="profile-container">
+          <i className="bi bi-person-circle profile-icon" onClick={Dropdowns}></i>
+          
           {show && isLoggedIn && (
-            <div className="dropdown-content">
+            <ul className="dropdown-content">
               <li>
                 <Link to="/Orders">My Orders</Link>
               </li>
-
               {role === "Admin" && (
                 <li>
                   <Link to="/Dashboard">Dashboard</Link>
                 </li>
               )}
-
               <li>
                 <Link to="/" onClick={(e) => {
-                    e.preventDefault(); 
-                    handleLogout();
-                    setShow(false);
-                  }}>Logout</Link>
+                  e.preventDefault(); 
+                  handleLogout();
+                  setShow(false);
+                }}>Logout</Link>
               </li>
-            </div>
+            </ul>
           )}
-        </ul>
+        </div>
+      </div>
+
+      <div className="mobile-menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+        <i className={`bi ${menuOpen ? "bi-x-lg" : "bi-list"}`}></i>
       </div>
     </div>
   );

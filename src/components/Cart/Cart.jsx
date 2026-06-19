@@ -11,7 +11,7 @@ function Cart() {
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
-
+ 
   useEffect(() => {
     fetchCart();
   }, []);
