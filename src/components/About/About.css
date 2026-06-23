@@ -162,16 +162,18 @@
 .stats-card:hover p{
     color:white;
 }
-
+/* ==========================================================================
+   ABOUT PAGE RESPONSIVE CSS (Mobile-First approach, no !important)
+   ========================================================================== */
 @media (max-width: 768px) {
   .about-container {
-    padding: 20px;
-    padding-top: 100px;
+    padding: 15px;
+    padding-top: 80px;
   }
 
   .about-top {
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
   }
 
   .about-text {
@@ -179,21 +181,22 @@
     text-align: center;
   }
 
-  .about-text h2 {
-    font-size: 26px;
+  .about-text h2, 
+  .about-text p {
     padding-left: 0;
   }
 
-  .about-text p {
-    padding-left: 0;
-    font-size: 15px;
+  .about-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
-.about-image img {
-  max-width: 80%;
-  position: relative;
-  right: -65px;
-  border-radius: 30px ;
-}
+
+  .about-image img {
+    max-width: 90%;
+    position: static;
+    border-radius: 20px;
+  }
 
   .about-employee {
     margin-top: 35px;
@@ -201,7 +204,7 @@
 
   .about2-servies {
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
   }
 
   .ui-left,
@@ -211,25 +214,39 @@
 
   .text-right {
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
+    padding: 0 10px;
   }
 
+ 
   .stats-container {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
   }
 
   .stats-card {
-    width: 100%;
-    max-width: 280px;
-    height: 200px;
+    width: 90%;
+    max-width: 300px;
+    height: 70%;
+    padding: 20px 0;
   }
 
   .stats-card h1 {
-    font-size: 34px;
+    font-size: 30px;
   }
-  .ui-left img{
-    padding-top: 32px;
+
+  .ui-left img {
+    padding-top: 20px;
+  }
+}
+
+
+@media (max-width: 350px) {
+  .about-text h2 {
+    font-size: 22px;
+  }
+  .text-right {
+    font-size: 13px;
   }
 }

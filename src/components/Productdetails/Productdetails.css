@@ -1,10 +1,10 @@
+
 .product-page-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   font-family: "Poppins", sans-serif;
 }
-
 
 .breadcrumb {
   font-size: 14px;
@@ -21,14 +21,12 @@
   font-weight: 500;
 }
 
-
 .product-main-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 60px;
   margin-bottom: 60px;
 }
-
 
 .gallery-section {
   display: flex;
@@ -158,8 +156,8 @@
 .config-row {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
   gap: 24px;
-  margin-bottom: 24px;
 }
 
 .config-row .label {
@@ -180,7 +178,6 @@
   border-radius: 20px;
   background: white;
   cursor: pointer;
-  
 }
 
 .color-dots button:hover {
@@ -188,42 +185,51 @@
   background-color: #dcd9d9;
 }
 
-
 .color-dots .active-color {
   background: #db4444;
   color: white;
   border-color: #db4444;
 }
+
 .size-selector {
   display: flex;
   gap: 16px;
 }
 
 .size-selector button {
-  width: 32px;
-  height: 32px;
   background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
+  border: 1px solid #cccccc;
+  color: #333333;
+  padding: 8px 16px; 
+  min-width: 45px;   
+  width: auto; 
+  height: 40px;
   font-size: 14px;
   font-weight: 500;
+  border-radius: 4px;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
 }
 
 .size-selector button:hover {
-  border-color: #db4444;
-  color: #db4444;
+  border-color: #000000;
+  background-color: #f9f9f9;
 }
 
 .size-selector button.active {
-  background-color: #db4444;
+  background-color: #db4444; 
   border-color: #db4444;
   color: #ffffff;
+  font-weight: 600;
 }
+
+.size-selector button:focus {
+  outline: none;
+}
+
 
 .purchase-actions {
   display: flex;
@@ -316,6 +322,7 @@
   color: #db4444;
 }
 
+
 .delivery-card {
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 4px;
@@ -358,7 +365,6 @@
   cursor: pointer;
 }
 
-
 .related-section {
   margin-top: 80px;
 }
@@ -369,7 +375,6 @@
   letter-spacing: 4%;
   color: #000000;
   margin-bottom: 60px;
-  position: relative;
   padding-left: 20px;
   border-left: #db4444 16px solid;
   border-radius: 6px;
@@ -379,11 +384,14 @@
 
 
 .loading-state {
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 400px;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+  padding: 50px;
 }
 
 .loading-state h1 {
@@ -395,59 +403,6 @@
 .loading-state p {
   color: #7d8184;
   font-size: 16px;
-}
-
-.loading-state,.loading-state{ 
-  text-align: center;
- padding: 50px;
-  }
-
-.config-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.size-selector button {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  color: #333333;
-  padding: 8px 16px; 
-  min-width: 45px;   
-  width: auto; 
-  height: 40px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.size-selector button:hover {
-  border-color: #000000;
-  background-color: #f9f9f9;
-}
-
-.size-selector button.active {
-  background-color: #db4444; 
-  border-color: #db4444;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.size-selector button:focus {
-  outline: none;
-}
-.loading-state {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  text-align: center;
 }
 
 .go-home-btn {
@@ -466,18 +421,126 @@
   opacity: 0.9;
 }
 
-@media (max-width: 500px) {
-  .product-main-layout {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+
+@media screen and (max-width: 768px) {
   
-  .gallery-section {
-    flex-direction: column-reverse;
-  }
+  .product-page-wrapper {
+     padding: 12px ;
+     }
+  .product-main-layout { 
+    display: flex ;
+     flex-direction: column ;
+      gap: 20px ;
+     }
+
   
-  .thumb-stack {
-    flex-direction: row;
-    justify-content: center;
+  .gallery-section { 
+    display: flex ;
+     flex-direction: column-reverse ;
+      gap: 10px ; 
+    }
+  .thumb-stack { display: flex ; 
+    flex-direction: row ; 
+    justify-content: center ;
+     gap: 8px ; }
+  .thumb-card {
+     width: 55px ;
+     height: 55px ;
+     }
+  .main-display {
+     height: 250px ;
+   }
+
+ 
+  body { 
+    font-size: 13px ;
+   }
+  .product-title {
+     font-size: 18px ;
+      line-height: 24px ; 
+    }
+  .price-tag {
+     font-size: 18px ; 
+    }
+  .short-desc { 
+    font-size: 12px ;
+     line-height: 18px ;
+     }
+  .config-row .label {
+     font-size: 14px ; 
+    }
+
+
+  .config-row button, 
+  .size-selector button, 
+  .color-dots button, 
+  .qty-control, 
+  .buy-now-btn, 
+  .wish-btn {
+    height: 38px ;
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+    padding: 0 10px ;
+    font-size: 12px ;
+    box-sizing: border-box ;
+  }
+
+ 
+  .config-row {
+     display: flex ;
+      flex-direction: column ;
+       align-items: flex-start ; 
+       gap: 8px ; 
+      }
+  .color-dots, .size-selector {
+     display: flex ;
+      flex-wrap: wrap ;
+       gap: 6px ;
+        width: 100% ; 
+      }
+  
+
+  .purchase-actions {
+     display: flex ;
+      flex-direction: column ;
+       gap: 10px ;
+        width: 100% ;
+       }
+  .qty-control {
+     width: 100% ;
+      border: 1px solid #000;
+     }
+  .qty-control button { 
+    width: 35px ;
+     height: 100% ;
+     }
+  .buy-now-btn { 
+    width: 100% ; 
+    font-weight: 500;
+   }
+  .wish-btn { 
+    width: 100% ;
+   }
+}
+
+
+@media screen and (max-width: 350px) {
+  .thumb-card { 
+    width: 45px ;
+     height: 45px ; 
+    }
+  .main-display { 
+    height: 200px ;
+   }
+  
+  .config-row button, 
+  .size-selector button, 
+  .color-dots button, 
+  .qty-control, 
+  .buy-now-btn, 
+  .wish-btn {
+    height: 34px ;
+    font-size: 11px ;
   }
 }

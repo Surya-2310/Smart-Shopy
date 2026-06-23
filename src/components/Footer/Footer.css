@@ -1,5 +1,3 @@
-
-
 .footer {
   background-color: #111;
   color: white;
@@ -8,31 +6,22 @@
   font-size: small;
 }
 
-
-
 .footer-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 }
 
-.footer-logo{
-    width: 350px;
-    padding-right: 74px;
-
+.footer-logo {
+  width: 350px;
+  padding-right: 74px;
 }
-
-
 
 .footer-col h3 {
   margin-bottom: 15px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(255, 255, 255);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(255, 255, 255);
 }
-
-
-
-
 
 .footer-col ul {
   list-style: none;
@@ -46,13 +35,12 @@
 .footer-col ul li a {
   text-decoration: none;
   color: #ccc;
+  display: inline-block;
 }
 
 .footer-col ul li a:hover {
   color: white;
 }
-
-
 
 .social-icons {
   display: flex;
@@ -75,37 +63,72 @@
   padding-top: 15px;
   font-size: 14px;
 }
-.footer-qr img{
-  align-items: center;
+
+.footer-qr img {
+  display: block;
   width: 60%;
-  position: relative;
-  bottom: -14px;
+  max-width: 140px; 
+  margin: 0 auto;
 }
-
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  
   .footer {
-    padding: 30px 20px 15px;
-    margin-top: 40px;
+    padding: 20px 16px 16px;
+    margin-top: 20px;
     text-align: center;
   }
 
-  .footer-container {
+  .footer .footer-container {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 16px;
   }
 
-  .footer-logo {
-    width: 220px;
+  .footer .footer-logo {
+    width: 100%;
+    max-width: 180px;
     padding-right: 0;
-    margin: 0 auto;
+    margin: 0 auto 4px;
   }
 
-  .social-icons {
-    justify-content: center;
+  .footer .footer-col h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
   }
 
-  .footer-bottom {
+  .footer .footer-col ul li {
+    margin-bottom: 0;
+  }
+
+  .footer .footer-col ul li a {
+    padding: 6px 10px;
+    width: auto;
+    display: inline-block;
+    box-sizing: border-box;
     font-size: 13px;
+  }
+
+  .footer .social-icons {
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  
+  .footer .social-icons i {
+    padding: 4px;
+  }
+
+  .footer .footer-qr img {
+    width: 35%;
+    max-width: 90px;
+    position: static;
+    margin: 4px auto 0;
+  }
+
+  .footer .footer-bottom {
+    font-size: 11px;
+    margin-top: 16px;
+    padding-top: 12px;
+    color: #999;
   }
 }
